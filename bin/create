@@ -103,6 +103,10 @@ mv "$PROJECT_PATH/__TESTING__" "$PROJECT_PATH/$PROJECT_NAME"
 mv "$PROJECT_PATH/$PROJECT_NAME/__TESTING__-Info.plist" "$PROJECT_PATH/$PROJECT_NAME/$PROJECT_NAME-Info.plist"
 mv "$PROJECT_PATH/$PROJECT_NAME/__TESTING__-Prefix.pch" "$PROJECT_PATH/$PROJECT_NAME/$PROJECT_NAME-Prefix.pch"
 
+# delete userfile
+rm -rf "$PROJECT_PATH/$PROJECT_NAME.xcodeproj/project.xcworkspace"
+rm -rf "$PROJECT_PATH/$PROJECT_NAME.xcodeproj/xcuserdata"
+
 # lets store a reference to the root
 R=$PROJECT_PATH/$PROJECT_NAME
 
@@ -115,16 +119,15 @@ R=$PROJECT_PATH/$PROJECT_NAME
 # - ./__TESTING__/Resources/__TESTING__-info.plist
 # - ./__TESTING__/Resources/__TESTING__-Prefix.plist
 
+export LANG=C
 "$BINDIR/replaces" "$R.xcodeproj/project.pbxproj" __TESTING__ "$PROJECT_NAME"
 "$BINDIR/replaces" "$R/Classes/AppDelegate.h"     __TESTING__ "$PROJECT_NAME"
 "$BINDIR/replaces" "$R/Classes/AppDelegate.m"     __TESTING__ "$PROJECT_NAME"
-"$BINDIR/replaces" "$R/Classes/MainViewController.h" __TESTING__ "$PROJECT_NAME"
-"$BINDIR/replaces" "$R/Classes/MainViewController.m" __TESTING__ "$PROJECT_NAME"
 "$BINDIR/replaces" "$R/main.m"                    __TESTING__ "$PROJECT_NAME"
 "$BINDIR/replaces" "$R/$PROJECT_NAME-Info.plist"  __TESTING__ "$PROJECT_NAME"
 "$BINDIR/replaces" "$R/$PROJECT_NAME-Prefix.pch"  __TESTING__ "$PROJECT_NAME"
 
-"$BINDIR/replaces" "$R/$PROJECT_NAME-Info.plist" --ID-- $PACKAGE
+"$BINDIR/replaces" "$R/$PROJECT_NAME-Info.plist" com.youdao.cloud $PACKAGE
 
 if [[ $USE_SHARED = 1 ]]; then
     # Make the sub-project reference to Cordova have the correct path.
@@ -132,12 +135,24 @@ if [[ $USE_SHARED = 1 ]]; then
 else
     # Copy in the CordovaLib directory.
     mkdir -p "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj"
+    # cp -r "$BINDIR/../CordovaLib/Libs" "$PROJECT_PATH/CordovaLib"
+    cp -r "$BINDIR/../CordovaLib/libs2" "$PROJECT_PATH/CordovaLib"
     cp -r "$BINDIR/../CordovaLib/Classes" "$PROJECT_PATH/CordovaLib"
     cp "$BINDIR/../CordovaLib/VERSION" "$PROJECT_PATH/CordovaLib"
     cp "$BINDIR/../CordovaLib/CordovaLib_Prefix.pch" "$PROJECT_PATH/CordovaLib"
     cp "$BINDIR/../CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj"
     # Make the sub-project reference to Cordova have the correct path.
     "$BINDIR/update_cordova_subproject" "$R.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" > /dev/null
+    # 将NSLog引用给cordova.
+    "$BINDIR/update_nslog_subproject" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$R.xcodeproj/project.pbxproj/../$PROJECT_NAME/Libs/NSLog/NSLog.xcodeproj/project.pbxproj" $PROJECT_NAME > /dev/null
+    # 将Umsocial引用给cordova
+    "$BINDIR/update_cordova_umsocial" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" $PROJECT_NAME > /dev/null
+    # 将OpenUDID 引用cordova
+    "$BINDIR/update_openUUID_subproject" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj/../../../$PROJECT_NAME/Libs/OpenUDID/OpenUDID.xcodeproj/project.pbxproj" 
+
+
+    # 删除svn信息
+    find "$PROJECT_PATH" -name ".svn" | xargs rm -rf
 fi
 
 if [[ $USE_ARC = 1 ]]; then

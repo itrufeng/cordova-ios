@@ -28,8 +28,14 @@
 #import <UIKit/UIKit.h>
 
 #import <Cordova/CDVViewController.h>
+#import <Cordova/CDVReachability.h>
 
-@interface AppDelegate : NSObject <UIApplicationDelegate>{}
+@interface AppDelegate : NSObject <UIApplicationDelegate>
+{
+      CDVReachability* hostReach;
+
+
+}
 
 // invoke string is passed to your app on launch, this is only valid if you
 // edit __TESTING__-Info.plist to add a protocol
@@ -39,4 +45,9 @@
 @property (nonatomic, strong) IBOutlet UIWindow* window;
 @property (nonatomic, strong) IBOutlet CDVViewController* viewController;
 
+/* 本次运行的是否是新版本 */
++ (BOOL) isNewVersionForCurrentRun ;
+
+/* 设置本次运行的是新版本 */
++ (void) setNewVersionForCurrentRun ;
 @end
