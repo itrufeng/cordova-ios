@@ -1,0 +1,6 @@
+K 13
+svn:externals
+V 71
+NSLog http://ent.appmars.com/svn/ent/trunk/ios/NSLog/tags/release_1.0/
+
+END

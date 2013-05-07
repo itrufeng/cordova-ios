@@ -181,7 +181,9 @@ const uint mTiffLength = 0x2a; // after byte align bits, next to bits are 0x002a
     exifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{TIFF}"] withFormatDict: IFD0TagFormatDict isIFD0:YES currentDataOffset:&currentDataOffset];
 
     //data labeled as EXIF in UIImagePickerControllerMediaMetaData is part of the EXIF Sub IFD portion of APP1
+
     subExifIFD = [self createExifIFDFromDict: [datadict objectForKey:@"{Exif}"] withFormatDict: SubIFDTagFormatDict isIFD0:NO currentDataOffset:&currentDataOffset];
+
     /*
     NSLog(@"SUB EXIF IFD %@  WITH SIZE: %d",exifIFD,[exifIFD length]);
     
