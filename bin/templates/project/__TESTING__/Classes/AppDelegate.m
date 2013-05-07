@@ -54,6 +54,7 @@
 
     self = [super init];
     return self;
+    nslog;
 }
 
 #pragma mark UIApplicationDelegate implementation
