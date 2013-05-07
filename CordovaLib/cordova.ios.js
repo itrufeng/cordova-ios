@@ -4,6 +4,7 @@
 
 // File generated at :: Fri Apr 19 2013 18:36:09 GMT-0700 (PDT)
 
+
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -6381,7 +6382,6 @@ require('cordova/channel').onNativeReady.fire();
         }
     }
 
-
     // Try to XHR the cordova_plugins.json file asynchronously.
     try { // we commented we were going to try, so let us actually try and catch
         var xhr = new context.XMLHttpRequest();
@@ -6391,10 +6391,12 @@ require('cordova/channel').onNativeReady.fire();
             var obj = JSON.parse(this.responseText);
             if (obj && obj instanceof Array && obj.length > 0) {
                 handlePluginsObject(obj);
+
             } else {
                 finishPluginLoading();
             }
         };
+
         xhr.onerror = function() {
             finishPluginLoading();
         };
@@ -6402,6 +6404,7 @@ require('cordova/channel').onNativeReady.fire();
         xhr.send();
     }
     catch(err){
+
         finishPluginLoading();
     }
 }(window));

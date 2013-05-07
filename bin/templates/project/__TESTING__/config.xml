@@ -57,6 +57,13 @@
         <plugin name="Battery" value="CDVBattery" />
         <plugin name="Globalization" value="CDVGlobalization" />
         <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+		<plugin name="AlarmClock" value="CDVAlarmClock"/>
+        <plugin name="Share" value="CDVShare"/>
+        <plugin name="CheckVersion" value="CDVCheckVersion"/>
+        <plugin name="GetUUID" value="CDVGetUUID"/>
+        <plugin name="FullScreen" value="CDVFullScreen"/>
+        <plugin name="Messages" value="CDVMessages"/>
+        
     </plugins>
 
     <access origin="*" />

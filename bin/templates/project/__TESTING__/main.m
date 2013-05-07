@@ -26,8 +26,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import <NSLog/NSLog.h>
+
 int main(int argc, char* argv[])
 {
+//    [DebugController openLog];
+    
     @autoreleasepool {
         int retVal = UIApplicationMain(argc, argv, nil, @"AppDelegate");
         return retVal;

@@ -30,6 +30,14 @@
 
 #import <Cordova/CDVPlugin.h>
 
+// 帮助
+#import "WPHelpView.h"
+
+// log
+#import <NSLog/NSLog.h>
+
+#define NewVersionForCurrentRun @"isnewversionforcurrentrun"
+
 @implementation AppDelegate
 
 @synthesize window, viewController;
@@ -45,11 +53,13 @@
 
     int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
     int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
+
 #if __has_feature(objc_arc)
         NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
 #else
         NSURLCache* sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
 #endif
+    
     [NSURLCache setSharedURLCache:sharedCache];
 
     self = [super init];
@@ -63,7 +73,17 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    
+#if ! TARGET_IPHONE_SIMULATOR
+	
+	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+	 UIRemoteNotificationTypeSound |
+	 UIRemoteNotificationTypeAlert];
+	
+#endif
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
 
 #if __has_feature(objc_arc)
         self.window = [[UIWindow alloc] initWithFrame:screenBounds];
@@ -79,21 +99,36 @@
 #endif
     self.viewController.useSplashScreen = YES;
 
+
     // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.
     // If necessary, uncomment the line below to override it.
     // self.viewController.startPage = @"index.html";
 
     // NOTE: To customize the view's frame size (which defaults to full screen), override
     // [self.viewController viewWillAppear:] in your view controller.
+    
+    [AppDelegate isNewVersionForCurrentRun];
 
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
 
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(reachabilityChanged:)
+                                                name:kReachabilityChangedNotification
+                                              object:nil];
+     [self _creatRechablity];
+    
+    
     return YES;
 }
 
 // this happens while we are running ( in the background, or from within our own app )
 // only valid if __TESTING__-Info.plist specifies a protocol to handle
+
+/**应用定向
+ 
+ 在应用收到通知，通过通知打开预设的页面
+*/
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)url
 {
     if (!url) {
@@ -111,8 +146,8 @@
 }
 
 // repost the localnotification using the default NSNotificationCenter so multiple plugins may respond
-- (void)            application:(UIApplication*)application
-    didReceiveLocalNotification:(UILocalNotification*)notification
+- (void)           application:(UIApplication*)application
+   didReceiveLocalNotification:(UILocalNotification*)notification
 {
     // re-post ( broadcast )
     [[NSNotificationCenter defaultCenter] postNotificationName:CDVLocalNotification object:notification];
@@ -130,5 +165,163 @@
 {
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
 }
+
+
+
+#pragma push
+
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+	
+	NSString *stringToken   =   [[[[NSString stringWithFormat:@"%@", deviceToken] stringByReplacingOccurrencesOfString:@"<"
+																											withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    NSInfo(@"本次注册token:%@", stringToken);
+    
+	NSString *UUID;
+	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
+	{
+		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
+	}
+	else
+	{
+		UUID = [UIDevice currentDevice].uniqueIdentifier;
+	}
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Error in registration. Error: %@", error);
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    
+}
+
+
+/**应用进入后台
+ 
+ 备注：在此出停止应用对网络监听
+*/
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    //停止监听在后台
+    [hostReach stopNotifier];
+    
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+}
+
+/**应用进入前台
+ 
+ 备注：在此出开始应用对网络监听
+ */
+
+- (void)applicationWillEnterForeground:(UIApplication *)application
+{
+    //开始监听
+    [self _creatRechablity];
+    
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+
+#pragma mark 公有
+
+/**检测版本：帮助页面 
+ 
+ 检测是否存储过版本号，如果存储
+ 检测当前的版本号与存储的版本号是否相同，以此来判断是否出现重置帮助页面信息
+ */
+
++ (BOOL) isNewVersionForCurrentRun
+{
+    NSNumber *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    NSNumber *version = [[NSUserDefaults standardUserDefaults] valueForKey:NewVersionForCurrentRun];
+    
+    if (!version)
+    {
+        [AppDelegate setNewVersionForCurrentRun];
+        
+        return YES;
+    }
+
+    if (version.floatValue == currentVersion.floatValue)
+    {
+        return NO;
+    }
+    else if (version.floatValue < currentVersion.floatValue)
+    {
+        [AppDelegate setNewVersionForCurrentRun];
+        
+        return YES;
+    }
+    else
+    {
+        NSWarn(@"版本怎么降低了");
+    }
+    
+    return NO;
+}
+
+/**修改版本信息：：帮助页面 
+
+ 将NSUserDefaults版本信息修改为现在的版本信息
+ 将是否出现过帮助信息重置为No
+ */
+
++ (void) setNewVersionForCurrentRun
+{
+    NSNumber *version = [[NSUserDefaults standardUserDefaults] valueForKey:NewVersionForCurrentRun];
+    
+    NSNumber *currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    
+    NSInfo(@"发现新版本 原来的版本是:%f,升级后的版本是%f", version.floatValue, currentVersion.floatValue);
+    
+    [[NSUserDefaults standardUserDefaults] setValue:currentVersion
+                                             forKey:NewVersionForCurrentRun];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [WPHelpView markHelped:NO];
+}
+
+#pragma mark 私有
+
+/**监听网络接口
+ 
+ 开始监听网络接口
+*/
+
+-(void)_creatRechablity
+{
+    hostReach = [CDVReachability reachabilityWithHostName: @"www.apple.com"];
+ 	[hostReach startNotifier];
+}
+
+#pragma mark 监听事件
+
+/**网络接口错误
+ 
+ 可能原因 ：你打开了飞行模式
+         你所在的地区网络信号不好
+ */
+- (void) reachabilityChanged: (NSNotification* )note
+{
+	CDVReachability* curReach = [note object];
+    
+    if ([curReach currentReachabilityStatus] == NotReachable )
+    {
+        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"网络错误" message:@"可能原因\n1.你打开了飞行模式\n2.你所在的地区网络信号不好" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        ((UILabel*)[[alertView subviews]objectAtIndex:1]).textAlignment = NSTextAlignmentLeft;
+        
+        [alertView show];
+    }
+    
+}
+
 
 @end
