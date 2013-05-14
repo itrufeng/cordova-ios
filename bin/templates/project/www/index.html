@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements.  See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership.  The ASF licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License.  You may obtain a copy of the License at
+ 
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied.  See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
 <html>
     <head>
         <meta charset="utf-8" />
@@ -24,6 +24,19 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+        <script type = "text/javaScript">
+            function showMessage()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "Messages",
+                             "showMsg", ["这是短消息偶西欧西欧"]);
+            }
+            </script>
     </head>
     <body>
         <div class="app">
@@ -33,10 +46,180 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.ios.js"></script>
+        <script type="text/javascript" src="cordova-2.7.0rc1.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
+            function GetUUID()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "GetUUID",
+                             "getUUID", ["不需要参数"]);
+            }
+            
+            function fullScreen()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "FullScreen",
+                             "screenFull", ["不需要参数"]);
+            }
+            
+            function NofullScreen()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "FullScreen",
+                             "screenNotFull",
+                             ["不需要参数"]);
+            }
+            
+            function whetherIsFullScreen()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "FullScreen",
+                             "whetherIsFullScreen",
+                             ["不需要参数"]);
+            }
+            
+            
+            function checkVersion()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "CheckVersion",
+                             "checkVersion",
+                             ["350962117"]);
+            }
+            
+            function addAlarmClock()
+            {
+                //获取当前时间延时3秒的时间
+                var mydate = new Date()
+                mydate.setMinutes = (mydate.getSeconds() +5)
+                var timeStamp = Date.parse(mydate)/1000
+                alert(timeStamp)
+                
+                cordova.exec(function(winParam) {
+                             alert(winParam)
+                             },
+                             function(error) {
+                             },
+                             "AlarmClock",
+                             "addAlarmClock",
+                             ["78787878786","zhaojing",timeStamp.toString(),"5"]);
+            }
+            
+            function searchAlarmClock()
+            {
+                cordova.exec(function(message) {
+                             alert(message);
+                             },
+                             function(error) {
+                             alert(error);
+                             },
+                             "AlarmClock",
+                             "searchAlarmClock",
+                             ["不需要参数"]);
+                
+            }
+            
+            function share(){
+                cordova.exec(function(winParam) {
+                             },
+                             function(error) {
+                             },
+                             "Share",
+                             "share",
+                             ["有道软件分享","http://www.baidu.com/img/shouye_b5486898c692066bd2cbaeda86d74448.gif"]);
+            }
+            function regumeng(){
+                cordova.exec(function(winParam) {
+                             },
+                             function(error) {
+                             },
+                             "Share",
+                             "registerUmeng",
+                             ["508a19a35270155ced00005f"]);
+            }
+            function regweixin(){
+                cordova.exec(function(winParam) {
+                             },
+                             function(error) {
+                             },
+                             "Share",
+                             "registerWeixin",
+                             ["wx79474d05acb6a73b"]);
+            }
+            
+            
+            function deleteManyAlarmClock(){
+                cordova.exec(function(winParam) {
+                             
+                             alert(winParam)
+                             },
+                             function(error) {
+                             },
+                             "AlarmClock",
+                             "deleteManyAlarmClock",
+                             [["78787878786"]]);
+                
+            }
+            function modifyAlarmClock(){
+                
+                cordova.exec(function(winParam) {
+                             
+                             alert(winParam)
+                             },
+                             function(error) {
+                             },
+                             "AlarmClock",
+                             "modifyAlarmClock",
+                             ["78787878786",{"repeatInterval":"2"}]);
+                
+            }
+            
+            
+            
+            
+            
             app.initialize();
-        </script>
+            </script>
+        
+        <input type="button"value="GetUUID"style="width:320px;height:44px;"onclick="GetUUID();" />
+        <input type="button"value="全屏"style="width:100px;height:22px;"onclick="fullScreen();" />
+        <input type="button"value="非全屏"style="width:100px;height:22px;"onclick="NofullScreen();" />
+        <input type="button"value="是否全屏"style="width:100px;height:22px;"onclick="whetherIsFullScreen();" />
+        <input type="button"value="加入提醒"style="width:100px;height:22px;"onclick="addAlarmClock();" />
+        <input type="button"value="删除提醒"style="width:100px;height:22px;"onclick="deleteManyAlarmClock();" />
+        <input type="button"value="修改提醒"style="width:100px;height:22px;"onclick="modifyAlarmClock();" />
+        <input type="button"value="查询提醒"style="width:100px;height:22px;"onclick="searchAlarmClock();" />
+        <input type="button"value="调用更新插件"style="width:100px;height:22px;"onclick="checkVersion();" />
+        
+        <input type="button"value="注册微信"style="width:100px;height:22px;"onclick="regweixin();" />
+        <input type="button"value="注册友盟"style="width:100px;height:22px;"onclick="regumeng();" />
+        <input type="button"value="分享"style="width:100px;height:22px;"onclick="share();" />
+        <input type="button"value="短消息"style="width:100px;height:22px;"onclick="showMessage();" />
     </body>
 </html>
