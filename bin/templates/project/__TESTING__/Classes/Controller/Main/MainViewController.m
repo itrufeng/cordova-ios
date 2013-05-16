@@ -85,6 +85,9 @@
     // you can do so here.
 
     [super viewWillAppear:animated];
+    
+    [self _restoreHelpviewFrame2];
+    [self _restoreWebviewFrame2];
 }
 
 - (void)viewDidLoad
@@ -174,9 +177,9 @@ didFailLoadWithError:error];
 - (void) _showLoadView
 {
     // 未启用该插件
-    NSArray *imageFils = [[NSBundle mainBundle] picturesWithDirectoryName:@"load"];
+    UIImage *imageFile = [UIImage imageNamed:@"Default.png"];
     
-    if ([imageFils count] == 0)
+    if (!imageFile)
     {
         NSInfo(@"没有加载图片");
         return;
@@ -312,10 +315,29 @@ didFailLoadWithError:error];
 }
 
 /* 修正helpviewFrame */
+- (void) _restoreHelpviewFrame2
+{
+    CGRect frame = _helpView.frame;
+    frame.origin.y = 0;
+    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    _helpView.frame = frame;
+}
+
+/* 修正helpviewFrame */
 - (void) _restoreWebviewFrame
 {
     CGRect frame = self.webView.frame;
     frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
+    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
+    self.webView.frame = frame;
+}
+
+/* 修正helpviewFrame */
+- (void) _restoreWebviewFrame2
+{
+    CGRect frame = self.webView.frame;
+    frame.origin.y = 0;
     frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
     NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
     self.webView.frame = frame;
