@@ -100,6 +100,7 @@
     
     [self debugStart];
 
+    [self _setup];
     
     NSLog(@"");
     
@@ -341,6 +342,11 @@ didFailLoadWithError:error];
     frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
     NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
     self.webView.frame = frame;
+}
+
+- (void) _setup
+{
+    self.webView.dataDetectorTypes = UIDataDetectorTypePhoneNumber;
 }
 
 #pragma mark CAAnimationDelegate

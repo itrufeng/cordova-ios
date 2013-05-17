@@ -63,7 +63,7 @@
         <plugin name="GetUUID" value="CDVGetUUID"/>
         <plugin name="FullScreen" value="CDVFullScreen"/>
         <plugin name="Messages" value="CDVMessages"/>
-        
+        <plugin name="Redirect" value="CDVRedirect"/>
     </plugins>
 
     <access origin="*" />

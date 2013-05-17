@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F9FC4D01746278E00EB52E7 /* CDVRedirect.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F9FC4CE1746278E00EB52E7 /* CDVRedirect.h */; };
+		0F9FC4D11746278E00EB52E7 /* CDVRedirect.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F9FC4CF1746278E00EB52E7 /* CDVRedirect.m */; };
 		0FA8C6ED172D1A5A000F628F /* CDVMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FA8C6EB172D1A5A000F628F /* CDVMessages.h */; };
 		0FA8C6EE172D1A5A000F628F /* CDVMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA8C6EC172D1A5A000F628F /* CDVMessages.m */; };
 		1F2BECC013F9785B00A93BF6 /* CDVBattery.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F2BECBE13F9785B00A93BF6 /* CDVBattery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -144,6 +146,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F9FC4CE1746278E00EB52E7 /* CDVRedirect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVRedirect.h; path = Classes/CDVRedirect.h; sourceTree = "<group>"; };
+		0F9FC4CF1746278E00EB52E7 /* CDVRedirect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVRedirect.m; path = Classes/CDVRedirect.m; sourceTree = "<group>"; };
 		0FA8C6EB172D1A5A000F628F /* CDVMessages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVMessages.h; path = Classes/CDVMessages.h; sourceTree = "<group>"; };
 		0FA8C6EC172D1A5A000F628F /* CDVMessages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVMessages.m; path = Classes/CDVMessages.m; sourceTree = "<group>"; };
 		1F2BECBE13F9785B00A93BF6 /* CDVBattery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVBattery.h; path = Classes/CDVBattery.h; sourceTree = "<group>"; };
@@ -423,6 +427,8 @@
 				EB96673A16A8970900D86CDF /* CDVUserAgentUtil.m */,
 				0FA8C6EB172D1A5A000F628F /* CDVMessages.h */,
 				0FA8C6EC172D1A5A000F628F /* CDVMessages.m */,
+				0F9FC4CE1746278E00EB52E7 /* CDVRedirect.h */,
+				0F9FC4CF1746278E00EB52E7 /* CDVRedirect.m */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -560,7 +566,7 @@
 				D0396E241721299B007A5C00 /* CDVFullScreen.h in Headers */,
 				0FA8C6ED172D1A5A000F628F /* CDVMessages.h in Headers */,
 				D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */,
-
+				0F9FC4D01746278E00EB52E7 /* CDVRedirect.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +701,7 @@
 				D0396E251721299B007A5C00 /* CDVFullScreen.m in Sources */,
 				0FA8C6EE172D1A5A000F628F /* CDVMessages.m in Sources */,
 				D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */,
+				0F9FC4D11746278E00EB52E7 /* CDVRedirect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
