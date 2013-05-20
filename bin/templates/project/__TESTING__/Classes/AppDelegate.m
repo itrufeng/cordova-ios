@@ -32,6 +32,8 @@
 
 // 帮助
 #import "WPHelpView.h"
+#import "UMSocialData.h"
+#import "WXApi.h"
 
 // log
 #import <NSLog/NSLog.h>
@@ -81,6 +83,24 @@
 	 UIRemoteNotificationTypeAlert];
 	
 #endif
+    
+    NSString *weixinkey = [[[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] objectAtIndex:0] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
+    
+    NSString *youmengkey = [[[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] objectAtIndex:1] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
+    
+    if (youmengkey &&
+        ![youmengkey isEqualToString:@""])
+    {
+        [UMSocialData setAppKey:youmengkey];
+        NSInfo(@"本地注册友盟key:%@", youmengkey);
+    }
+    
+    if (weixinkey &&
+        ![weixinkey isEqualToString:@""])
+    {
+        [WXApi registerApp:weixinkey];
+        NSInfo(@"本地注册微信key:%@", weixinkey);
+    }
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 

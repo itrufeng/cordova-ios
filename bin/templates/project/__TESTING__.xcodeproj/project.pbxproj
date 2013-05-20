@@ -810,6 +810,8 @@
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WEIXIN_KEY = wx79474d05acb6a73b;
+				YOUMENG_KEY = 508a19a35270155ced00005f;
 			};
 			name = Debug;
 		};
@@ -831,6 +833,8 @@
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WEIXIN_KEY = wx79474d05acb6a73b;
+				YOUMENG_KEY = 508a19a35270155ced00005f;
 			};
 			name = Release;
 		};
