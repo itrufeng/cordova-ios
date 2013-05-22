@@ -245,18 +245,13 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             {
                 case UMSocialUrlResourceTypeImage:
                 {
-                    NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlresource.url]];
-                    
-                    UIImage *image = [UIImage imageWithData:dataImage];
-                    
                     WXMediaMessage *message = [WXMediaMessage message];
                     WXImageObject *ext = [WXImageObject object];
                     
                     
-                    ext.imageData = dataImage;
+                    ext.imageUrl = urlresource.url;
                     
                     message.mediaObject = ext;
-                    [message setThumbImage:image];
                     req.message = message;
                     req.bText = NO;
                     
