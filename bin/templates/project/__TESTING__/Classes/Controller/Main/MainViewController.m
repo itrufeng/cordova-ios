@@ -346,7 +346,7 @@ didFailLoadWithError:error];
 
 - (void) _setup
 {
-    self.webView.dataDetectorTypes = UIDataDetectorTypePhoneNumber;
+    self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
 }
 
 #pragma mark CAAnimationDelegate
