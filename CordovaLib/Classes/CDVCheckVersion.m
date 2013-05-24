@@ -196,6 +196,21 @@ UIAlertViewDelegate>
         {
             NSArray *arrayApp = [dicApp objectForKey:KCDVUpdateVersion_Result];
             
+            if ([arrayApp count]== 0)
+            {
+                
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
+                                                                   message:@"没有发现新版本"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"忽略"                                                         otherButtonTitles:nil];
+                [alertView show];
+                
+                NSWarn(@"itune 没有返回任何信息，可能id错误");
+                
+                return NO;
+                
+            }
+
             NSDictionary *infoAppResult = [arrayApp objectAtIndex:0];
             
             NSString *stringVersion = [infoAppResult objectForKey:KCDVUpdateVersion_Version];
@@ -210,6 +225,13 @@ UIAlertViewDelegate>
             else
             {
                 
+                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
+                                                                   message:@"没有发现新版本"
+                                                                  delegate:self
+                                                         cancelButtonTitle:nil
+                                                         otherButtonTitles:nil];
+                [alertView show];
+
                 [self _sendResultWithPluginResult:CDVCommandStatus_OK
                                  WithResultString:@"没有要更新的版本"
                                        callbackId:command.callbackId];
