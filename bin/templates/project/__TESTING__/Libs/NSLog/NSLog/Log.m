@@ -38,8 +38,12 @@ FOUNDATION_EXPORT void NSWarn(NSString *format, ...)
     va_end(ap);
     
     NSLog(@"[Warn:]%@", print);
+
+#ifdef DEBUG
     
     assert(false);
+    
+#endif
     
     [print release];
 }
