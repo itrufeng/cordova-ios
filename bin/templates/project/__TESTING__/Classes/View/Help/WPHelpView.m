@@ -56,6 +56,12 @@
         
         NSString *imagePath = [NSString stringWithFormat:@"help/%@", imageName];
         
+        if (iPhone5)
+        {
+            imagePath = [imagePath stringByReplacingOccurrencesOfString:@".png"
+                                                             withString:@"-568h.png"];
+        }
+        
         NSLog(@"imagePath:%@", imagePath);
         
         UIImage *image = [UIImage imageNamed:imagePath];

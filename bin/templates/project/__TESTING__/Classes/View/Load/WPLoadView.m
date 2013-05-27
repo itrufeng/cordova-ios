@@ -63,7 +63,14 @@
  */
 - (UIImage *) _loadimage
 {
-    return [UIImage imageNamed:@"Default.png"];
+    if (iPhone5)
+    {
+        return [UIImage imageNamed:@"Default-568h.png"];
+    }
+    else
+    {
+        return [UIImage imageNamed:@"Default.png"];
+    }
 }
 
 @end

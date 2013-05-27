@@ -30,7 +30,7 @@
 
 int main(int argc, char* argv[])
 {
-//    [DebugController openLog];
+    [DebugController openLog];
     
     @autoreleasepool {
         int retVal = UIApplicationMain(argc, argv, nil, @"AppDelegate");
