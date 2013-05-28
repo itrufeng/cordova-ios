@@ -64,6 +64,8 @@
         <plugin name="FullScreen" value="CDVFullScreen"/>
         <plugin name="Messages" value="CDVMessages"/>
         <plugin name="Redirect" value="CDVRedirect"/>
+        <plugin name="GetApplicationInfo" value ="CDVGetApplicationInfo"/>
+        
     </plugins>
 
     <access origin="*" />

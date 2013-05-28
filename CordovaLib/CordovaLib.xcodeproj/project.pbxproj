@@ -81,6 +81,7 @@
 		9D76CF3D1625A4C50008A0F6 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D76CF3B1625A4C50008A0F6 /* CDVGlobalization.m */; };
 		C937A4561337599E002C4C79 /* CDVFileTransfer.h in Headers */ = {isa = PBXBuildFile; fileRef = C937A4541337599E002C4C79 /* CDVFileTransfer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C937A4571337599E002C4C79 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = C937A4551337599E002C4C79 /* CDVFileTransfer.m */; };
+		D024E7C517547E2B0072F7B8 /* libApplicationInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D024E7B41754652D0072F7B8 /* libApplicationInfo.a */; };
 		D0396E201721247A007A5C00 /* CDVGetUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = D099215B171FBA93009A41D4 /* CDVGetUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0396E211721247E007A5C00 /* CDVGetUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = D099215C171FBA93009A41D4 /* CDVGetUUID.m */; };
 		D0396E241721299B007A5C00 /* CDVFullScreen.h in Headers */ = {isa = PBXBuildFile; fileRef = D0396E221721299A007A5C00 /* CDVFullScreen.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -96,6 +97,8 @@
 		D08B438B1712601500DD791B /* CDVCheckVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = D08B43891712601500DD791B /* CDVCheckVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D08B438C1712601500DD791B /* CDVCheckVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = D08B438A1712601500DD791B /* CDVCheckVersion.m */; };
 		D0992171171FC67C009A41D4 /* libOpenUDID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A7BA58171F91AF006E0DA5 /* libOpenUDID.a */; };
+		D0D5D54C1754866800F099C5 /* CDVGetApplicationInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D5D54A1754866800F099C5 /* CDVGetApplicationInfo.h */; };
+		D0D5D54D1754866800F099C5 /* CDVGetApplicationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */; };
 		D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E1DEF8173260B800DB1049 /* KGStatusBar.h */; };
 		D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E1DEF9173260B800DB1049 /* KGStatusBar.m */; };
 		EB3B3547161CB44D003DBE7D /* CDVCommandQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,6 +118,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D024E7B31754652D0072F7B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A0FEBC1753614A00416A7E;
+			remoteInfo = ApplicationInfo;
+		};
+		D024E7BE17547C4F0072F7B8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D0A0FEBB1753614A00416A7E;
+			remoteInfo = ApplicationInfo;
+		};
 		D03AB64E17055A0500481530 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D03AB64A17055A0400481530 /* NSLog.xcodeproj */;
@@ -235,6 +252,7 @@
 		AA747D9E0F9514B9006C5449 /* CordovaLib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CordovaLib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		C937A4541337599E002C4C79 /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = Classes/CDVFileTransfer.h; sourceTree = "<group>"; };
 		C937A4551337599E002C4C79 /* CDVFileTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFileTransfer.m; path = Classes/CDVFileTransfer.m; sourceTree = "<group>"; };
+		D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
 		D0396E221721299A007A5C00 /* CDVFullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFullScreen.h; path = Classes/CDVFullScreen.h; sourceTree = "<group>"; };
 		D0396E231721299A007A5C00 /* CDVFullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFullScreen.m; path = Classes/CDVFullScreen.m; sourceTree = "<group>"; };
 		D03AB5F71705315C00481530 /* CDVAlarmClock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVAlarmClock.h; path = Classes/CDVAlarmClock.h; sourceTree = "<group>"; };
@@ -251,6 +269,8 @@
 		D099215B171FBA93009A41D4 /* CDVGetUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVGetUUID.h; path = Classes/CDVGetUUID.h; sourceTree = "<group>"; };
 		D099215C171FBA93009A41D4 /* CDVGetUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVGetUUID.m; path = Classes/CDVGetUUID.m; sourceTree = "<group>"; };
 		D0A7BA53171F91AE006E0DA5 /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
+		D0D5D54A1754866800F099C5 /* CDVGetApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVGetApplicationInfo.h; path = Classes/CDVGetApplicationInfo.h; sourceTree = "<group>"; };
+		D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVGetApplicationInfo.m; path = Classes/CDVGetApplicationInfo.m; sourceTree = "<group>"; };
 		D0E1DEF8173260B800DB1049 /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		D0E1DEF9173260B800DB1049 /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
 		EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandQueue.h; path = Classes/CDVCommandQueue.h; sourceTree = "<group>"; };
@@ -274,6 +294,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D024E7C517547E2B0072F7B8 /* libApplicationInfo.a in Frameworks */,
 				D0992171171FC67C009A41D4 /* libOpenUDID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +450,8 @@
 				0FA8C6EC172D1A5A000F628F /* CDVMessages.m */,
 				0F9FC4CE1746278E00EB52E7 /* CDVRedirect.h */,
 				0F9FC4CF1746278E00EB52E7 /* CDVRedirect.m */,
+				D0D5D54A1754866800F099C5 /* CDVGetApplicationInfo.h */,
+				D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -463,9 +486,18 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		D024E7B01754652C0072F7B8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D024E7B41754652D0072F7B8 /* libApplicationInfo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D03AB605170559B800481530 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */,
 				D0A7BA53171F91AE006E0DA5 /* OpenUDID.xcodeproj */,
 				D03AB64A17055A0400481530 /* NSLog.xcodeproj */,
 			);
@@ -567,6 +599,7 @@
 				0FA8C6ED172D1A5A000F628F /* CDVMessages.h in Headers */,
 				D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */,
 				0F9FC4D01746278E00EB52E7 /* CDVRedirect.h in Headers */,
+				D0D5D54C1754866800F099C5 /* CDVGetApplicationInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -584,6 +617,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D024E7BF17547C4F0072F7B8 /* PBXTargetDependency */,
 				D0992151171FB71D009A41D4 /* PBXTargetDependency */,
 				D03AB65117055A3700481530 /* PBXTargetDependency */,
 			);
@@ -616,6 +650,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = D024E7B01754652C0072F7B8 /* Products */;
+					ProjectRef = D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */;
+				},
+				{
 					ProductGroup = D03AB64B17055A0400481530 /* Products */;
 					ProjectRef = D03AB64A17055A0400481530 /* NSLog.xcodeproj */;
 				},
@@ -632,6 +670,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		D024E7B41754652D0072F7B8 /* libApplicationInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libApplicationInfo.a;
+			remoteRef = D024E7B31754652D0072F7B8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D03AB64F17055A0500481530 /* libNSLog.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -702,12 +747,18 @@
 				0FA8C6EE172D1A5A000F628F /* CDVMessages.m in Sources */,
 				D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */,
 				0F9FC4D11746278E00EB52E7 /* CDVRedirect.m in Sources */,
+				D0D5D54D1754866800F099C5 /* CDVGetApplicationInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D024E7BF17547C4F0072F7B8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ApplicationInfo;
+			targetProxy = D024E7BE17547C4F0072F7B8 /* PBXContainerItemProxy */;
+		};
 		D03AB65117055A3700481530 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = NSLog;

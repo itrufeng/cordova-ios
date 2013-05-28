@@ -200,6 +200,20 @@
                 
             }
             
+            function showGetApplicationInfo()
+            {
+                cordova.exec(function(winParam) {
+                             
+                             alert(winParam)
+                             },
+                             function(error) {
+                             },
+                             "GetApplicationInfo",
+                             "getApplicationInfo",
+                            ["zhao"]);
+            
+            
+            }
             
             
             
@@ -221,5 +235,6 @@
         <input type="button"value="注册友盟"style="width:100px;height:22px;"onclick="regumeng();" />
         <input type="button"value="分享"style="width:100px;height:22px;"onclick="share();" />
         <input type="button"value="短消息"style="width:100px;height:22px;"onclick="showMessage();" />
+        <input type="button"value="获取应用信息"style="width:100px;height:22px;"onclick="showGetApplicationInfo();" />
     </body>
 </html>
