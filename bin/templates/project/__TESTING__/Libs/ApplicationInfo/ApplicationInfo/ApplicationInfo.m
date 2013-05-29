@@ -1,17 +1,17 @@
-//
-//  ApplicationInfo.m
-//  ApplicationInfo
-//
-//  Created by jing zhao on 5/27/13.
-//  Copyright (c) 2013 youdao. All rights reserved.
-//
-
 #import "ApplicationInfo.h"
 
 #import <CoreLocation/CoreLocation.h>
 
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
+
+#define KCaid           @"caid"
+#define KVersions       @"versions"
+#define KLongitude	    @"longitude"
+#define KLatitude       @"latitude"
+#define KOperator       @"operator"
+
+
 
 @interface  ApplicationInfo ()<CLLocationManagerDelegate>
 {
@@ -22,11 +22,12 @@
     NSString          *latitude;
 }
 
-@property (unsafe_unretained, nonatomic)ApplicationInfoBlock m_block;
+//@property (strong, nonatomic)ApplicationInfoBlock m_block;
+@property (unsafe_unretained,nonatomic)id<DelegateApplicationInfo>   delegateAppInfo;
 
 @end
 
-@implementation ApplicationInfo 
+@implementation ApplicationInfo
 
 - (id)init
 {
@@ -37,16 +38,19 @@
     return self;
 }
 
--(void)setBlock:(ApplicationInfoBlock)block
+
+-(void)setDelegate:(id<DelegateApplicationInfo>)delegate
 {
-    self.m_block = block;
+    _delegateAppInfo = delegate;
     
-    [self getProvider];
-    [self getVersion];
+    currentVersion = [self getVersion];
+    
+    providerName = [self getProvider];
     
     [self getLocation];
-    
 }
+
+
 
 /**************************************************************************************/
 
@@ -56,13 +60,14 @@
 
 /**************************************************************************************/
 
--(void)getVersion
+-(NSString *)getVersion
 {
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
     
     NSString *nowcurrentVersion = [infoDict objectForKey:@"CFBundleVersion"];
     
-    currentVersion = nowcurrentVersion;
+    return nowcurrentVersion;
+    
 }
 
 /**************************************************************************************/
@@ -97,7 +102,7 @@
 
 /**************************************************************************************/
 
--(void)getProvider
+-(NSString *)getProvider
 {
     CTTelephonyNetworkInfo * netInfo = [[ CTTelephonyNetworkInfo alloc]init];
     
@@ -105,7 +110,7 @@
     
     NSString *nowProviderName = [carrier carrierName];
     
-    providerName = nowProviderName;
+    return nowProviderName;
 }
 
 /**************************************************************************************/
@@ -134,9 +139,13 @@
     //          location.coordinate.longitude);
     //    }
     
-    NSArray *array = [NSArray arrayWithObjects:currentVersion,providerName,longtitude,latitude,nil];
+    //    NSArray *array = [NSArray arrayWithObjects:currentVersion,providerName,longtitude,latitude,nil];
+    NSDictionary *dicInfo = [NSDictionary dictionaryWithObjectsAndKeys:currentVersion,KVersions,
+                             providerName,KOperator,
+                             longtitude,KLongitude,
+                             latitude,KLatitude,nil];
     
-    self.m_block(array);
+    [_delegateAppInfo delegateOnApplicationInfo:dicInfo];
     
     [locationManager stopUpdatingLocation];
 }
@@ -145,10 +154,11 @@
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error
 {
+    NSDictionary *dicInfo = [NSDictionary dictionaryWithObjectsAndKeys:currentVersion,KVersions,
+                             providerName,KOperator,nil];
     
-    NSArray *array = [NSArray arrayWithObjects:currentVersion,providerName,nil];
-    
-    self.m_block(array);
+    [_delegateAppInfo delegateOnApplicationInfo:dicInfo];
+    //    self.m_block(dicInfo);
 }
 
 

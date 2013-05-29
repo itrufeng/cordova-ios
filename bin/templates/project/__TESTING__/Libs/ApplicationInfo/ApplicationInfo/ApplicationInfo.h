@@ -6,16 +6,24 @@
 //  Copyright (c) 2013 youdao. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
-typedef void (^ApplicationInfoBlock) (NSArray *array);
+@protocol DelegateApplicationInfo <NSObject>
+
+@required
+
+-(void)delegateOnApplicationInfo:(NSDictionary*)dict;
+
+@end
+
 
 @interface ApplicationInfo : NSObject
 
--(void)setBlock:(ApplicationInfoBlock)block;
+-(void)setDelegate:(id<DelegateApplicationInfo>)_delegate;
 
--(void)getVersion;
+-(NSString *)getVersion;
 
--(void)getProvider;
+-(NSString *)getProvider;
 
 @end

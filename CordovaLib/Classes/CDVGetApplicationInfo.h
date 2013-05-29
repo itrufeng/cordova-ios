@@ -12,7 +12,7 @@
 
 #import <ApplicationInfo/ApplicationInfo.h>
 
-@interface CDVGetApplicationInfo : CDVPlugin
+@interface CDVGetApplicationInfo : CDVPlugin <DelegateApplicationInfo>
 
 -(void)getApplicationInfo:(CDVInvokedUrlCommand*)command;
 
