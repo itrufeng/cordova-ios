@@ -10,7 +10,7 @@
 #define __TESTING___Setting_h
 
 /* appid */
-#define APP_ID __APP_ID__
+#define APP_ID @"__APP_ID__"
 
 
 #endif
