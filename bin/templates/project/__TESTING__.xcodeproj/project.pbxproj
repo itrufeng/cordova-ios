@@ -100,6 +100,7 @@
 /* Begin PBXFileReference section */
 		0F229ABC1712985A005A670E /* NSString+FileFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FileFormat.h"; sourceTree = "<group>"; };
 		0F229ABD1712985A005A670E /* NSString+FileFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FileFormat.m"; sourceTree = "<group>"; };
+		0F82D4F21755D8C400C3C43C /* Setting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Setting.h; sourceTree = "<group>"; };
 		0FF88B321705565C002B6A43 /* FireUIPagedScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FireUIPagedScrollView.h; sourceTree = "<group>"; };
 		0FF88B331705565C002B6A43 /* FireUIPagedScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FireUIPagedScrollView.m; sourceTree = "<group>"; };
 		0FF88B351705565C002B6A43 /* NSBundle+Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Image.h"; sourceTree = "<group>"; };
@@ -235,10 +236,10 @@
 			isa = PBXGroup;
 			children = (
 				0FF88B9417056776002B6A43 /* Controller */,
-				0FF88B9517056776002B6A43 /* Model */,
 				0FF88B9617056776002B6A43 /* View */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
+				0F82D4F11755D8C400C3C43C /* Model */,
 			);
 			name = Classes;
 			path = __TESTING__/Classes;
@@ -251,6 +252,14 @@
 				0F229ABD1712985A005A670E /* NSString+FileFormat.m */,
 			);
 			path = "NSString+FileFormat";
+			sourceTree = "<group>";
+		};
+		0F82D4F11755D8C400C3C43C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0F82D4F21755D8C400C3C43C /* Setting.h */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0FF88B301705565C002B6A43 /* Libs */ = {
@@ -395,13 +404,6 @@
 				0FF88BA4170567A7002B6A43 /* Main */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		0FF88B9517056776002B6A43 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		0FF88B9617056776002B6A43 /* View */ = {

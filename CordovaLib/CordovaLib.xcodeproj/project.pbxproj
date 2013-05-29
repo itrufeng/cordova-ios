@@ -803,6 +803,7 @@
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/Headers/UIAPI ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/Headers/DataAPI ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
 			};
 			name = Debug;
 		};
@@ -834,6 +835,7 @@
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/Headers/UIAPI ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/Headers/DataAPI ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
 			};
 			name = Release;
 		};
