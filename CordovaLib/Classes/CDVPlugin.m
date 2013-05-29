@@ -19,6 +19,7 @@
 
 #import "CDVPlugin.h"
 
+NSString* const CDVPageDidLoadFinishNotification = @"CDVPageDidLoadFinishNotification";
 NSString* const CDVPageDidLoadNotification = @"CDVPageDidLoadNotification";
 NSString* const CDVPluginHandleOpenURLNotification = @"CDVPluginHandleOpenURLNotification";
 NSString* const CDVPluginResetNotification = @"CDVPluginResetNotification";

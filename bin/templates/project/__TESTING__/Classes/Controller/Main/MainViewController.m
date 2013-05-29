@@ -28,7 +28,9 @@
 #import "MainViewController.h"
 
 #include <QuartzCore/QuartzCore.h>
+
 #import <NSLog/NSLog.h>
+#import <Cordova/CDVSplashScreen.h>
 
 #import "WPLoadView.h"
 #import "WPHelpView.h"
@@ -38,7 +40,6 @@
 
 @interface MainViewController () <WPHelpViewDelegate>
 
-@property (strong, nonatomic) WPLoadView *loadDataView;
 @property (strong, nonatomic) WPHelpView *helpView;
 
 @end
@@ -65,6 +66,8 @@
         // _commandDelegate = [[MainCommandDelegate alloc] initWithViewController:self];
         // Uncomment to override the CDVCommandQueue used
         // _commandQueue = [[MainCommandQueue alloc] initWithViewController:self];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_pageDidLoadFinish) name:CDVPageDidLoadFinishNotification object:nil];
     }
     return self;
 }
@@ -94,13 +97,13 @@
 {
     [super viewDidLoad];
     
-    [self _showLoadView];
-    
     [self _showHelpView];
     
     [self debugStart];
 
     [self _setup];
+    
+    [UIApplication sharedApplication].statusBarHidden = NO;
     
     NSLog(@"");
     
@@ -138,8 +141,6 @@
     
     [super webViewDidFinishLoad:theWebView];
     
-    [self _hiddenLoadView];
-    
     return;
 }
 
@@ -173,67 +174,6 @@ didFailLoadWithError:error];
  */
 
 #pragma mark 私有
-
-/* 显示加载数据view */
-- (void) _showLoadView
-{
-    // 未启用该插件
-    UIImage *imageFile = [UIImage imageNamed:@"Default.png"];
-    
-    if (!imageFile)
-    {
-        NSInfo(@"没有加载图片");
-        return;
-    }
-    
-    NSInfo(@"加载Web数据开始");
-    if (nil == _loadDataView)
-    {
-        _loadDataView = [[[NSBundle mainBundle] loadNibNamed:@"WPLoadView"
-                                                       owner:nil
-                                                     options:nil] lastObject];
-        
-        [self.view addSubview:_loadDataView];
-    }
-    
-    _loadDataView.hidden = NO;
-}
-
-/* 隐藏加载数据view */
-- (void) _hiddenLoadView
-{
-    if (_loadDataView == nil)
-    {
-        [UIApplication sharedApplication].statusBarHidden = NO;
-        
-        [self _restoreHelpviewFrame];
-        
-        [self _restoreWebviewFrame];
-        
-        return;
-    }
-        
-    // - acimation
-    CATransition            *transitionC        =   [CATransition animation];
-    
-    transitionC.duration                        =   0.5f;
-    
-    transitionC.timingFunction                  =   [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    
-    transitionC.type                            =   kCATransitionFade;
-    
-    transitionC.subtype                         =   kCATransitionFromRight;
-    
-    transitionC.delegate                        =   self;
-    
-    [_loadDataView.layer addAnimation:transitionC
-                           forKey:nil];
-    
-    _loadDataView.hidden = YES;
-    
-    NSInfo(@"加载Web数据结束");
-}
-
 /* 显示帮助 */
 - (void) _showHelpView
 {
@@ -260,12 +200,8 @@ didFailLoadWithError:error];
         
         _helpView.delegate = self;
         
-        if (nil != _loadDataView)
-            [self.view insertSubview:_helpView
-                        belowSubview:_loadDataView];
-        else
-            [self.view insertSubview:_helpView
-                        aboveSubview:self.webView];
+        [self.view insertSubview:_helpView
+                    aboveSubview:self.webView];
         
     }
     
@@ -349,19 +285,14 @@ didFailLoadWithError:error];
     self.webView.dataDetectorTypes = UIDataDetectorTypeNone;
 }
 
-#pragma mark CAAnimationDelegate
-
-- (void)animationDidStop:(CAAnimation *)theAnimation
-                finished:(BOOL)flag
+#pragma mark - CDVPageDidLoadFinishNotification
+- (void) _pageDidLoadFinish
 {
-    if (flag)
-    {
-        [UIApplication sharedApplication].statusBarHidden = NO;
-        
-        [self _restoreHelpviewFrame];
-        
-        [self _restoreWebviewFrame];
-    }
+    [UIApplication sharedApplication].statusBarHidden = NO;
+    
+    [self _restoreHelpviewFrame2];
+    
+    [self _restoreWebviewFrame2];
 }
 
 @end

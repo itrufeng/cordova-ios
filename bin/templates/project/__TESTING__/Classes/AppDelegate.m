@@ -117,7 +117,6 @@
 #else
         self.viewController = [[[MainViewController alloc] init] autorelease];
 #endif
-    self.viewController.useSplashScreen = YES;
 
 
     // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.

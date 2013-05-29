@@ -113,6 +113,8 @@
     self.viewController.view.userInteractionEnabled = YES;  // re-enable user interaction upon completion
     [self.viewController.view removeObserver:self forKeyPath:@"frame"];
     [self.viewController.view removeObserver:self forKeyPath:@"bounds"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:CDVPageDidLoadFinishNotification object:nil];
 }
 
 // Sets the view's frame and image.

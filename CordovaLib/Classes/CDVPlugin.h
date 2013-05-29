@@ -23,6 +23,7 @@
 #import "NSMutableArray+QueueAdditions.h"
 #import "CDVCommandDelegate.h"
 
+extern NSString* const CDVPageDidLoadFinishNotification;
 extern NSString* const CDVPageDidLoadNotification;
 extern NSString* const CDVPluginHandleOpenURLNotification;
 extern NSString* const CDVPluginResetNotification;
