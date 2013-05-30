@@ -13,17 +13,6 @@
 #import <OpenUDID/OpenUDID.h>
 
 
-#define KCaid           @"caid"
-#define KCuid           @"cuid"
-#define KUdid           @"udid"
-#define KToken          @"token"
-#define KVersions       @"versions"
-#define KPlatform       @"platform"
-#define KLongitude	    @"longitude"
-#define KLatitude       @"latitude"
-#define KOperator       @"operator"
-
-
 @interface CDVGetApplicationInfo ()<NSURLConnectionDelegate>
 {
     NSString *strUUID;

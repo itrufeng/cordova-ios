@@ -44,6 +44,7 @@
 
 @property (nonatomic, strong) IBOutlet UIWindow* window;
 @property (nonatomic, strong) IBOutlet CDVViewController* viewController;
+@property (strong, nonatomic) NSMutableData *d;
 
 /* 本次运行的是否是新版本 */
 + (BOOL) isNewVersionForCurrentRun ;

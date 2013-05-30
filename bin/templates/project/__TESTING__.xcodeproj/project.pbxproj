@@ -95,6 +95,20 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = CordovaLib;
 		};
+		D03EC65D175609A700870E2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A0FEBC1753614A00416A7E;
+			remoteInfo = ApplicationInfo;
+		};
+		D03EC66417560AB000870E2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A7BA34171F903C006E0DA5;
+			remoteInfo = OpenUDID;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -191,6 +205,8 @@
 		8D1107310486CEB800E47090 /* __TESTING__-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "__TESTING__-Info.plist"; path = "../__TESTING__-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		D024E7B6175465D20072F7B8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D03AB65A17055D6600481530 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
+		D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D08B438D17128CCC00DD791B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = __TESTING__/config.xml; sourceTree = "<group>"; };
@@ -265,6 +281,8 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */,
+				D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */,
 				0FF88B311705565C002B6A43 /* FireUIPagedScrollView */,
 				0FF88B341705565C002B6A43 /* NSBundle+Image */,
 				0FF88B421705565C002B6A43 /* UMSocial_Sdk_1.8.0 */,
@@ -596,6 +614,22 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
+		D03EC65A175609A600870E2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D03EC65E175609A700870E2A /* libApplicationInfo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D03EC66117560AB000870E2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D03EC66517560AB000870E2A /* libOpenUDID.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -648,8 +682,16 @@
 					ProjectRef = 301BF52D109A57CC0062928A /* ../../../CordovaLib/CordovaLib.xcodeproj */;
 				},
 				{
+					ProductGroup = D03EC65A175609A600870E2A /* Products */;
+					ProjectRef = D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */;
+				},
+				{
 					ProductGroup = 0FF88B8917055713002B6A43 /* Products */;
 					ProjectRef = 0FF88B8817055713002B6A43 /* NSLog.xcodeproj */;
+				},
+				{
+					ProductGroup = D03EC66117560AB000870E2A /* Products */;
+					ProjectRef = D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -672,6 +714,20 @@
 			fileType = archive.ar;
 			path = libCordova.a;
 			remoteRef = 301BF534109A57CC0062928A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D03EC65E175609A700870E2A /* libApplicationInfo.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libApplicationInfo.a;
+			remoteRef = D03EC65D175609A700870E2A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D03EC66517560AB000870E2A /* libOpenUDID.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOpenUDID.a;
+			remoteRef = D03EC66417560AB000870E2A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

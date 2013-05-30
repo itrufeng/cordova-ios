@@ -9,6 +9,16 @@
 
 #import <Foundation/Foundation.h>
 
+#define KCaid           @"caid"
+#define KCuid           @"cuid"
+#define KUdid           @"udid"
+#define KToken          @"token"
+#define KVersions       @"versions"
+#define KPlatform       @"platform"
+#define KLongitude	    @"longitude"
+#define KLatitude       @"latitude"
+#define KOperator       @"operator"
+
 @protocol DelegateApplicationInfo <NSObject>
 
 @required

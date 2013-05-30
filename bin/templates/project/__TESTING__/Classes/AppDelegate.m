@@ -27,8 +27,13 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "Setting.h"
 
 #import <Cordova/CDVPlugin.h>
+
+#import <OpenUDID/OpenUDID.h>
+
+#import <ApplicationInfo/ApplicationInfo.h>
 
 // 帮助
 #import "WPHelpView.h"
@@ -197,15 +202,50 @@
     
     NSInfo(@"本次注册token:%@", stringToken);
     
-	NSString *UUID;
-	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
-	{
-		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
-	}
-	else
-	{
-		UUID = [UIDevice currentDevice].uniqueIdentifier;
-	}
+//	NSString *UUID;
+//	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
+//	{
+//		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
+//	}
+//	else
+//	{
+//		UUID = [UIDevice currentDevice].uniqueIdentifier;
+//	}
+    
+   ApplicationInfo*  appInfo = [[ApplicationInfo alloc] init];
+    
+    NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    [dicSend setObject:APP_ID forKey:KCaid];
+    
+    [dicSend setObject:[OpenUDID value] forKey:KUdid];
+    
+    [dicSend setObject:stringToken forKey:KToken];
+    
+    [dicSend setObject:[appInfo getVersion] forKey:KVersions];
+    
+    [dicSend setObject:[appInfo getProvider] forKey:KOperator];
+    
+    [dicSend setObject:@"iphone" forKey:KPlatform];
+    
+    //请求网络
+    NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
+    
+    NSError *error = nil;
+    
+    NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error:&error];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    NSString *StrJson = [[NSString alloc]initWithFormat:@"request=%@",jsonString];
+    [urlRequset setHTTPMethod:@"POST"];
+    
+    [urlRequset setHTTPBody:[StrJson dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    [NSURLConnection connectionWithRequest:urlRequset delegate:self];
+ 
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -340,6 +380,31 @@
         [alertView show];
     }
     
+}
+
+
+/***********************************************************************************/
+
+#pragma mark -
+#pragma mark NSURLConnectionDelegate
+#pragma mark -
+
+/**************************************************************************************/
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [_d appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSInfo(@"%@", [[NSString alloc] initWithData:_d encoding:NSUTF8StringEncoding]);
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSWarn(@"网络失败送服务器需要数据%@",error);
 }
 
 

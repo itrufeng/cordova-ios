@@ -5,13 +5,6 @@
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <CoreTelephony/CTCarrier.h>
 
-#define KCaid           @"caid"
-#define KVersions       @"versions"
-#define KLongitude	    @"longitude"
-#define KLatitude       @"latitude"
-#define KOperator       @"operator"
-
-
 
 @interface  ApplicationInfo ()<CLLocationManagerDelegate>
 {
