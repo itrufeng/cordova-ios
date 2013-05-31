@@ -214,13 +214,11 @@
             
             
             }
-            
-            
-            
-            
-            app.initialize();
-            
-            navigator.splashscreen.hide();
+             
+            document.addEventListener('deviceready', function() {
+                                      app.initialize();
+                                      navigator.splashscreen.hide();
+                                      },false);
             
             </script>
         

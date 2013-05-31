@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
-
+ 
  http://www.apache.org/licenses/LICENSE-2.0
-
+ 
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -34,16 +34,24 @@
 #import <OpenUDID/OpenUDID.h>
 
 #import <ApplicationInfo/ApplicationInfo.h>
+#import <CoreLocation/CoreLocation.h>
 
-// 帮助
 #import "WPHelpView.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
+#import "ASIFormDataRequest.h"
 
 // log
 #import <NSLog/NSLog.h>
 
 #define NewVersionForCurrentRun @"isnewversionforcurrentrun"
+
+@interface AppDelegate () <CLLocationManagerDelegate>
+
+@property (strong, nonatomic) ASIFormDataRequest *request;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
+@end
 
 @implementation AppDelegate
 
@@ -55,20 +63,23 @@
      *  -jm
      **/
     NSHTTPCookieStorage* cookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-
+    
     [cookieStorage setCookieAcceptPolicy:NSHTTPCookieAcceptPolicyAlways];
-
+    
     int cacheSizeMemory = 8 * 1024 * 1024; // 8MB
     int cacheSizeDisk = 32 * 1024 * 1024; // 32MB
-
+    
 #if __has_feature(objc_arc)
-        NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
+    NSURLCache* sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"];
 #else
-        NSURLCache* sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
+    NSURLCache* sharedCache = [[[NSURLCache alloc] initWithMemoryCapacity:cacheSizeMemory diskCapacity:cacheSizeDisk diskPath:@"nsurlcache"] autorelease];
 #endif
     
     [NSURLCache setSharedURLCache:sharedCache];
-
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    
     self = [super init];
     return self;
 }
@@ -86,6 +97,8 @@
 	[application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
 	 UIRemoteNotificationTypeSound |
 	 UIRemoteNotificationTypeAlert];
+    
+    [_locationManager startUpdatingLocation];
 	
 #endif
     
@@ -108,39 +121,39 @@
     }
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-
-
+    
+    
 #if __has_feature(objc_arc)
-        self.window = [[UIWindow alloc] initWithFrame:screenBounds];
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
 #else
-        self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
+    self.window = [[[UIWindow alloc] initWithFrame:screenBounds] autorelease];
 #endif
     self.window.autoresizesSubviews = YES;
-
+    
 #if __has_feature(objc_arc)
-        self.viewController = [[MainViewController alloc] init];
+    self.viewController = [[MainViewController alloc] init];
 #else
-        self.viewController = [[[MainViewController alloc] init] autorelease];
+    self.viewController = [[[MainViewController alloc] init] autorelease];
 #endif
-
-
+    
+    
     // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.
     // If necessary, uncomment the line below to override it.
     // self.viewController.startPage = @"index.html";
-
+    
     // NOTE: To customize the view's frame size (which defaults to full screen), override
     // [self.viewController viewWillAppear:] in your view controller.
     
     [AppDelegate isNewVersionForCurrentRun];
-
+    
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-
+    
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(reachabilityChanged:)
                                                 name:kReachabilityChangedNotification
                                               object:nil];
-     [self _creatRechablity];
+    [self _creatRechablity];
     
     
     return YES;
@@ -152,20 +165,20 @@
 /**应用定向
  
  在应用收到通知，通过通知打开预设的页面
-*/
+ */
 - (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)url
 {
     if (!url) {
         return NO;
     }
-
+    
     // calls into javascript global function 'handleOpenURL'
     NSString* jsString = [NSString stringWithFormat:@"handleOpenURL(\"%@\");", url];
     [self.viewController.webView stringByEvaluatingJavaScriptFromString:jsString];
-
+    
     // all plugins will get the notification, and their handlers will be called
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPluginHandleOpenURLNotification object:url]];
-
+    
     return YES;
 }
 
@@ -181,7 +194,7 @@
 {
     // iPhone doesn't support upside down by default, while the iPad does.  Override to allow all orientations always, and let the root view controller decide what's allowed (the supported orientations mask gets intersected).
     NSUInteger supportedInterfaceOrientations = (1 << UIInterfaceOrientationPortrait) | (1 << UIInterfaceOrientationLandscapeLeft) | (1 << UIInterfaceOrientationLandscapeRight) | (1 << UIInterfaceOrientationPortraitUpsideDown);
-
+    
     return supportedInterfaceOrientations;
 }
 
@@ -202,17 +215,17 @@
     
     NSInfo(@"本次注册token:%@", stringToken);
     
-//	NSString *UUID;
-//	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
-//	{
-//		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
-//	}
-//	else
-//	{
-//		UUID = [UIDevice currentDevice].uniqueIdentifier;
-//	}
+    //	NSString *UUID;
+    //	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
+    //	{
+    //		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
+    //	}
+    //	else
+    //	{
+    //		UUID = [UIDevice currentDevice].uniqueIdentifier;
+    //	}
     
-   ApplicationInfo*  appInfo = [[ApplicationInfo alloc] init];
+    ApplicationInfo*  appInfo = [[ApplicationInfo alloc] init];
     
     NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
     
@@ -235,9 +248,13 @@
         [dicSend setObject:@"iphone" forKey:KPlatform];
     }
     
-    //请求网络
-    NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
+#ifdef DEBUG
+    [dicSend setObject:@"1" forKey:KDev];
+#else
+    [dicSend setObject:@"0" forKey:KDev];
+#endif
     
+    //请求网络
     NSError *error = nil;
     
     NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
@@ -246,13 +263,24 @@
     
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
-    NSString *StrJson = [[NSString alloc]initWithFormat:@"request=%@",jsonString];
-    [urlRequset setHTTPMethod:@"POST"];
+    __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
     
-    [urlRequset setHTTPBody:[StrJson dataUsingEncoding:NSUTF8StringEncoding]];
+    _request = request;
     
-    [NSURLConnection connectionWithRequest:urlRequset delegate:self];
- 
+    [request setRequestMethod:@"POST"];
+    
+    [request setPostValue:jsonString forKey:@"request"];
+    
+    [request setCompletionBlock:^{
+        
+        NSLog(@"请求到的数据 %@", [_request responseString]);
+    }];
+    
+    [request setFailedBlock:^{
+        NSWarn(@"网络请求失败错误状态码%d", [_request responseStatusCode]);
+    }];
+    
+    [request startAsynchronous];
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -262,8 +290,12 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    [self.viewController.webView loadRequest:[NSURL URLWithString:@""]];
+    NSString *url = [userInfo objectForKey:@"uri"];
     
+    if (url)
+    {
+        [self.viewController.webView loadRequest:[NSURL URLWithString:url]];
+    }
     
 }
 
@@ -271,7 +303,7 @@
 /**应用进入后台
  
  备注：在此出停止应用对网络监听
-*/
+ */
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -298,7 +330,7 @@
 
 #pragma mark 公有
 
-/**检测版本：帮助页面 
+/**检测版本：帮助页面
  
  检测是否存储过版本号，如果存储
  检测当前的版本号与存储的版本号是否相同，以此来判断是否出现重置帮助页面信息
@@ -316,7 +348,7 @@
         
         return YES;
     }
-
+    
     if (version.floatValue == currentVersion.floatValue)
     {
         return NO;
@@ -335,8 +367,8 @@
     return NO;
 }
 
-/**修改版本信息：：帮助页面 
-
+/**修改版本信息：：帮助页面
+ 
  将NSUserDefaults版本信息修改为现在的版本信息
  将是否出现过帮助信息重置为No
  */
@@ -362,7 +394,7 @@
 /**监听网络接口
  
  开始监听网络接口
-*/
+ */
 
 -(void)_creatRechablity
 {
@@ -375,7 +407,7 @@
 /**网络接口错误
  
  可能原因 ：你打开了飞行模式
-         你所在的地区网络信号不好
+ 你所在的地区网络信号不好
  */
 - (void) reachabilityChanged: (NSNotification* )note
 {
@@ -391,29 +423,57 @@
     
 }
 
-
-/***********************************************************************************/
-
-#pragma mark -
-#pragma mark NSURLConnectionDelegate
-#pragma mark -
-
-/**************************************************************************************/
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray *)locations
 {
-    [_d appendData:data];
-}
+    [manager stopUpdatingLocation];
+    
+    CLLocation *location = [locations objectAtIndex:0];
+    
+    NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    [dicSend setObject:APP_ID forKey:KCaid];
+    
+    [dicSend setObject:[OpenUDID value] forKey:KUdid];
+    
+    [dicSend setObject:@"iphone" forKey:KPlatform];
+    
+    [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.latitude] forKey:KLatitude];
+    
+    [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.longitude] forKey:KLongitude];
+    
+#ifdef DEBUG
+    [dicSend setObject:@"1" forKey:KDev];
+#else
+    [dicSend setObject:@"0" forKey:KDev];
+#endif
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    NSInfo(@"%@", [[NSString alloc] initWithData:_d encoding:NSUTF8StringEncoding]);
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSWarn(@"网络失败送服务器需要数据%@",error);
+    NSError *error = nil;
+    
+    NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
+                                                        options:NSJSONWritingPrettyPrinted
+                                                          error:&error];
+    
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    
+    __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
+    
+    _request = request;
+    
+    [request setRequestMethod:@"POST"];
+    
+    [request setPostValue:jsonString forKey:@"request"];
+    
+    [request setCompletionBlock:^{
+        
+        NSLog(@"请求到的数据 %@", [_request responseString]);
+    }];
+    
+    [request setFailedBlock:^{
+        NSWarn(@"网络请求失败错误状态码%d", [_request responseStatusCode]);
+    }];
+    
+    [request startAsynchronous];
 }
 
 
