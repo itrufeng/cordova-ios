@@ -71,7 +71,14 @@
     
     [dicSend setObject:strUUID forKey:KUdid];
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        [dicSend setObject:@"ipad" forKey:KPlatform];
+    }
+    else
+    {
     [dicSend setObject:@"iphone" forKey:KPlatform];
+    }
     
     //请求网络
     NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
