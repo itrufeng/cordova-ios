@@ -18,6 +18,7 @@
 #define KLongitude	    @"longitude"
 #define KLatitude       @"latitude"
 #define KOperator       @"operator"
+#define KDev            @"dev"
 
 @protocol DelegateApplicationInfo <NSObject>
 
