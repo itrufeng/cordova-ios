@@ -255,7 +255,7 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    
+    [self.viewController.webView loadRequest:[NSURL URLWithString:@""]];
     
     
 }
