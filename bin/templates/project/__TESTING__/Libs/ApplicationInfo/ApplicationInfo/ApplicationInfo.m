@@ -119,9 +119,9 @@
 {
     CLLocation* location = [locations lastObject];
     
-    longtitude = [NSString stringWithFormat:@"%+1.2f",location.coordinate.longitude];
+    longtitude = [NSString stringWithFormat:@"%+1.6f",location.coordinate.longitude];
     
-    latitude  = [NSString stringWithFormat:@"%+1.2f",location.coordinate.latitude];
+    latitude  = [NSString stringWithFormat:@"%+1.6f",location.coordinate.latitude];
     
     //    NSDate* eventDate = location.timestamp;
     //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
