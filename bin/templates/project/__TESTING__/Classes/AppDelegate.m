@@ -297,6 +297,8 @@
         [self.viewController.webView loadRequest:[NSURL URLWithString:url]];
     }
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
 }
 
 
@@ -323,6 +325,9 @@
 {
     //开始监听
     [self _creatRechablity];
+    
+    if([[UIApplication sharedApplication] applicationIconBadgeNumber] == 0)
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
