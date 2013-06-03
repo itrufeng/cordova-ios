@@ -294,7 +294,14 @@
     
     if (url)
     {
-        [self.viewController.webView loadRequest:[NSURL URLWithString:url]];
+        NSString *pathResource =  [[NSBundle mainBundle]pathForResource:@"www/index.html" ofType:nil];
+        
+        NSString* urlResultStr = [NSString stringWithFormat:@"%@%@%@",pathResource,@"?",url];
+        
+        NSURL *urlResultRequest = [NSURL fileURLWithPath:urlResultStr];
+        
+        [self.viewController.webView loadRequest:[NSURLRequest requestWithURL:urlResultRequest]];
+        
     }
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
