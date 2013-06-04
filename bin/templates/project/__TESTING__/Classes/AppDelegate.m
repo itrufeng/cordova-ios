@@ -102,6 +102,7 @@
 	
 #endif
     
+    
     NSString *weixinkey = [[[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] objectAtIndex:0] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
     
     NSString *youmengkey = [[[[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleURLTypes"] objectAtIndex:1] objectForKey:@"CFBundleURLSchemes"] objectAtIndex:0];
@@ -333,8 +334,6 @@
     //开始监听
     [self _creatRechablity];
     
-    if([[UIApplication sharedApplication] applicationIconBadgeNumber] == 0)
-        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
