@@ -97,6 +97,8 @@
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
     [self _showHelpView];
     
     [self debugStart];

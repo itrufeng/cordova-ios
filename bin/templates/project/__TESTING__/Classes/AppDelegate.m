@@ -156,8 +156,6 @@
                                               object:nil];
     [self _creatRechablity];
     
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-
     
     return YES;
 }
