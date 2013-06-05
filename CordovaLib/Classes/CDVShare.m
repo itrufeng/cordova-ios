@@ -24,6 +24,7 @@
 @interface CDVShare () <UMSocialConfigDelegate, UIActionSheetDelegate>
 
 @property (strong, nonatomic) UMSocialControllerService *socialControllerService;
+@property (strong, nonatomic) NSString *shareUrl;
 
 @end
 
@@ -51,9 +52,9 @@
     }
     
     dispatch_async(dispatch_get_main_queue(),
-                  ^{
-       [UMSocialData setAppKey:key]; 
-    });
+                   ^{
+                       [UMSocialData setAppKey:key];
+                   });
     
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                      messageAsString:@"注册友盟完成"];
@@ -86,9 +87,9 @@
     }
     
     dispatch_async(dispatch_get_main_queue(),
-                  ^{
-                      [WXApi registerApp:key];
-                  });
+                   ^{
+                       [WXApi registerApp:key];
+                   });
     
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                      messageAsString:@"注册微信完成"];
@@ -109,6 +110,8 @@
     NSString *shareText = [command.arguments count] > 0 ? [command.arguments objectAtIndex:0] : nil;
     
     NSString *shareImageUrl = [command.arguments count] > 1 ? [command.arguments objectAtIndex:1] : nil;
+    
+    _shareUrl = [command.arguments count] > 2? [command.arguments objectAtIndex:2] : nil;
     
     NSInfo(@"分享文本:%@\n分享图片路径:%@", shareText, shareImageUrl);
     
@@ -151,7 +154,7 @@
                        
                        [self.viewController presentModalViewController:shareListController animated:YES];
                    });
-
+    
     
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                      messageAsString:@"可以开始分享"];
@@ -230,63 +233,102 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         
         SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         
-        // 分享的是文字
-        if (_socialControllerService.socialData.shareText)
-        {
-            req.text = _socialControllerService.socialData.shareText;
-            req.bText = YES;
-        }
+        //        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
         
+        WXMediaMessage *message = [WXMediaMessage message];
+        
+        //分享的是图片
         if (_socialControllerService.socialData.urlResource)
         {
             UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
             
-            switch (urlresource.resourceType)
-            {
-                case UMSocialUrlResourceTypeImage:
-                {
-                    WXMediaMessage *message = [WXMediaMessage message];
-                    WXImageObject *ext = [WXImageObject object];
-                    
-                    
-                    ext.imageUrl = urlresource.url;
-                    
-                    message.mediaObject = ext;
-                    req.message = message;
-                    req.bText = NO;
-                    
-                    break;
-                }
-                default:
-                {
-                    WXMediaMessage *message = [WXMediaMessage message];
-                    WXWebpageObject *ext = [WXWebpageObject object];
-                    
-                    
-                    ext.webpageUrl = urlresource.url;
-                    
-                    message.mediaObject = ext;
-                    req.message = message;
-                    req.bText = NO;
-                    
-                    break;
-                }
-            }
+            NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlresource.url]];
+            
+            message.thumbData = dataImage;
         }
-        else if (_socialControllerService.socialData.shareImage)
+        
+        //分享的文字
+        if (_socialControllerService.socialData.shareText)
         {
-            /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字*/
-            WXMediaMessage * message = [WXMediaMessage message];
-            WXImageObject *ext = [WXImageObject object];
+            message.description = _socialControllerService.socialData.shareText;
+        }
+        
+        //分享url
+        if (_shareUrl)
+        {
+            WXWebpageObject *ext = [WXWebpageObject object];
             
-            
-            ext.imageData = UIImagePNGRepresentation(_socialControllerService.socialData.shareImage);
+            ext.webpageUrl = _shareUrl;
             
             message.mediaObject = ext;
-            [message setThumbImage:_socialControllerService.socialData.shareImage];
-            req.message = message;
-            req.bText = NO;
         }
+        
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        
+        NSString *strTitle = [infoDict objectForKey:@"CFBundleDisplayName"];
+        
+        message.title = [NSString stringWithFormat:@"来自于[%@]应用",strTitle];
+        
+        req.message = message;
+        req.bText = NO;
+        
+        //        // 分享的是文字
+        //        if (_socialControllerService.socialData.shareText)
+        //        {
+        //            req.text = _socialControllerService.socialData.shareText;
+        //            req.bText = YES;
+        //        }
+        //
+        //        if (_socialControllerService.socialData.urlResource)
+        //        {
+        //            UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
+        //
+        //            switch (urlresource.resourceType)
+        //            {
+        //                case UMSocialUrlResourceTypeImage:
+        //                {
+        //                    WXMediaMessage *message = [WXMediaMessage message];
+        //                    WXImageObject *ext = [WXImageObject object];
+        //
+        //
+        //                    ext.imageUrl = urlresource.url;
+        //
+        //                    message.mediaObject = ext;
+        //                    req.message = message;
+        //                    req.bText = NO;
+        //
+        //                    break;
+        //                }
+        //                default:
+        //                {
+        //                    WXMediaMessage *message = [WXMediaMessage message];
+        //                    WXWebpageObject *ext = [WXWebpageObject object];
+        //
+        //
+        //                    ext.webpageUrl = urlresource.url;
+        //
+        //                    message.mediaObject = ext;
+        //                    req.message = message;
+        //                    req.bText = NO;
+        //
+        //                    break;
+        //                }
+        //            }
+        //        }
+        //        else if (_socialControllerService.socialData.shareImage)
+        //        {
+        //            /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字*/
+        //            WXMediaMessage * message = [WXMediaMessage message];
+        //            WXImageObject *ext = [WXImageObject object];
+        //
+        //
+        //            ext.imageData = UIImagePNGRepresentation(_socialControllerService.socialData.shareImage);
+        //
+        //            message.mediaObject = ext;
+        //            [message setThumbImage:_socialControllerService.socialData.shareImage];
+        //            req.message = message;
+        //            req.bText = NO;
+        //        }
         
         if (buttonIndex == 0) {
             req.scene = WXSceneSession;
