@@ -111,7 +111,7 @@
     
     NSString *shareImageUrl = [command.arguments count] > 1 ? [command.arguments objectAtIndex:1] : nil;
     
-    _shareUrl = [command.arguments count] > 2? [command.arguments objectAtIndex:2] : nil;
+    _shareUrl = [command.arguments count] > 2? [command.arguments objectAtIndex:2] : @"http://www.xayoudao.com";
     
     NSInfo(@"分享文本:%@\n分享图片路径:%@", shareText, shareImageUrl);
     
@@ -261,6 +261,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             ext.webpageUrl = _shareUrl;
             
             message.mediaObject = ext;
+            
         }
         
         NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -270,6 +271,7 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         message.title = [NSString stringWithFormat:@"来自于[%@]应用",strTitle];
         
         req.message = message;
+        
         req.bText = NO;
         
         //        // 分享的是文字
