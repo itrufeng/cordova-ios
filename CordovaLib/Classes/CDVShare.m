@@ -11,8 +11,9 @@
 #import <NSLog/NSLog.h>
 
 #import "UMSocialControllerService.h"
-#import "UMSocialConfigDelegate.h"
+//#import "UMSocialConfigDelegate.h"
 #import "UMSocialData.h"
+#import "UMSocialConfig.h"
 
 #import "WXApi.h"
 
@@ -21,7 +22,7 @@
 #define UMShareToWechatTimeline @"wxtimeline"
 #define UMShareToWeixin @"weixinzidingyi"
 
-@interface CDVShare () <UMSocialConfigDelegate, UIActionSheetDelegate>
+@interface CDVShare () <UIActionSheetDelegate>
 
 @property (strong, nonatomic) UMSocialControllerService *socialControllerService;
 @property (strong, nonatomic) NSString *shareUrl;
@@ -135,7 +136,7 @@
     
     dispatch_async(dispatch_get_main_queue(),
                    ^{
-                       [UMSocialControllerService setSocialConfigDelegate:self];
+//                       [UMSocialControllerService setSocialConfigDelegate:self];
                        
                        UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialData"];
                        
@@ -175,41 +176,42 @@
 
 - (NSArray *)shareToPlatforms
 {
-    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToTencent,UMShareToQzone],@[UMShareToEmail,UMShareToSms]];
+//    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToTencent,UMShareToQzone],@[UMShareToEmail,UMShareToSms]];
+    NSArray *shareToArray = @[@"1",@"2"];
     return shareToArray;
 }
 
--(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
-{
-    UMSocialSnsPlatform *customSnsPlatform = nil;
-    
-    if ([snsName isEqualToString:UMShareToWeixin])
-    {
-        customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-        
-        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon"; /*指定大图*/
-        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png"; /*指定小图*/
-        customSnsPlatform.displayName = @"微信";    /*指定显示名称*/
-        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController,
-                                              UMSocialControllerService * socialControllerService,
-                                              BOOL isPresentInController){
-            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信"
-                                                                     delegate:self
-                                                            cancelButtonTitle:@"取消"
-                                                       destructiveButtonTitle:nil
-                                                            otherButtonTitles:@"分享给好友", @"分享到朋友圈",nil];
-            if (presentingController.tabBarController != nil) {
-                [actionSheet showInView:presentingController.tabBarController.tabBar];
-            }
-            else{
-                [actionSheet showInView:presentingController.view];
-            }
-            
-            _socialControllerService = socialControllerService;
-        };
-    }
-    return customSnsPlatform;
-}
+//-(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
+//{
+//    UMSocialSnsPlatform *customSnsPlatform = nil;
+//    
+//    if ([snsName isEqualToString:UMShareToWeixin])
+//    {
+//        customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
+//        
+//        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon"; /*指定大图*/
+//        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png"; /*指定小图*/
+//        customSnsPlatform.displayName = @"微信";    /*指定显示名称*/
+//        customSnsPlatform.snsClickHandler = ^(UIViewController *presentingController,
+//                                              UMSocialControllerService * socialControllerService,
+//                                              BOOL isPresentInController){
+//            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"分享到微信"
+//                                                                     delegate:self
+//                                                            cancelButtonTitle:@"取消"
+//                                                       destructiveButtonTitle:nil
+//                                                            otherButtonTitles:@"分享给好友", @"分享到朋友圈",nil];
+//            if (presentingController.tabBarController != nil) {
+//                [actionSheet showInView:presentingController.tabBarController.tabBar];
+//            }
+//            else{
+//                [actionSheet showInView:presentingController.view];
+//            }
+//            
+//            _socialControllerService = socialControllerService;
+//        };
+//    }
+//    return customSnsPlatform;
+//}
 
 /**************************************************************************************/
 

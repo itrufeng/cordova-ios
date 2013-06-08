@@ -77,10 +77,11 @@
     
     [NSURLCache setSharedURLCache:sharedCache];
     
+    self = [super init];
+    
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
     
-    self = [super init];
     return self;
 }
 
@@ -110,7 +111,7 @@
     if (youmengkey &&
         ![youmengkey isEqualToString:@""])
     {
-        [UMSocialData setAppKey:youmengkey];
+        [UMSocialData setAppKey:[youmengkey substringFromIndex:2]];
         NSInfo(@"本地注册友盟key:%@", youmengkey);
     }
     

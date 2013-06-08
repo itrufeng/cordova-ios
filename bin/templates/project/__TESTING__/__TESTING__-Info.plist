@@ -56,7 +56,7 @@
 			<string>youmeng</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>${YOUMENG_KEY}</string>
+				<string>um${YOUMENG_KEY}</string>
 			</array>
 		</dict>
 	</array>
