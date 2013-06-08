@@ -14,7 +14,7 @@
 //#import "UMSocialConfigDelegate.h"
 #import "UMSocialData.h"
 #import "UMSocialConfig.h"
-
+#import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
 
 
@@ -25,11 +25,40 @@
 @interface CDVShare () <UIActionSheetDelegate>
 
 @property (strong, nonatomic) UMSocialControllerService *socialControllerService;
+@property (strong, nonatomic) NSArray *arrayPlatForm;
 @property (strong, nonatomic) NSString *shareUrl;
+@property (strong, nonatomic) NSMutableArray *arrayPlayName;
+@property (strong, nonatomic) UIActionSheet * editActionSheet;
 
 @end
 
 @implementation CDVShare
+
+-(void)pluginInitialize
+{
+    self.arrayPlatForm = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToEmail,UMShareToSms, nil];
+    self.arrayPlayName = [NSMutableArray arrayWithObjects:@"微信好友",@"微信朋友圈", nil];
+    
+    for (NSString *snsName in self.arrayPlatForm)
+    {
+        UMSocialSnsPlatform *snsPlatform = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+        [self.arrayPlayName addObject:snsPlatform.displayName];
+    }
+    
+    _editActionSheet = [[UIActionSheet alloc] initWithTitle:@"分享" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    
+    for (NSString *snsName in self.arrayPlayName)
+    {
+        [_editActionSheet addButtonWithTitle:snsName];
+        
+    }
+    [_editActionSheet addButtonWithTitle:@"取消"];
+    
+    _editActionSheet.cancelButtonIndex = _editActionSheet.numberOfButtons - 1;
+    
+    _editActionSheet.delegate = self;
+}
+
 
 - (void) registerUmeng:(CDVInvokedUrlCommand*)command
 {
@@ -134,28 +163,44 @@
     
     // 初始化分享模块
     
-    dispatch_async(dispatch_get_main_queue(),
-                   ^{
-//                       [UMSocialControllerService setSocialConfigDelegate:self];
-                       
-                       UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialData"];
-                       
-                       socialData.shareText = shareText ? shareText : nil;
-                       
-                       if (shareImageUrl)
-                       {
-                           UMSocialUrlResource *urlresource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage
-                                                                                                               url:shareImageUrl];
-                           socialData.urlResource = urlresource;
-                       }
-                       
-                       UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
-                       
-                       UINavigationController *shareListController = [socialControllerService getSocialShareListController];
-                       
-                       [self.viewController presentModalViewController:shareListController animated:YES];
-                   });
     
+    UMSocialData *socialData = [UMSocialData defaultData];
+    
+    socialData.shareText = shareText?shareText:nil;
+    
+    if (shareImageUrl)
+    {
+        UMSocialUrlResource *urlresource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage
+                                                                                            url:shareImageUrl];
+        
+        socialData.urlResource = urlresource;
+    }
+    
+    [_editActionSheet showInView:self.viewController.view];
+    
+     
+    //    dispatch_async(dispatch_get_main_queue(),
+    //                   ^{
+    ////                       [UMSocialControllerService setSocialConfigDelegate:self];
+    //
+    //                       UMSocialData *socialData = [[UMSocialData alloc] initWithIdentifier:@"UMSocialData"];
+    //
+    //                       socialData.shareText = shareText ? shareText : nil;
+    //
+    //                       if (shareImageUrl)
+    //                       {
+    //                           UMSocialUrlResource *urlresource = [[UMSocialUrlResource alloc] initWithSnsResourceType:UMSocialUrlResourceTypeImage
+    //                                                                                                               url:shareImageUrl];
+    //                           socialData.urlResource = urlresource;
+    //                       }
+    //
+    //                       UMSocialControllerService *socialControllerService = [[UMSocialControllerService alloc] initWithUMSocialData:socialData];
+    //
+    //                       UINavigationController *shareListController = [socialControllerService getSocialShareListController];
+    //
+    //                       [self.viewController presentModalViewController:shareListController animated:YES];
+    //                   });
+    //
     
     pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                      messageAsString:@"可以开始分享"];
@@ -174,21 +219,20 @@
 
 /**************************************************************************************/
 
-- (NSArray *)shareToPlatforms
-{
-//    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToTencent,UMShareToQzone],@[UMShareToEmail,UMShareToSms]];
-    NSArray *shareToArray = @[@"1",@"2"];
-    return shareToArray;
-}
+//- (NSArray *)shareToPlatforms
+//{
+////    NSArray *shareToArray = @[@[UMShareToWeixin,UMShareToSina,UMShareToTencent,UMShareToQzone],@[UMShareToEmail,UMShareToSms]];
+//    return shareToArray;
+//}
 
 //-(UMSocialSnsPlatform *)socialSnsPlatformWithSnsName:(NSString *)snsName
 //{
 //    UMSocialSnsPlatform *customSnsPlatform = nil;
-//    
+//
 //    if ([snsName isEqualToString:UMShareToWeixin])
 //    {
 //        customSnsPlatform = [[UMSocialSnsPlatform alloc] initWithPlatformName:snsName];
-//        
+//
 //        customSnsPlatform.bigImageName = @"UMSocialSDKResources.bundle/UMS_wechart_icon"; /*指定大图*/
 //        customSnsPlatform.smallImageName = @"UMSocialSDKResources.bundle/UMS_wechart_on.png"; /*指定小图*/
 //        customSnsPlatform.displayName = @"微信";    /*指定显示名称*/
@@ -206,7 +250,7 @@
 //            else{
 //                [actionSheet showInView:presentingController.view];
 //            }
-//            
+//
 //            _socialControllerService = socialControllerService;
 //        };
 //    }
@@ -227,127 +271,213 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         return;
     }
+    _socialControllerService = [UMSocialControllerService defaultControllerService];
     
-    if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
-        if (_socialControllerService.currentNavigationController != nil) {
-            [_socialControllerService performSelector:@selector(close)];
-        }
-        
-        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        
-        //        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
-        
-        WXMediaMessage *message = [WXMediaMessage message];
-        
-        //分享的是图片
-        if (_socialControllerService.socialData.urlResource)
+    if(buttonIndex == 0|| buttonIndex == 1)
+    {
+        if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi])
         {
-            UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
+            if (_socialControllerService.currentNavigationController != nil) {
+                [_socialControllerService performSelector:@selector(close)];
+            }
             
-            NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlresource.url]];
+            SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
             
-            message.thumbData = dataImage;
-        }
-        
-        //分享的文字
-        if (_socialControllerService.socialData.shareText)
-        {
-            message.description = _socialControllerService.socialData.shareText;
-        }
-        
-        //分享url
-        if (_shareUrl)
-        {
-            WXWebpageObject *ext = [WXWebpageObject object];
+            WXMediaMessage *message = [WXMediaMessage message];
             
-            ext.webpageUrl = _shareUrl;
+            //分享的是图片
+            if (_socialControllerService.socialData.urlResource)
+            {
+                UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
+                
+                NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlresource.url]];
+                
+                message.thumbData = dataImage;
+            }
             
-            message.mediaObject = ext;
+            //分享的文字
+            if (_socialControllerService.socialData.shareText)
+            {
+                message.description = _socialControllerService.socialData.shareText;
+            }
+            
+            //分享url
+            if (_shareUrl)
+            {
+                WXWebpageObject *ext = [WXWebpageObject object];
+                
+                ext.webpageUrl = _shareUrl;
+                
+                message.mediaObject = ext;
+                
+            }
+            
+            NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+            
+            NSString *strTitle = [infoDict objectForKey:@"CFBundleDisplayName"];
+            
+            message.title = [NSString stringWithFormat:@"来自于[%@]应用",strTitle];
+            
+            req.message = message;
+            
+            req.bText = NO;
+            
+            
+            if (buttonIndex == 0) {
+                
+                req.scene = WXSceneSession;
+                
+                //                _socialControllerService = [UMSocialControllerService defaultControllerService];
+                
+                [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil completion:nil];
+            }
+            if (buttonIndex == 1) {
+                //                _socialControllerService = [UMSocialControllerService defaultControllerService];
+                req.scene = WXSceneTimeline;
+                [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil completion:nil];
+            }
+            [WXApi sendReq:req];
             
         }
-        
-        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-        
-        NSString *strTitle = [infoDict objectForKey:@"CFBundleDisplayName"];
-        
-        message.title = [NSString stringWithFormat:@"来自于[%@]应用",strTitle];
-        
-        req.message = message;
-        
-        req.bText = NO;
-        
-        //        // 分享的是文字
-        //        if (_socialControllerService.socialData.shareText)
-        //        {
-        //            req.text = _socialControllerService.socialData.shareText;
-        //            req.bText = YES;
-        //        }
-        //
-        //        if (_socialControllerService.socialData.urlResource)
-        //        {
-        //            UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
-        //
-        //            switch (urlresource.resourceType)
-        //            {
-        //                case UMSocialUrlResourceTypeImage:
-        //                {
-        //                    WXMediaMessage *message = [WXMediaMessage message];
-        //                    WXImageObject *ext = [WXImageObject object];
-        //
-        //
-        //                    ext.imageUrl = urlresource.url;
-        //
-        //                    message.mediaObject = ext;
-        //                    req.message = message;
-        //                    req.bText = NO;
-        //
-        //                    break;
-        //                }
-        //                default:
-        //                {
-        //                    WXMediaMessage *message = [WXMediaMessage message];
-        //                    WXWebpageObject *ext = [WXWebpageObject object];
-        //
-        //
-        //                    ext.webpageUrl = urlresource.url;
-        //
-        //                    message.mediaObject = ext;
-        //                    req.message = message;
-        //                    req.bText = NO;
-        //
-        //                    break;
-        //                }
-        //            }
-        //        }
-        //        else if (_socialControllerService.socialData.shareImage)
-        //        {
-        //            /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字*/
-        //            WXMediaMessage * message = [WXMediaMessage message];
-        //            WXImageObject *ext = [WXImageObject object];
-        //
-        //
-        //            ext.imageData = UIImagePNGRepresentation(_socialControllerService.socialData.shareImage);
-        //
-        //            message.mediaObject = ext;
-        //            [message setThumbImage:_socialControllerService.socialData.shareImage];
-        //            req.message = message;
-        //            req.bText = NO;
-        //        }
-        
-        if (buttonIndex == 0) {
-            req.scene = WXSceneSession;
-            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil completion:nil];
+        else{
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备没有安装微信" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+            [alertView show];
         }
-        if (buttonIndex == 1) {
-            req.scene = WXSceneTimeline;
-            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil completion:nil];
-        }
-        [WXApi sendReq:req];
     }
-    else{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备没有安装微信" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
-        [alertView show];
+    else
+    {
+        NSString *snsName = [self.arrayPlatForm objectAtIndex:buttonIndex-2];
+        
+        UMSocialSnsPlatform *snsPlatForm = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
+        
+        snsPlatForm.snsClickHandler(self.viewController,_socialControllerService,YES);
+        
     }
+    
+    //    if (buttonIndex == actionSheet.cancelButtonIndex) {
+    //        return;
+    //    }
+    //
+    //    if ([WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi]) {
+    //        if (_socialControllerService.currentNavigationController != nil) {
+    //            [_socialControllerService performSelector:@selector(close)];
+    //        }
+    //
+    //        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    //
+    //        //        SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    //
+    //        WXMediaMessage *message = [WXMediaMessage message];
+    //
+    //        //分享的是图片
+    //        if (_socialControllerService.socialData.urlResource)
+    //        {
+    //            UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
+    //
+    //            NSData *dataImage = [NSData dataWithContentsOfURL:[NSURL URLWithString:urlresource.url]];
+    //
+    //            message.thumbData = dataImage;
+    //        }
+    //
+    //        //分享的文字
+    //        if (_socialControllerService.socialData.shareText)
+    //        {
+    //            message.description = _socialControllerService.socialData.shareText;
+    //        }
+    //
+    //        //分享url
+    //        if (_shareUrl)
+    //        {
+    //            WXWebpageObject *ext = [WXWebpageObject object];
+    //
+    //            ext.webpageUrl = _shareUrl;
+    //
+    //            message.mediaObject = ext;
+    //
+    //        }
+    //
+    //        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    //
+    //        NSString *strTitle = [infoDict objectForKey:@"CFBundleDisplayName"];
+    //
+    //        message.title = [NSString stringWithFormat:@"来自于[%@]应用",strTitle];
+    //
+    //        req.message = message;
+    //
+    //        req.bText = NO;
+    
+    //        // 分享的是文字
+    //        if (_socialControllerService.socialData.shareText)
+    //        {
+    //            req.text = _socialControllerService.socialData.shareText;
+    //            req.bText = YES;
+    //        }
+    //
+    //        if (_socialControllerService.socialData.urlResource)
+    //        {
+    //            UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
+    //
+    //            switch (urlresource.resourceType)
+    //            {
+    //                case UMSocialUrlResourceTypeImage:
+    //                {
+    //                    WXMediaMessage *message = [WXMediaMessage message];
+    //                    WXImageObject *ext = [WXImageObject object];
+    //
+    //
+    //                    ext.imageUrl = urlresource.url;
+    //
+    //                    message.mediaObject = ext;
+    //                    req.message = message;
+    //                    req.bText = NO;
+    //
+    //                    break;
+    //                }
+    //                default:
+    //                {
+    //                    WXMediaMessage *message = [WXMediaMessage message];
+    //                    WXWebpageObject *ext = [WXWebpageObject object];
+    //
+    //
+    //                    ext.webpageUrl = urlresource.url;
+    //
+    //                    message.mediaObject = ext;
+    //                    req.message = message;
+    //                    req.bText = NO;
+    //
+    //                    break;
+    //                }
+    //            }
+    //        }
+    //        else if (_socialControllerService.socialData.shareImage)
+    //        {
+    //            /*下面实现图片分享，只能分享文字或者分享图片，或者分享url，里面带有图片缩略图和描述文字*/
+    //            WXMediaMessage * message = [WXMediaMessage message];
+    //            WXImageObject *ext = [WXImageObject object];
+    //
+    //
+    //            ext.imageData = UIImagePNGRepresentation(_socialControllerService.socialData.shareImage);
+    //
+    //            message.mediaObject = ext;
+    //            [message setThumbImage:_socialControllerService.socialData.shareImage];
+    //            req.message = message;
+    //            req.bText = NO;
+    //        }
+    
+    //        if (buttonIndex == 0) {
+    //            req.scene = WXSceneSession;
+    //            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatSession] content:req.text image:nil location:nil urlResource:nil completion:nil];
+    //        }
+    //        if (buttonIndex == 1) {
+    //            req.scene = WXSceneTimeline;
+    //            [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil completion:nil];
+    //        }
+    //        [WXApi sendReq:req];
+    //    }
+    //    else{
+    //        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的设备没有安装微信" delegate:nil cancelButtonTitle:@"好" otherButtonTitles: nil];
+    //        [alertView show];
+    //    }
 }
 
 @end

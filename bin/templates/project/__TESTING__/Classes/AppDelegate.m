@@ -36,10 +36,12 @@
 #import <ApplicationInfo/ApplicationInfo.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "MobClick.h"
 #import "WPHelpView.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
 #import "ASIFormDataRequest.h"
+#import "UMSocial.h"
 
 // log
 #import <NSLog/NSLog.h>
@@ -114,6 +116,7 @@
         [UMSocialData setAppKey:[youmengkey substringFromIndex:2]];
         NSInfo(@"本地注册友盟key:%@", youmengkey);
     }
+    [MobClick startWithAppkey:[youmengkey substringFromIndex:2]];
     
     if (weixinkey &&
         ![weixinkey isEqualToString:@""])
@@ -339,6 +342,29 @@
     
     
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    [UMSocialSnsService  applicationDidBecomeActive];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    NSString *urlStr = [url absoluteString];
+    
+    if ([urlStr hasPrefix:@"sina"])
+    {
+        return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
+    }
+    else
+    {
+        return NO;
+    }
+    
 }
 
 
