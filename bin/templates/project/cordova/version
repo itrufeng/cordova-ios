@@ -54,6 +54,7 @@ if [ "$1" != "" ]; then
     # echo "/CFBundleDisplayName/,/<\/string>/s/\${PRODUCT_NAME}/$DISPLAY_NAME/g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
 
     sed -i -e "/CFBundleVersion/,/<\/string>/s/string>.*</string>$1</g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
+    sed -i -e "/CFBundleShortVersionString/,/<\/string>/s/string>.*</string>$1</g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
     rm -rf "$PROJECT_NAME/$PROJECT_NAME-Info.plist-e"
     echo "updated version to $1 !"
 fi
