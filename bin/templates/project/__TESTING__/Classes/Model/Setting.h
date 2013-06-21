@@ -12,6 +12,12 @@
 /* appid */
 #define APP_ID @"__APP_ID__"
 
-
+/* 域名 */
+#ifdef DEBUG
+    #define API_DOMAIN @"http://cloud.appmars.com"
+#else
+    #define API_DOMAIN @"http://115.28.36.217"
+#endif
 
 #endif
+

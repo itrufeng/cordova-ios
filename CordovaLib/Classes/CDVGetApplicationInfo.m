@@ -12,6 +12,7 @@
 
 #import <OpenUDID/OpenUDID.h>
 
+#import "Setting.h"
 
 @interface CDVGetApplicationInfo ()<NSURLConnectionDelegate>
 {
@@ -81,7 +82,10 @@
     }
     
     //请求网络
-    NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://cloud.appmars.com/cloud/1/push_ios_add"]];
+    
+    NSString *url = [NSString stringWithFormat:@"%@/cloud/1/push_ios_add",API_DOMAIN];
+    
+    NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
     NSError *error = nil;
     
