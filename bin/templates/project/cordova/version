@@ -47,20 +47,14 @@ cd "$PROJECT_PATH"
 
 # xcodebuild -project $PROJECT_NAME.xcodeproj -arch i386 -target $PROJECT_NAME -configuration Debug -sdk $SDK clean build VALID_ARCHS="i386" CONFIGURATION_BUILD_DIR="$PROJECT_PATH/build"
 
-if [ -f "$PROJECT_PATH/displayname" ]; then
-	echo "Set bundle display name from '$PROJECT_PATH/displayname'."
-    DISPLAY_NAME=$(cat $PROJECT_PATH/displayname | head -n 1)
+if [ "$1" != "" ]; then
+	echo "Update version to $1."
+    # DISPLAY_NAME=$(cat $PROJECT_PATH/displayname | head -n 1)
     # echo "$DISPLAY_NAME "
     # echo "/CFBundleDisplayName/,/<\/string>/s/\${PRODUCT_NAME}/$DISPLAY_NAME/g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
 
-    sed -i -e "/CFBundleDisplayName/,/<\/string>/s/string>.*</string>$DISPLAY_NAME</g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
+    sed -i -e "/CFBundleVersion/,/<\/string>/s/string>.*</string>$1</g" "$PROJECT_NAME/$PROJECT_NAME-Info.plist"
     rm -rf "$PROJECT_NAME/$PROJECT_NAME-Info.plist-e"
-    echo "updated CFBundleDisplayName params to $DISPLAY_NAME"
+    echo "updated version to $1 !"
 fi
 
-
-
-
-
-
- 
