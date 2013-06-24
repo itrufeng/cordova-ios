@@ -256,7 +256,10 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                 [request setDownloadDestinationPath:downLoadPath];
                 [request setCompletionBlock:^{
                     NSData* data = [NSData dataWithContentsOfFile:downLoadPath];
-                    message.thumbData = data;
+                    UIImage *image = [self imageWithImageSimple:[UIImage imageWithData:data] scaledToSize:CGSizeMake(100, 100)];
+                    
+                    NSData *data2 = UIImageJPEGRepresentation(image, 1.0);
+                    message.thumbData = data2;
                     [self _shareUrlAndTextWith:req
                              andWXMediaMessage:message
                                 andButttonIndx:buttonIndex];
@@ -344,6 +347,29 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         [_socialControllerService.socialDataService postSNSWithTypes:[NSArray arrayWithObject:UMShareToWechatTimeline] content:req.text image:nil location:nil urlResource:nil completion:nil];
     }
     [WXApi sendReq:req];
+}
+
+/**************************************************************************************/
+
+#pragma mark -
+#pragma mark 压缩图片
+#pragma mark -
+
+/**************************************************************************************/
+
+- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
 }
 
 
