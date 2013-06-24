@@ -228,8 +228,8 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             if (_socialControllerService.socialData.urlResource)
             {
                 UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
-                
-//                [_ydNet downloadFileWithURL:[NSURL URLWithString:urlresource.url]
+
+                //                [_ydNet downloadFileWithURL:[NSURL URLWithString:urlresource.url]
 //                                     finish:^(NSMutableData *data) {
 //                                         message.thumbData = data;
 //                                         [self _shareUrlAndTextWith:req
