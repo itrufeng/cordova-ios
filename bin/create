@@ -150,7 +150,8 @@ else
     "$BINDIR/update_openUUID_subproject" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj/../../../$PROJECT_NAME/Libs/OpenUDID/OpenUDID.xcodeproj/project.pbxproj" 
      #将ApplicationInfo引用cordova
     "$BINDIR/update_applicationInfo_subproject" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj/../../../$PROJECT_NAME/Libs/ApplicationInfo/ApplicationInfo.xcodeproj/project.pbxproj" 
-
+      #将ApplicationUnity引用cordova
+    "$BINDIR/update_applicationUnity_subproject" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj" "$PROJECT_PATH/CordovaLib/CordovaLib.xcodeproj/project.pbxproj/../../../$PROJECT_NAME/Libs/ApplicationUnity/ApplicationUnity.xcodeproj/project.pbxproj" 
     # 删除svn信息
     find "$PROJECT_PATH" -name ".svn" | xargs rm -rf
 fi

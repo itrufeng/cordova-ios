@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ApplicationUnity' target in the 'ApplicationUnity' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
