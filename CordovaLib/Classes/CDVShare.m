@@ -16,8 +16,9 @@
 #import "UMSocialConfig.h"
 #import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
+#import <ApplicationUnity/ASIHTTPRequest.h>
 
-
+#define kCDVshare_PicDir  @"/tmp/pic/"
 #define UMShareToWechatSession @"wxsession"
 #define UMShareToWechatTimeline @"wxtimeline"
 #define UMShareToWeixin @"weixinzidingyi"
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) UMSocialControllerService *socialControllerService;
 @property (strong, nonatomic) NSArray *arrayPlatForm;
 @property (strong, nonatomic) NSString *shareUrl;
+@property (strong, nonatomic) NSString *picPath;
 @property (strong, nonatomic) NSMutableArray *arrayPlayName;
 @property (strong, nonatomic) UIActionSheet * editActionSheet;
 @property (strong, nonatomic) NSMutableData *responseData;
@@ -62,7 +64,22 @@
     
     _responseData = [[NSMutableData alloc] init];
     
-
+    _picPath = [NSHomeDirectory()stringByAppendingPathComponent:kCDVshare_PicDir];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:_picPath]== NO)
+    {
+        __autoreleasing NSError *error;
+        
+        [[NSFileManager defaultManager]createDirectoryAtPath:_picPath
+                                 withIntermediateDirectories:YES
+                                                  attributes:nil
+                                                       error:&error];
+        if (error)
+        {
+            NSLog(@"文件夹创建失败");
+            return;
+        }
+    }
 }
 
 
@@ -228,22 +245,32 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
             if (_socialControllerService.socialData.urlResource)
             {
                 UMSocialUrlResource *urlresource = _socialControllerService.socialData.urlResource;
-
-                //                [_ydNet downloadFileWithURL:[NSURL URLWithString:urlresource.url]
-//                                     finish:^(NSMutableData *data) {
-//                                         message.thumbData = data;
-//                                         [self _shareUrlAndTextWith:req
-//                                                  andWXMediaMessage:message
-//                                                     andButttonIndx:buttonIndex];
-//                                         
-//                                         
-//                                     }
-//                                      error:^{
-//                                          [self _shareUrlAndTextWith:req
-//                                                   andWXMediaMessage:message
-//                                                      andButttonIndx:buttonIndex];
-//                                          
-//                                      }];
+                
+                NSString* downLoadPath = [NSString stringWithFormat:@"%@/my_file.text",_picPath];
+                
+                [[NSFileManager defaultManager]removeItemAtPath:downLoadPath error:nil];
+                
+                __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:urlresource.url]];
+                
+                //                NSString* downLoadPath = [NSString stringWithFormat:@"%@/my_file.text",_picPath];
+                [request setDownloadDestinationPath:downLoadPath];
+                [request setCompletionBlock:^{
+                    NSData* data = [NSData dataWithContentsOfFile:downLoadPath];
+                    message.thumbData = data;
+                    [self _shareUrlAndTextWith:req
+                             andWXMediaMessage:message
+                                andButttonIndx:buttonIndex];
+                }];
+                [request setFailedBlock:^{
+                    //                    NSError *error = [request error];
+                    
+                    NSLog(@"zhaojing222");
+                    [self _shareUrlAndTextWith:req
+                             andWXMediaMessage:message
+                                andButttonIndx:buttonIndex];
+                }];
+                [request startAsynchronous];
+                
             }
             else
             {
@@ -251,7 +278,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                          andWXMediaMessage:message
                             andButttonIndx:buttonIndex];
             }
-            
         }
         else
         {
@@ -266,7 +292,6 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
         UMSocialSnsPlatform *snsPlatForm = [UMSocialSnsPlatformManager getSocialPlatformWithName:snsName];
         
         snsPlatForm.snsClickHandler(self.viewController,_socialControllerService,YES);
-        
     }
     
 }
