@@ -256,9 +256,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
                 [request setDownloadDestinationPath:downLoadPath];
                 [request setCompletionBlock:^{
                     NSData* data = [NSData dataWithContentsOfFile:downLoadPath];
-                    UIImage *image = [self imageWithImageSimple:[UIImage imageWithData:data] scaledToSize:CGSizeMake(100, 100)];
-                    
-                    NSData *data2 = UIImageJPEGRepresentation(image, 1.0);
+                    UIImage *image = [self imageWithImageSimple:[UIImage imageWithData:data] scaledToSize:CGSizeMake(90, 90)];
+                    NSData *data2;
+                    if ([urlresource.url hasSuffix:@"jpg"])
+                    {
+                        data2 = UIImageJPEGRepresentation(image, 1.0);
+                    }else
+                    {
+                        data2 = UIImagePNGRepresentation(image);
+                    }
                     message.thumbData = data2;
                     [self _shareUrlAndTextWith:req
                              andWXMediaMessage:message
