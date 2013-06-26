@@ -153,26 +153,26 @@
 			remoteGlobalIDString = D0A7BA33171F903C006E0DA5;
 			remoteInfo = OpenUDID;
 		};
+		D0A4F1BF177A8E5D00D1A742 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A4F1BB177A8E5D00D1A742 /* ApplicationUnity.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0E3CA1617780B32006DF61A;
+			remoteInfo = ApplicationUnity;
+		};
+		D0A4F1D6177A8EF400D1A742 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A4F1BB177A8E5D00D1A742 /* ApplicationUnity.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D0E3CA1517780B32006DF61A;
+			remoteInfo = ApplicationUnity;
+		};
 		D0A7BA57171F91AF006E0DA5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D0A7BA53171F91AE006E0DA5 /* OpenUDID.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D0A7BA34171F903C006E0DA5;
 			remoteInfo = OpenUDID;
-		};
-		D0E3CA5F17780CFB006DF61A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0E3CA5B17780CFB006DF61A /* ApplicationUnity.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D0E3CA1617780B32006DF61A;
-			remoteInfo = ApplicationUnity;
-		};
-		D0E3CA6917780D8E006DF61A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D0E3CA5B17780CFB006DF61A /* ApplicationUnity.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D0E3CA1517780B32006DF61A;
-			remoteInfo = ApplicationUnity;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -282,12 +282,12 @@
 		D08B438A1712601500DD791B /* CDVCheckVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCheckVersion.m; path = Classes/CDVCheckVersion.m; sourceTree = "<group>"; };
 		D099215B171FBA93009A41D4 /* CDVGetUUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVGetUUID.h; path = Classes/CDVGetUUID.h; sourceTree = "<group>"; };
 		D099215C171FBA93009A41D4 /* CDVGetUUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVGetUUID.m; path = Classes/CDVGetUUID.m; sourceTree = "<group>"; };
+		D0A4F1BB177A8E5D00D1A742 /* ApplicationUnity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationUnity.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/ApplicationUnity/ApplicationUnity.xcodeproj; sourceTree = "<group>"; };
 		D0A7BA53171F91AE006E0DA5 /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D0D5D54A1754866800F099C5 /* CDVGetApplicationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVGetApplicationInfo.h; path = Classes/CDVGetApplicationInfo.h; sourceTree = "<group>"; };
 		D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVGetApplicationInfo.m; path = Classes/CDVGetApplicationInfo.m; sourceTree = "<group>"; };
 		D0E1DEF8173260B800DB1049 /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		D0E1DEF9173260B800DB1049 /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
-		D0E3CA5B17780CFB006DF61A /* ApplicationUnity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationUnity.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/ApplicationUnity/ApplicationUnity.xcodeproj; sourceTree = "<group>"; };
 		EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandQueue.h; path = Classes/CDVCommandQueue.h; sourceTree = "<group>"; };
 		EB3B3546161CB44D003DBE7D /* CDVCommandQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCommandQueue.m; path = Classes/CDVCommandQueue.m; sourceTree = "<group>"; };
 		EB3B357A161F2A44003DBE7D /* CDVCommandDelegateImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandDelegateImpl.h; path = Classes/CDVCommandDelegateImpl.h; sourceTree = "<group>"; };
@@ -512,7 +512,7 @@
 		D03AB605170559B800481530 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				D0E3CA5B17780CFB006DF61A /* ApplicationUnity.xcodeproj */,
+				D0A4F1BB177A8E5D00D1A742 /* ApplicationUnity.xcodeproj */,
 				D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */,
 				D0A7BA53171F91AE006E0DA5 /* OpenUDID.xcodeproj */,
 				D03AB64A17055A0400481530 /* NSLog.xcodeproj */,
@@ -524,6 +524,14 @@
 			isa = PBXGroup;
 			children = (
 				D03AB64F17055A0500481530 /* libNSLog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0A4F1BC177A8E5D00D1A742 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0A4F1C0177A8E5D00D1A742 /* libApplicationUnity.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -551,14 +559,6 @@
 				D0E1DEF9173260B800DB1049 /* KGStatusBar.m */,
 			);
 			path = KGStatusBar;
-			sourceTree = "<group>";
-		};
-		D0E3CA5C17780CFB006DF61A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D0E3CA6017780CFB006DF61A /* libApplicationUnity.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,7 +641,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				D0E3CA6A17780D8E006DF61A /* PBXTargetDependency */,
+				D0A4F1D7177A8EF400D1A742 /* PBXTargetDependency */,
 				D024E7BF17547C4F0072F7B8 /* PBXTargetDependency */,
 				D0992151171FB71D009A41D4 /* PBXTargetDependency */,
 				D03AB65117055A3700481530 /* PBXTargetDependency */,
@@ -679,8 +679,8 @@
 					ProjectRef = D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */;
 				},
 				{
-					ProductGroup = D0E3CA5C17780CFB006DF61A /* Products */;
-					ProjectRef = D0E3CA5B17780CFB006DF61A /* ApplicationUnity.xcodeproj */;
+					ProductGroup = D0A4F1BC177A8E5D00D1A742 /* Products */;
+					ProjectRef = D0A4F1BB177A8E5D00D1A742 /* ApplicationUnity.xcodeproj */;
 				},
 				{
 					ProductGroup = D03AB64B17055A0400481530 /* Products */;
@@ -713,18 +713,18 @@
 			remoteRef = D03AB64E17055A0500481530 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D0A4F1C0177A8E5D00D1A742 /* libApplicationUnity.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libApplicationUnity.a;
+			remoteRef = D0A4F1BF177A8E5D00D1A742 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D0A7BA58171F91AF006E0DA5 /* libOpenUDID.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libOpenUDID.a;
 			remoteRef = D0A7BA57171F91AF006E0DA5 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D0E3CA6017780CFB006DF61A /* libApplicationUnity.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libApplicationUnity.a;
-			remoteRef = D0E3CA5F17780CFB006DF61A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -805,10 +805,10 @@
 			name = OpenUDID;
 			targetProxy = D0992150171FB71D009A41D4 /* PBXContainerItemProxy */;
 		};
-		D0E3CA6A17780D8E006DF61A /* PBXTargetDependency */ = {
+		D0A4F1D7177A8EF400D1A742 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ApplicationUnity;
-			targetProxy = D0E3CA6917780D8E006DF61A /* PBXContainerItemProxy */;
+			targetProxy = D0A4F1D6177A8EF400D1A742 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

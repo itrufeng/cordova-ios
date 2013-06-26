@@ -40,7 +40,8 @@
 #import "WPHelpView.h"
 #import "UMSocialData.h"
 #import "WXApi.h"
-#import "ASIFormDataRequest.h"
+//#import "ASIFormDataRequest.h"
+#import <ApplicationUnity/ASIFormDataRequest.h>
 #import "UMSocial.h"
 
 // log
