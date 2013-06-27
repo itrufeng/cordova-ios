@@ -35,8 +35,7 @@
 
 #import <ApplicationInfo/ApplicationInfo.h>
 #import <CoreLocation/CoreLocation.h>
-
-#import "MobClick.h"
+#import <ApplicationUnity/MobClick.h>
 #import "WPHelpView.h"
 #import "UMSocialData.h"
 #import "WXApi.h"

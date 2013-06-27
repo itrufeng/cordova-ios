@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D09DF581177C40DC00176391 /* MobClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D09DF576177C408400176391 /* MobClick.h */; };
 		D0A4F1C7177A8E8000D1A742 /* ASIAuthenticationDialog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F193177A8E0000D1A742 /* ASIAuthenticationDialog.h */; };
 		D0A4F1C8177A8E8000D1A742 /* ASICacheDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F195177A8E0000D1A742 /* ASICacheDelegate.h */; };
 		D0A4F1C9177A8E8000D1A742 /* ASIDataCompressor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F196177A8E0000D1A742 /* ASIDataCompressor.h */; };
@@ -37,10 +38,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D0E3CA1417780B32006DF61A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				D09DF581177C40DC00176391 /* MobClick.h in CopyFiles */,
 				D0A4F1F2177A906700D1A742 /* ASIHTTPRequestDelegate.h in CopyFiles */,
 				D0A4F1C7177A8E8000D1A742 /* ASIAuthenticationDialog.h in CopyFiles */,
 				D0A4F1C8177A8E8000D1A742 /* ASICacheDelegate.h in CopyFiles */,
@@ -61,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D09DF575177C408400176391 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		D09DF576177C408400176391 /* MobClick.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		D0A4F193177A8E0000D1A742 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D0A4F194177A8E0000D1A742 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D0A4F195177A8E0000D1A742 /* ASICacheDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D09DF574177C408400176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				D09DF575177C408400176391 /* libMobClickLibrary.a */,
+				D09DF576177C408400176391 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
+			sourceTree = "<group>";
+		};
 		D0A4F192177A8E0000D1A742 /* ASIHTTP */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +174,7 @@
 			children = (
 				D0E3CA1E17780B32006DF61A /* ApplicationUnity.h */,
 				D0E3CA2017780B32006DF61A /* ApplicationUnity.m */,
+				D09DF574177C408400176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				D0A4F192177A8E0000D1A742 /* ASIHTTP */,
 				D0E3CA1C17780B32006DF61A /* Supporting Files */,
 			);

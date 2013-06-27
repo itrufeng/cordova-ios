@@ -52,6 +52,7 @@
 		D03AB65B17055D6700481530 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03AB65A17055D6600481530 /* EventKit.framework */; };
 		D03AB65C170561E000481530 /* libNSLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF88B8D17055714002B6A43 /* libNSLog.a */; };
 		D08B438E17128CCC00DD791B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08B438D17128CCC00DD791B /* StoreKit.framework */; };
+		D09DF5A9177C519000176391 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09DF5A7177C519000176391 /* libMobClickLibrary.a */; };
 		D0A4F1D5177A8ED500D1A742 /* libApplicationUnity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A4F1C6177A8E6300D1A742 /* libApplicationUnity.a */; };
 		D0B7CF5B1762D1E400D0DF3A /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF571762D1E400D0DF3A /* icon-72.png */; };
 		D0B7CF5C1762D1E400D0DF3A /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF581762D1E400D0DF3A /* icon-72@2x.png */; };
@@ -69,7 +70,6 @@
 		D0B7CF8E1763223500D0DF3A /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF831763223400D0DF3A /* UMSShareListController.xib */; };
 		D0B7CF8F1763223500D0DF3A /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF841763223400D0DF3A /* UMSocialSDKResources.bundle */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
-		D6F8B873176385BA008BBA4F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +185,8 @@
 		D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
 		D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D08B438D17128CCC00DD791B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		D09DF5A7177C519000176391 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		D09DF5A8177C519000176391 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationUnity.xcodeproj; path = ApplicationUnity/ApplicationUnity.xcodeproj; sourceTree = "<group>"; };
 		D0B7CF571762D1E400D0DF3A /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		D0B7CF581762D1E400D0DF3A /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
@@ -214,8 +216,6 @@
 		D0B7CF831763223400D0DF3A /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		D0B7CF841763223400D0DF3A /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
-		D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		D6F8B872176385BA008BBA4F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = __TESTING__/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,7 +250,7 @@
 				D0B7CF851763223400D0DF3A /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				D0B7CF861763223400D0DF3A /* libUMSocial_Sdk_2.1.3.a in Frameworks */,
 				D0B7CF871763223500D0DF3A /* libUMSocial_Sdk_Comment_2.1.3.a in Frameworks */,
-				D6F8B873176385BA008BBA4F /* libMobClickLibrary.a in Frameworks */,
+				D09DF5A9177C519000176391 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,10 +290,10 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				D09DF5A6177C519000176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */,
 				D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */,
 				D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */,
-				D6F8B870176385BA008BBA4F /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				D0B7CF691763223400D0DF3A /* UMSocial_Sdk_2.1.3 */,
 				0FF88B311705565C002B6A43 /* FireUIPagedScrollView */,
 				0FF88B341705565C002B6A43 /* NSBundle+Image */,
@@ -534,6 +534,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		D09DF5A6177C519000176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				D09DF5A7177C519000176391 /* libMobClickLibrary.a */,
+				D09DF5A8177C519000176391 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
+			sourceTree = "<group>";
+		};
 		D0A4F1C2177A8E6300D1A742 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -613,15 +622,6 @@
 				D0B7CF831763223400D0DF3A /* UMSShareListController.xib */,
 			);
 			path = SocialSDKXib;
-			sourceTree = "<group>";
-		};
-		D6F8B870176385BA008BBA4F /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
-			isa = PBXGroup;
-			children = (
-				D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */,
-				D6F8B872176385BA008BBA4F /* MobClick.h */,
-			);
-			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
