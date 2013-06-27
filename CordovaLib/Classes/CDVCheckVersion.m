@@ -8,10 +8,17 @@
 
 #import "CDVCheckVersion.h"
 #import <NSLog/NSLog.h>
+#import <QuartzCore/QuartzCore.h>
+#import <ApplicationUnity/ASIHTTPRequest.h>
+
+#define CustomActivity_IndicatorViewFrame  CGRectMake(110, 120, 100, 100)
+#define CustomActivity_ActivityIndicatorFrame CGRectMake(31, 32, 37, 37)
 
 #define KCDVUpdateVersion_TrackViewUrl      @"trackViewUrl"
 #define KCDVUpdateVersion_Result            @"results"
 #define KCDVUpdateVersion_Version           @"version"
+
+typedef void (^NewVersion)(BOOL version);
 
 
 @interface CDVCheckVersion ()<SKStoreProductViewControllerDelegate,
@@ -19,6 +26,11 @@ UIAlertViewDelegate>
 {
     NSString*   _trackViewUrl;
 }
+
+@property (strong, nonatomic) UIView *viewActivityIndicatorView;
+@property (strong, nonatomic) UIActivityIndicatorView *largeActivity;
+@property (strong, nonatomic) ASIHTTPRequest *asiHttpRequest;
+
 
 @end
 
@@ -32,8 +44,27 @@ UIAlertViewDelegate>
 
 /**************************************************************************************/
 
+
+-(void)pluginInitialize
+{
+    //自定制缓冲等待
+    self.viewActivityIndicatorView  = [[UIView alloc]initWithFrame:CustomActivity_IndicatorViewFrame];
+    [self.viewActivityIndicatorView setBackgroundColor:[UIColor blackColor]];
+    [self.viewActivityIndicatorView setAlpha:0.5];
+    self.viewActivityIndicatorView.layer.cornerRadius = 10;
+    [self.viewController.view addSubview:self.viewActivityIndicatorView];
+    self.largeActivity = [[UIActivityIndicatorView alloc]initWithFrame:CustomActivity_ActivityIndicatorFrame];
+    self.largeActivity.activityIndicatorViewStyle= UIActivityIndicatorViewStyleWhiteLarge;
+    [self.viewActivityIndicatorView addSubview:self.largeActivity];
+    self.viewActivityIndicatorView.hidden = YES;
+    
+}
 -(void)checkVersion:(CDVInvokedUrlCommand*)command
 {
+    
+    self.viewActivityIndicatorView.hidden = NO;
+    [self.largeActivity startAnimating];
+    
     NSInfo(@"检测版本开始");
     
     NSString *itunesItemIdentifier = [command.arguments count] > 0?[command.arguments objectAtIndex:0]:  nil;
@@ -46,61 +77,78 @@ UIAlertViewDelegate>
                          WithResultString:@"缺少参数"
                                callbackId:command.callbackId];
         
+        [self _showAlertViewWithTitle:@"版本更新"
+                          withMessage:@"连接商店信息错误"
+                 withCancelButtonInfo:@"忽略"];
+        
+        self.viewActivityIndicatorView.hidden = YES;
+        [self.largeActivity stopAnimating];
+        
         return;
     }
     
-    if ([self _boolHaveNewVersionWithItunesIdentifier:itunesItemIdentifier
-                                           andCommand:command])
-    {
-        //跟着系统版本走适当的途径
-        if ([[[UIDevice currentDevice]systemVersion] floatValue] < 6.0)
-        {
-            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
-                                                               message:@"发现新版本，是否更新"
-                                                              delegate:self
-                                                     cancelButtonTitle:@"忽略"
-                                                     otherButtonTitles:@"更新", nil];
-            [alertView show];
-                   
-            [self _sendResultWithPluginResult:CDVCommandStatus_OK
-                             WithResultString:@"ios6以下用户，弹出alert自己决定去不去商店"
-                                   callbackId:command.callbackId];
-        }
-        else
-        {
-            //直接在应用内部弹出商店
-            SKStoreProductViewController *storeProductController = [[SKStoreProductViewController alloc]init];
-            
-            storeProductController.delegate = self;
-            
-            NSDictionary *dictProductIndentify = @{SKStoreProductParameterITunesItemIdentifier:itunesItemIdentifier};
-            
-            [self.viewController presentViewController:storeProductController
-                                              animated:YES
-                                            completion:nil];
-            
-            //passing the iTunes item identifie
-            [ storeProductController loadProductWithParameters:dictProductIndentify
-                                               completionBlock:^(BOOL result, NSError *error)
-             {
-                 if (error)
-                 {
-                     NSWarn(@"加载商店信息错误错误信息= %@",error);
-                     
-                     [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                                      WithResultString:@"加载商店信息错误错误信息"
-                                            callbackId:command.callbackId];
-                 }
-                 else
-                 {
-                     [self _sendResultWithPluginResult:CDVCommandStatus_OK
-                                      WithResultString:@"加载商店信息成功"
-                                            callbackId:command.callbackId];
-                 }
-                 
-             }];
-        }
-    }
+    [self _boolHaveNewVersionWithItunesIdentifier:itunesItemIdentifier
+                                       andCommand:command
+                                    andNewVersion:^(BOOL version) {
+                                        if (version)
+                                        {
+                                            //跟着系统版本走适当的途径
+                                            if ([[[UIDevice currentDevice]systemVersion] floatValue] < 6.0)
+                                            {
+                                                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
+                                                                                                   message:@"发现新版本，是否更新"
+                                                                                                  delegate:self
+                                                                                         cancelButtonTitle:@"忽略"
+                                                                                         otherButtonTitles:@"更新", nil];
+                                                [alertView show];
+                                                
+                                                [self _sendResultWithPluginResult:CDVCommandStatus_OK
+                                                                 WithResultString:@"ios6以下用户，弹出alert自己决定去不去商店"
+                                                                       callbackId:command.callbackId];
+                                            }
+                                            else
+                                            {
+                                                //直接在应用内部弹出商店
+                                                SKStoreProductViewController *storeProductController = [[SKStoreProductViewController alloc]init];
+                                                
+                                                storeProductController.delegate = self;
+                                                
+                                                NSDictionary *dictProductIndentify = @{SKStoreProductParameterITunesItemIdentifier:itunesItemIdentifier};
+                                                
+                                                [self.viewController presentViewController:storeProductController
+                                                                                  animated:YES
+                                                                                completion:nil];
+                                                
+                                                //passing the iTunes item identifie
+                                                [ storeProductController loadProductWithParameters:dictProductIndentify
+                                                                                   completionBlock:^(BOOL result, NSError *error)
+                                                 {
+                                                     if (error)
+                                                     {
+                                                         NSWarn(@"加载商店信息错误错误信息= %@",error);
+                                                         
+                                                         [self _showAlertViewWithTitle:@"版本更新"
+                                                                           withMessage:@"加载商店信息错误"
+                                                                  withCancelButtonInfo:@"忽略"];
+                                                         [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
+                                                                          WithResultString:@"加载商店信息错误"
+                                                                                callbackId:command.callbackId];
+                                                     }
+                                                     else
+                                                     {
+                                                         [self _sendResultWithPluginResult:CDVCommandStatus_OK
+                                                                          WithResultString:@"加载商店信息成功"
+                                                                                callbackId:command.callbackId];
+                                                     }
+                                                     
+                                                 }];
+                                            }
+                                            
+                                            
+                                        }
+                                        self.viewActivityIndicatorView.hidden = YES;
+                                        [self.largeActivity stopAnimating];
+                                    }];
 }
 
 /**************************************************************************************/
@@ -149,10 +197,10 @@ UIAlertViewDelegate>
  是否有新的版本
  */
 
--(BOOL)_boolHaveNewVersionWithItunesIdentifier:(NSString*)itunesItemIdentifier
+-(void)_boolHaveNewVersionWithItunesIdentifier:(NSString*)itunesItemIdentifier
                                     andCommand:(CDVInvokedUrlCommand*)command
+                                 andNewVersion:(NewVersion)boolVersion
 {
-    BOOL    boolHaveNewVersion =  NO;
     
     //当前版本号
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -162,35 +210,27 @@ UIAlertViewDelegate>
     //AppStore版本号
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",itunesItemIdentifier]];
     
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
     
-    NSError *error = nil;
+    _asiHttpRequest = request;
     
-    NSData *dataApp = [NSURLConnection sendSynchronousRequest:urlRequest
-                                            returningResponse:nil
-                                                        error:&error];
-    //从AppStore获取数据是否错误
-    if (error)
-    {
-        NSWarn(@"查询appstore版本信息错误错误信息%@",error);
+    [request setCompletionBlock:^{
         
-        [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                         WithResultString:@"查询appstore版本信息错误"
-                               callbackId:command.callbackId];
-    }
-    else
-    {
+        NSError *error = nil;
+        
+        NSData *dataApp = [_asiHttpRequest responseData];
+        
         //解析appstore数据
         NSDictionary *dicApp = [NSJSONSerialization JSONObjectWithData:dataApp
                                                                options:kNilOptions
                                                                  error:&error];
         if (error)
         {
-            NSWarn(@"对来自appStore数据解析错误 %@",error);
-            [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                             WithResultString:@"对来自appStore数据解析错误"
-                                   callbackId:command.callbackId];
+            [self _showAlertViewWithTitle:@"版本更新"
+                              withMessage:@"获取商店信息错误"
+                     withCancelButtonInfo:@"忽略"];
             
+            boolVersion(NO);
         }
         else
         {
@@ -198,48 +238,75 @@ UIAlertViewDelegate>
             
             if ([arrayApp count]== 0)
             {
-                
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
-                                                                   message:@"没有发现新版本"
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"忽略"                                                         otherButtonTitles:nil];
-                [alertView show];
+                [self _showAlertViewWithTitle:@"版本更新"
+                                  withMessage:@"连接商店信息错误"
+                         withCancelButtonInfo:@"忽略"];
                 
                 NSWarn(@"itune 没有返回任何信息，可能id错误");
                 
-                return NO;
-                
-            }
-
-            NSDictionary *infoAppResult = [arrayApp objectAtIndex:0];
-            
-            NSString *stringVersion = [infoAppResult objectForKey:KCDVUpdateVersion_Version];
-            
-            _trackViewUrl = [infoAppResult objectForKey:KCDVUpdateVersion_TrackViewUrl];
-            
-            //判断是否有新版本
-            if (![stringVersion isEqualToString:currentVersion])
-            {
-                boolHaveNewVersion = YES;
+                boolVersion(NO);
             }
             else
             {
                 
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
-                                                                   message:@"没有发现新版本"
-                                                                  delegate:self
-                                                         cancelButtonTitle:nil
-                                                         otherButtonTitles:nil];
-                [alertView show];
-
-                [self _sendResultWithPluginResult:CDVCommandStatus_OK
-                                 WithResultString:@"没有要更新的版本"
-                                       callbackId:command.callbackId];
+                NSDictionary *infoAppResult = [arrayApp objectAtIndex:0];
+                
+                NSString *stringVersion = [infoAppResult objectForKey:KCDVUpdateVersion_Version];
+                
+                NSInfo(@"currentVersion= %@取得Version%@",currentVersion,stringVersion);
+                
+                _trackViewUrl = [infoAppResult objectForKey:KCDVUpdateVersion_TrackViewUrl];
+                
+                NSInfo(@"取得的_trackUrl%@",_trackViewUrl);
+                
+                //判断是否有新版本
+              if (currentVersion.floatValue < stringVersion.floatValue)
+                {
+                    boolVersion(YES);
+                }
+                else
+                {
+                    [self _showAlertViewWithTitle:@"版本更新"
+                                      withMessage:@"没有发现新版本"
+                             withCancelButtonInfo:@"忽略"];
+                    
+                    boolVersion(NO);
+                    
+                }
             }
         }
-    }
-    return boolHaveNewVersion;
+        
+    }];
+    [request setFailedBlock:^{
+        
+        [self _showAlertViewWithTitle:@"版本更新"
+                          withMessage:@"网络请求失败,请重试"
+                 withCancelButtonInfo:@"忽略"];
+        
+        boolVersion(NO);
+    }];
+    
+    [request startAsynchronous];
+    
+    
 }
+
+/*弹出Alert信息*/
+-(void)_showAlertViewWithTitle:(NSString*)Title
+                   withMessage:(NSString*)message
+          withCancelButtonInfo:(NSString*)cancelButtonInfo
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:Title
+                                                       message:message
+                                                      delegate:self
+                                             cancelButtonTitle:cancelButtonInfo
+                                             otherButtonTitles:nil];
+    [alertView show];
+    
+    
+}
+
+
 
 /*失败成功后向外传递信息*/
 
