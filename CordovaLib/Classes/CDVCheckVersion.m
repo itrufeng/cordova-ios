@@ -66,40 +66,75 @@ UIAlertViewDelegate,MobClickDelegate>
     self.viewActivityIndicatorView.hidden = NO;
     [self.largeActivity startAnimating];
     
-    NSInfo(@"检测版本开始");
-    
-    NSString *itunesItemIdentifier = [command.arguments count] > 0?[command.arguments objectAtIndex:0]:  nil;
-    
-    NSInfo(@"检测新版本传入参数Id = %@",itunesItemIdentifier);
-    
-    if (!itunesItemIdentifier)
-    {
-        [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                         WithResultString:@"缺少参数"
-                               callbackId:command.callbackId];
-        
-        [self _showAlertViewWithTitle:@"版本更新"
-                          withMessage:@"连接商店信息错误"
-                 withCancelButtonInfo:@"忽略"];
-        
-        self.viewActivityIndicatorView.hidden = YES;
-        [self.largeActivity stopAnimating];
-        
-        return;
-    }
+    //友盟更新
     [MobClick checkUpdate];
-    //    [MobClick checkUpdateWithDelegate:self selector:@selector(aa)];
-    
-    
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        self.viewActivityIndicatorView.hidden = YES;
-        [self.largeActivity stopAnimating];
-    });   
+    [MobClick setDelegate:self];
     
 }
 
+/**************************************************************************************/
+
+#pragma mark -
+#pragma mark MobClickDelegate
+#pragma mark -
+
+/**************************************************************************************/
+
+
+- (void)appUpdate:(NSDictionary *)appUpdateInfo
+{
+    
+    NSLog(@"appUpdateInfo = %@",appUpdateInfo);
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [self.largeActivity stopAnimating];
+        self.viewActivityIndicatorView.hidden = YES;
+        NSString *update = [appUpdateInfo objectForKey:@"update"];
+        
+        
+        if ([update isEqualToString:@"YES"])
+        {
+            _trackViewUrl = [appUpdateInfo objectForKey:@"path"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
+                                                               message:@"发现新版本，是否更新"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"忽略"
+                                                     otherButtonTitles:@"更新", nil];
+            [alertView show];
+            
+            
+            
+        }
+        else
+        {
+            [self _showAlertViewWithTitle:@"版本更新"
+                              withMessage:@"没有发现新版本"
+                     withCancelButtonInfo:@"忽略"];
+        }
+        
+    });
+}
+
+/**************************************************************************************/
+
+#pragma mark -
+#pragma mark UIAlertViewDelegate ios6以下版本
+#pragma mark -
+
+/**************************************************************************************/
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    //ios6以下版本用户点击更新，打开AppStore
+    if (buttonIndex == 1)
+    {
+        UIApplication *application = [UIApplication sharedApplication];
+        
+        [application openURL:[NSURL URLWithString:_trackViewUrl]];
+    }
+}
 /**************************************************************************************/
 
 #pragma mark -
@@ -107,7 +142,6 @@ UIAlertViewDelegate,MobClickDelegate>
 #pragma mark -
 
 /**************************************************************************************/
-
 
 /*弹出Alert信息*/
 -(void)_showAlertViewWithTitle:(NSString*)Title
@@ -120,8 +154,6 @@ UIAlertViewDelegate,MobClickDelegate>
                                              cancelButtonTitle:cancelButtonInfo
                                              otherButtonTitles:nil];
     [alertView show];
-    
-    
 }
 
 
