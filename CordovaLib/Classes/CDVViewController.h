@@ -47,6 +47,8 @@
 
 @property (nonatomic, readwrite, copy) NSString* wwwFolderName;
 @property (nonatomic, readwrite, copy) NSString* startPage;
+@property (nonatomic, readwrite, copy) NSString* errorPage;
+
 @property (nonatomic, readonly, strong) CDVCommandQueue* commandQueue;
 @property (nonatomic, readonly, strong) id <CDVCommandDelegate> commandDelegate;
 @property (nonatomic, readonly) NSString* userAgent;

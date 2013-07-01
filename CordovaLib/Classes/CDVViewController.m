@@ -52,7 +52,7 @@
 @synthesize pluginObjects, pluginsMap, whitelist, startupPluginNames;
 @synthesize configParser, settings, loadFromString;
 @synthesize useSplashScreen;
-@synthesize wwwFolderName, startPage, initialized, openURL;
+@synthesize wwwFolderName, startPage, initialized, openURL,errorPage;
 @synthesize commandDelegate = _commandDelegate;
 @synthesize commandQueue = _commandQueue;
 
@@ -213,7 +213,8 @@
     if (self.startPage == nil) {
         self.startPage = @"index.html";
     }
-
+    self.errorPage = @"error.html";
+    
     // Initialize the plugin objects dict.
     self.pluginObjects = [[NSMutableDictionary alloc] initWithCapacity:20];
 }
@@ -393,8 +394,11 @@
             NSURLRequest* appReq = [NSURLRequest requestWithURL:appURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
             [self.webView loadRequest:appReq];
         } else {
-            NSString* html = [NSString stringWithFormat:@"<html><body> %@ </body></html>", loadErr];
-            [self.webView loadHTMLString:html baseURL:nil];
+            NSString *strErrorHtmlPath = [self.commandDelegate pathForResource:self.errorPage];
+            NSURL *errorURL = [NSURL fileURLWithPath:strErrorHtmlPath];
+            NSURLRequest *appErrorReq = [NSURLRequest requestWithURL:errorURL cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:20.0];
+            [self.webView loadRequest:appErrorReq];
+         ;
         }
     }];
 }
