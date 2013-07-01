@@ -52,7 +52,6 @@
 		D03AB65B17055D6700481530 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03AB65A17055D6600481530 /* EventKit.framework */; };
 		D03AB65C170561E000481530 /* libNSLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF88B8D17055714002B6A43 /* libNSLog.a */; };
 		D08B438E17128CCC00DD791B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08B438D17128CCC00DD791B /* StoreKit.framework */; };
-		D09DF5A9177C519000176391 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09DF5A7177C519000176391 /* libMobClickLibrary.a */; };
 		D0A4F1D5177A8ED500D1A742 /* libApplicationUnity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A4F1C6177A8E6300D1A742 /* libApplicationUnity.a */; };
 		D0B7CF5B1762D1E400D0DF3A /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF571762D1E400D0DF3A /* icon-72.png */; };
 		D0B7CF5C1762D1E400D0DF3A /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF581762D1E400D0DF3A /* icon-72@2x.png */; };
@@ -185,8 +184,6 @@
 		D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
 		D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D08B438D17128CCC00DD791B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		D09DF5A7177C519000176391 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		D09DF5A8177C519000176391 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationUnity.xcodeproj; path = ApplicationUnity/ApplicationUnity.xcodeproj; sourceTree = "<group>"; };
 		D0B7CF571762D1E400D0DF3A /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
 		D0B7CF581762D1E400D0DF3A /* icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72@2x.png"; sourceTree = "<group>"; };
@@ -250,7 +247,6 @@
 				D0B7CF851763223400D0DF3A /* libWeChatSDK_armv7_armv7s.a in Frameworks */,
 				D0B7CF861763223400D0DF3A /* libUMSocial_Sdk_2.1.3.a in Frameworks */,
 				D0B7CF871763223500D0DF3A /* libUMSocial_Sdk_Comment_2.1.3.a in Frameworks */,
-				D09DF5A9177C519000176391 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +286,6 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				D09DF5A6177C519000176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */,
 				D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */,
 				D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */,
@@ -532,15 +527,6 @@
 				D03EC66517560AB000870E2A /* libOpenUDID.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D09DF5A6177C519000176391 /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
-			isa = PBXGroup;
-			children = (
-				D09DF5A7177C519000176391 /* libMobClickLibrary.a */,
-				D09DF5A8177C519000176391 /* MobClick.h */,
-			);
-			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
 			sourceTree = "<group>";
 		};
 		D0A4F1C2177A8E6300D1A742 /* Products */ = {

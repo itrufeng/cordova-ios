@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D054EC8D178122BF00BEEC31 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D09DF575177C408400176391 /* libMobClickLibrary.a */; };
 		D09DF581177C40DC00176391 /* MobClick.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D09DF576177C408400176391 /* MobClick.h */; };
 		D0A4F1C7177A8E8000D1A742 /* ASIAuthenticationDialog.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F193177A8E0000D1A742 /* ASIAuthenticationDialog.h */; };
 		D0A4F1C8177A8E8000D1A742 /* ASICacheDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F195177A8E0000D1A742 /* ASICacheDelegate.h */; };
@@ -100,6 +101,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0E3CA1A17780B32006DF61A /* Foundation.framework in Frameworks */,
+				D054EC8D178122BF00BEEC31 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,6 +318,10 @@
 				DSTROOT = /tmp/ApplicationUnity.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ApplicationUnity/ApplicationUnity-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ApplicationUnity/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -328,6 +334,10 @@
 				DSTROOT = /tmp/ApplicationUnity.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ApplicationUnity/ApplicationUnity-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ApplicationUnity/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
