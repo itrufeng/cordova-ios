@@ -80,9 +80,16 @@
     }
     else
     {
-    [dicSend setObject:@"iphone" forKey:KPlatform];
+        [dicSend setObject:@"iphone" forKey:KPlatform];
     }
     
+#ifdef DEBUG
+    [dicSend setObject:@"1" forKey:KDev];
+#else
+    [dicSend setObject:@"0" forKey:KDev];
+#endif
+
+
     //请求网络
     
     
@@ -116,6 +123,7 @@
     [request startAsynchronous];
     
     
+
 }
 
 
