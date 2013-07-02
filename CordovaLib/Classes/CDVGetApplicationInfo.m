@@ -115,51 +115,8 @@
     
     [request startAsynchronous];
     
-        
-    
-//    NSString *url = [NSString stringWithFormat:@"%@/cloud/1/push_ios_add",API_DOMAIN];
-//    
-//    NSMutableURLRequest *urlRequset = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-//    
-//    NSError *error = nil;
-//    
-//    NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
-//                                                        options:NSJSONWritingPrettyPrinted
-//                                                          error:&error];
-//    
-//    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//    
-//    NSString *StrJson = [[NSString alloc]initWithFormat:@"request=%@",jsonString];
-//    [urlRequset setHTTPMethod:@"POST"];
-//    
-//    [urlRequset setHTTPBody:[StrJson dataUsingEncoding:NSUTF8StringEncoding]];
-//    
-//    [NSURLConnection connectionWithRequest:urlRequset delegate:self];
     
 }
 
-///***********************************************************************************/
-//
-//#pragma mark -
-//#pragma mark NSURLConnectionDelegate
-//#pragma mark -
-//
-///**************************************************************************************/
-//
-//
-//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-//{
-//    [_d appendData:data];
-//}
-//
-//- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-//{
-//    NSInfo(@"%@", [[NSString alloc] initWithData:_d encoding:NSUTF8StringEncoding]);
-//}
-//
-//- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-//{
-//    NSWarn(@"网络失败送服务器需要数据%@",error);
-//}
 
 @end
