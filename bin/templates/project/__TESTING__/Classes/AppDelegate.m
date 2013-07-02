@@ -53,6 +53,7 @@
 
 @property (strong, nonatomic) ASIFormDataRequest *request;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (assign, nonatomic) int getLocationNums;
 
 @end
 
@@ -84,6 +85,8 @@
     
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
+    
+    self.getLocationNums = 0;
     
     return self;
 }
@@ -221,16 +224,6 @@
 																											withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
     NSInfo(@"本次注册token:%@", stringToken);
-    
-    //	NSString *UUID;
-    //	if ([[[UIDevice currentDevice]systemVersion] floatValue]> 5.0)
-    //	{
-    //		UUID = [[UIDevice currentDevice].identifierForVendor UUIDString];
-    //	}
-    //	else
-    //	{
-    //		UUID = [UIDevice currentDevice].uniqueIdentifier;
-    //	}
     
     ApplicationInfo*  appInfo = [[ApplicationInfo alloc] init];
     
@@ -474,54 +467,59 @@
 {
     [manager stopUpdatingLocation];
     
-    CLLocation *location = [locations objectAtIndex:0];
-    
-    NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
-    
-    [dicSend setObject:APP_ID forKey:KCaid];
-    
-    [dicSend setObject:[OpenUDID value] forKey:KUdid];
-    
-    [dicSend setObject:@"iphone" forKey:KPlatform];
-    
-    [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.latitude] forKey:KLatitude];
-    
-    [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.longitude] forKey:KLongitude];
-    
-#ifdef DEBUG
-    [dicSend setObject:@"1" forKey:KDev];
-#else
-    [dicSend setObject:@"0" forKey:KDev];
-#endif
-
-    NSError *error = nil;
-    
-    NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
-                                                        options:NSJSONWritingPrettyPrinted
-                                                          error:&error];
-    
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSString *url = [NSString stringWithFormat:@"%@/cloud/1/push_ios_add",API_DOMAIN];
-    
-    __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
-    
-    _request = request;
-    
-    [request setRequestMethod:@"POST"];
-    
-    [request setPostValue:jsonString forKey:@"request"];
-    
-    [request setCompletionBlock:^{
+    if (self.getLocationNums < 1)
+    {
+        CLLocation *location = [locations objectAtIndex:0];
         
-        NSLog(@"请求到的数据 %@", [_request responseString]);
-    }];
+        NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
+        
+        [dicSend setObject:APP_ID forKey:KCaid];
+        
+        [dicSend setObject:[OpenUDID value] forKey:KUdid];
+        
+        [dicSend setObject:@"iphone" forKey:KPlatform];
+        
+        [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.latitude] forKey:KLatitude];
+        
+        [dicSend setObject:[NSString stringWithFormat:@"%f", location.coordinate.longitude] forKey:KLongitude];
+        
+#ifdef DEBUG
+        [dicSend setObject:@"1" forKey:KDev];
+#else
+        [dicSend setObject:@"0" forKey:KDev];
+#endif
+        
+        NSError *error = nil;
+        
+        NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
+                                                            options:NSJSONWritingPrettyPrinted
+                                                              error:&error];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        NSString *url = [NSString stringWithFormat:@"%@/cloud/1/push_ios_add",API_DOMAIN];
+        
+        __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+        
+        _request = request;
+        
+        [request setRequestMethod:@"POST"];
+        
+        [request setPostValue:jsonString forKey:@"request"];
+        
+        [request setCompletionBlock:^{
+            
+            NSLog(@"请求到的数据 %@", [_request responseString]);
+        }];
+        
+        [request setFailedBlock:^{
+            NSWarn(@"网络请求失败错误状态码%d", [_request responseStatusCode]);
+        }];
+        
+        [request startAsynchronous];
+    }
     
-    [request setFailedBlock:^{
-        NSWarn(@"网络请求失败错误状态码%d", [_request responseStatusCode]);
-    }];
-    
-    [request startAsynchronous];
+    self.getLocationNums++;
 }
 
 

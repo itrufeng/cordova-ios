@@ -26,7 +26,9 @@
 {
     self =[super init];
     
-    if (self){}
+    if (self){
+        getLocationNums = 0;
+    }
     
     return self;
 }
@@ -117,30 +119,20 @@
 - (void)locationManager:(CLLocationManager *)manager
      didUpdateLocations:(NSArray *)locations
 {
+    [locationManager stopUpdatingLocation];
+
     CLLocation* location = [locations lastObject];
     
     longtitude = [NSString stringWithFormat:@"%+1.6f",location.coordinate.longitude];
     
     latitude  = [NSString stringWithFormat:@"%+1.6f",location.coordinate.latitude];
     
-    //    NSDate* eventDate = location.timestamp;
-    //    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    //    if (abs(howRecent) < 15.0)
-    //    {
-    //       NSLog(@"latitude %+.6f, longitude %+.6f\n",
-    //          location.coordinate.latitude,
-    //          location.coordinate.longitude);
-    //    }
-    
-    //    NSArray *array = [NSArray arrayWithObjects:currentVersion,providerName,longtitude,latitude,nil];
     NSDictionary *dicInfo = [NSDictionary dictionaryWithObjectsAndKeys:currentVersion,KVersions,
                              providerName,KOperator,
                              longtitude,KLongitude,
                              latitude,KLatitude,nil];
     
     [_delegateAppInfo delegateOnApplicationInfo:dicInfo];
-    
-    [locationManager stopUpdatingLocation];
 }
 
 
