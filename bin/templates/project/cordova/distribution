@@ -49,8 +49,8 @@ xcodebuild -project $PROJECT_NAME.xcodeproj -target $PROJECT_NAME -configuration
 
 
 
-echo -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" 
-xcrun -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" 
+echo -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"
+xcrun -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"
 
 ## --sign "${DEVELOPER_NAME}" --embed "${PROVISONING_PROFILE}"
 
