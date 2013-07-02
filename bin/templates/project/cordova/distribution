@@ -45,16 +45,14 @@ IPA=build/$PROJECT_NAME.ipa
 # SDK=`xcodebuild -showsdks | grep iphoneos | awk '{print $4}'`
 SDK="iphoneos"
 
+if [ -f "$PROJECT_PATH/../../../youdao/distribution/profiles/embedded.mobileprovision" ]; then
 xcodebuild -project $PROJECT_NAME.xcodeproj -target $PROJECT_NAME -configuration Release -sdk $SDK clean build CONFIGURATION_BUILD_DIR="$PROJECT_PATH/build"
 
 
 
-echo -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"
-xcrun -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"
-
-## --sign "${DEVELOPER_NAME}" --embed "${PROVISONING_PROFILE}"
-
-
-
-
+echo -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)" --embed "$PROJECT_PATH/../../../youdao/distribution/profiles/embedded.mobileprovision"
+xcrun -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"  --embed "$PROJECT_PATH/../../../youdao/distribution/profiles/embedded.mobileprovision"
+else
+	echo "NOT FOUND $PROJECT_PATH/../../../youdao/distribution/profiles/embedded.mobileprovision !!!"
+fi
 
