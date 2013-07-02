@@ -66,7 +66,7 @@
     
     [dicSend setDictionary:dictInfo];
     
-    [dicSend setObject:KCaid forKey:KCaid];
+    [dicSend setObject:APP_ID forKey:KCaid];
     
     [dicSend setObject:strCuid forKey:KCuid];
     
