@@ -49,7 +49,7 @@ HOMEDIR="$(cd ~ && pwd -P)"
 
 if [ "$1" != "" ]; then
 	sed -i -e "s/cloud\.appmars\.com/115.28.36.217/g" "$PROJECT_PATH/www/index.html"
-
+	rm -rf `find $PROJECT_PATH -name '*-e'`
 	xcodebuild -project $PROJECT_NAME.xcodeproj -target $PROJECT_NAME -configuration Release -sdk $SDK clean build CONFIGURATION_BUILD_DIR="$PROJECT_PATH/build" CODE_SIGN_IDENTITY="iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)" PROVISIONING_PROFILE="$1" 
 
 	echo -sdk $SDK PackageApplication -v "$PROJECT_PATH/${APP}" -o "$PROJECT_PATH/${IPA}" --sign "iPhone Distribution: Xi'an Youdao Software Technologies Co., Ltd. (M47ZNK538X)"  --embed "$HOMEDIR/Library/MobileDevice/Provisioning Profiles/$1.mobileprovision"
