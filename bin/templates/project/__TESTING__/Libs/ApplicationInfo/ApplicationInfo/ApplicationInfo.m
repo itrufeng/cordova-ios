@@ -26,8 +26,9 @@
 {
     self =[super init];
     
-    if (self){
-        getLocationNums = 0;
+    if (self)
+    {
+        
     }
     
     return self;
