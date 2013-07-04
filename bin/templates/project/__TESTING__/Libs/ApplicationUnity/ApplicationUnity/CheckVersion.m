@@ -10,7 +10,8 @@
 #import "ASIHTTPRequest.h"
 #import <NSLog/NSLog.h>
 
-
+#define KCDVUpdateVersion_Variables          @"Variables"
+#define KCDVUpdateVersion_AppleID           @"data"
 #define KCDVUpdateVersion_TrackViewUrl      @"trackViewUrl"
 #define KCDVUpdateVersion_Result            @"results"
 #define KCDVUpdateVersion_Version           @"version"
@@ -36,22 +37,45 @@ typedef void (^NewVersion)(BOOL version);
 
 /**************************************************************************************/
 
--(void)checkVerSion:(NSString*)itunesItemIdentifier
-{
- [self _boolHaveNewVersionWithItunesIdentifier:itunesItemIdentifier
-                                 andNewVersion:^(BOOL version) {
-                                     if (version)
-                                     {
-                                         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
-                                                                                            message:@"发现新版本，是否更新"
-                                                                                           delegate:self
-                                                                                  cancelButtonTitle:@"忽略"
-                                                                                  otherButtonTitles:@"更新", nil];
-                                         [alertView show];
-                                     }
-                                 }];
-}
 
+-(void)checkVerSionWithAppleId:(NSString *)appleId
+{
+ 
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://115.28.36.217/cloud/1/app_storeId_get?caid=%@",appleId]];
+    
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+    
+    _asiHttpRequest  = request;
+    
+    [request setCompletionBlock:^{
+        
+        NSError *error = nil;
+        
+        NSData *dataApp = [_asiHttpRequest responseData];
+        
+        //解析appstore数据
+        NSDictionary *dicApp = [NSJSONSerialization JSONObjectWithData:dataApp
+                                                               options:kNilOptions
+                                                                 error:&error];
+        
+        
+        NSLog(@"%@",dicApp);
+        
+        NSDictionary *dic = [dicApp objectForKey:KCDVUpdateVersion_Variables];
+        NSString *st = [dicApp objectForKey:@"Version"];
+        NSString *intuneId = [dic objectForKey:KCDVUpdateVersion_AppleID];
+       
+        [self _checkVerSion:intuneId];
+
+    }];
+    [request setFailedBlock:^{
+       
+        NSInfo(@"请求appId网络失败");
+    }];
+   
+    [request startAsynchronous];
+
+}
 
 /**************************************************************************************/
 
@@ -78,6 +102,24 @@ typedef void (^NewVersion)(BOOL version);
 #pragma mark -
 
 /**************************************************************************************/
+
+-(void)_checkVerSion:(NSString*)itunesItemIdentifier
+{
+    [self _boolHaveNewVersionWithItunesIdentifier:itunesItemIdentifier
+                                    andNewVersion:^(BOOL version) {
+                                        if (version)
+                                        {
+                                            UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"版本更新"
+                                                                                               message:@"发现新版本，是否更新"
+                                                                                              delegate:self
+                                                                                     cancelButtonTitle:@"忽略"
+                                                                                     otherButtonTitles:@"更新", nil];
+                                            [alertView show];
+                                        }
+                                    }];
+}
+
+
 
 -(void)_boolHaveNewVersionWithItunesIdentifier:(NSString*)itunesItemIdentifier
                                 andNewVersion:(NewVersion)boolVersion
@@ -118,8 +160,6 @@ typedef void (^NewVersion)(BOOL version);
             if ([arrayApp count]== 0)
             {
                 NSInfo(@"连接商店信息错误");
-                
-                NSWarn(@"itune 没有返回任何信息，可能id错误");
                 
                 boolVersion(NO);
             }

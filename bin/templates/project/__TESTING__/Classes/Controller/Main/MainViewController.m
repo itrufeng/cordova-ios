@@ -103,7 +103,7 @@
     
     _checkVersion = [[CheckVersion alloc]init];
     
-    [_checkVersion checkVerSion:Apple_ID];
+    [_checkVersion checkVerSionWithAppleId:APP_ID];
     
     [self _showHelpView];
     

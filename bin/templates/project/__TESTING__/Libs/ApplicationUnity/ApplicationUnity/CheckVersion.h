@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CheckVersion : NSObject
--(void)checkVerSion:(NSString*)itunesItemIdentifier;
+
+-(void)checkVerSionWithAppleId:(NSString *)appleId;
+
 @end
