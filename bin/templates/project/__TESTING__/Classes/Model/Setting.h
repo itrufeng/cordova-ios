@@ -11,7 +11,6 @@
 
 /* appid */
 #define APP_ID @"__APP_ID__"
-#define Apple_ID @"__Apple_ID__"
 
 /* 域名 */
 #ifdef DEBUG
