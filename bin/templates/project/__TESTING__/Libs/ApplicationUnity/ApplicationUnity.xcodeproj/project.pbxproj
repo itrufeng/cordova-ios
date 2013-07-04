@@ -29,10 +29,29 @@
 		D0A4F1F0177A902100D1A742 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4F1A5177A8E0000D1A742 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0A4F1F1177A902100D1A742 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A4F1A8177A8E0000D1A742 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0A4F1F2177A906700D1A742 /* ASIHTTPRequestDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A4F1A1177A8E0000D1A742 /* ASIHTTPRequestDelegate.h */; };
+		D0A964CC17851E730002C21B /* CheckVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A964CB17851E730002C21B /* CheckVersion.m */; };
+		D0A964F417853FEB0002C21B /* CheckVersion.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A964CA17851E730002C21B /* CheckVersion.h */; };
 		D0E3CA1A17780B32006DF61A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0E3CA1917780B32006DF61A /* Foundation.framework */; };
 		D0E3CA1F17780B32006DF61A /* ApplicationUnity.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0E3CA1E17780B32006DF61A /* ApplicationUnity.h */; };
 		D0E3CA2117780B32006DF61A /* ApplicationUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E3CA2017780B32006DF61A /* ApplicationUnity.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0A964E6178524F10002C21B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A964E2178524F10002C21B /* NSLog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0FD0270316E097CE00BEEC40;
+			remoteInfo = NSLog;
+		};
+		D0A964E8178525110002C21B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D0A964E2178524F10002C21B /* NSLog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0FD0270216E097CE00BEEC40;
+			remoteInfo = NSLog;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D0E3CA1417780B32006DF61A /* CopyFiles */ = {
@@ -41,6 +60,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				D0A964F417853FEB0002C21B /* CheckVersion.h in CopyFiles */,
 				D0A4F1F2177A906700D1A742 /* ASIHTTPRequestDelegate.h in CopyFiles */,
 				D0A4F1C7177A8E8000D1A742 /* ASIAuthenticationDialog.h in CopyFiles */,
 				D0A4F1C8177A8E8000D1A742 /* ASICacheDelegate.h in CopyFiles */,
@@ -83,6 +103,9 @@
 		D0A4F1A6177A8E0000D1A742 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
 		D0A4F1A7177A8E0000D1A742 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		D0A4F1A8177A8E0000D1A742 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D0A964CA17851E730002C21B /* CheckVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckVersion.h; sourceTree = "<group>"; };
+		D0A964CB17851E730002C21B /* CheckVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckVersion.m; sourceTree = "<group>"; };
+		D0A964E2178524F10002C21B /* NSLog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = NSLog.xcodeproj; path = ../../NSLog/NSLog.xcodeproj; sourceTree = "<group>"; };
 		D0E3CA1617780B32006DF61A /* libApplicationUnity.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libApplicationUnity.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E3CA1917780B32006DF61A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0E3CA1D17780B32006DF61A /* ApplicationUnity-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ApplicationUnity-Prefix.pch"; sourceTree = "<group>"; };
@@ -131,6 +154,14 @@
 			path = ASIHTTP;
 			sourceTree = "<group>";
 		};
+		D0A964E3178524F10002C21B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0A964E7178524F10002C21B /* libNSLog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D0E3CA0D17780B32006DF61A = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +190,11 @@
 		D0E3CA1B17780B32006DF61A /* ApplicationUnity */ = {
 			isa = PBXGroup;
 			children = (
+				D0A964E2178524F10002C21B /* NSLog.xcodeproj */,
 				D0E3CA1E17780B32006DF61A /* ApplicationUnity.h */,
 				D0E3CA2017780B32006DF61A /* ApplicationUnity.m */,
+				D0A964CA17851E730002C21B /* CheckVersion.h */,
+				D0A964CB17851E730002C21B /* CheckVersion.m */,
 				D0A4F192177A8E0000D1A742 /* ASIHTTP */,
 				D0E3CA1C17780B32006DF61A /* Supporting Files */,
 			);
@@ -189,6 +223,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				D0A964E9178525110002C21B /* PBXTargetDependency */,
 			);
 			name = ApplicationUnity;
 			productName = ApplicationUnity;
@@ -214,12 +249,28 @@
 			mainGroup = D0E3CA0D17780B32006DF61A;
 			productRefGroup = D0E3CA1717780B32006DF61A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = D0A964E3178524F10002C21B /* Products */;
+					ProjectRef = D0A964E2178524F10002C21B /* NSLog.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D0E3CA1517780B32006DF61A /* ApplicationUnity */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		D0A964E7178524F10002C21B /* libNSLog.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libNSLog.a;
+			remoteRef = D0A964E6178524F10002C21B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0E3CA1217780B32006DF61A /* Sources */ = {
@@ -236,10 +287,19 @@
 				D0A4F1EA177A900D00D1A742 /* ASIAuthenticationDialog.m in Sources */,
 				D0A4F1E9177A900900D1A742 /* ASIDataCompressor.m in Sources */,
 				D0E3CA2117780B32006DF61A /* ApplicationUnity.m in Sources */,
+				D0A964CC17851E730002C21B /* CheckVersion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0A964E9178525110002C21B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = NSLog;
+			targetProxy = D0A964E8178525110002C21B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D0E3CA2217780B32006DF61A /* Debug */ = {

@@ -28,19 +28,21 @@
 #import "MainViewController.h"
 
 #include <QuartzCore/QuartzCore.h>
-
 #import <NSLog/NSLog.h>
 #import <Cordova/CDVSplashScreen.h>
+#import <ApplicationUnity/CheckVersion.h>
 
 #import "WPLoadView.h"
 #import "WPHelpView.h"
 #import "AppDelegate.h"
 #import "NSBundle+Image.h"
+#import "Setting.h"
 
 
 @interface MainViewController () <WPHelpViewDelegate>
 
 @property (strong, nonatomic) WPHelpView *helpView;
+@property (strong, nonatomic) CheckVersion* checkVersion;
 
 @end
 
@@ -98,6 +100,10 @@
     [super viewDidLoad];
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+    _checkVersion = [[CheckVersion alloc]init];
+    
+    [_checkVersion checkVerSion:Apple_ID];
     
     [self _showHelpView];
     
