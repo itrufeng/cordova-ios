@@ -11,8 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <ApplicationUnity/ASIHTTPRequest.h>
 
-#define CustomActivity_IndicatorViewFrame  CGRectMake(110, 120, 100, 100)
-#define CustomActivity_ActivityIndicatorFrame CGRectMake(31, 32, 37, 37)
+#define CustomActivity_IndicatorViewFrame  CGRectMake(120, 130, 90, 75)
+#define CustomActivity_ActivityIndicatorFrame CGRectMake(21, 10, 37, 37)
 
 #define KCDVUpdateVersion_TrackViewUrl      @"trackViewUrl"
 #define KCDVUpdateVersion_Result            @"results"
@@ -48,15 +48,30 @@ UIAlertViewDelegate>
 -(void)pluginInitialize
 {
     //自定制缓冲等待
+    //自定制缓冲等待
     self.viewActivityIndicatorView  = [[UIView alloc]initWithFrame:CustomActivity_IndicatorViewFrame];
     [self.viewActivityIndicatorView setBackgroundColor:[UIColor blackColor]];
     [self.viewActivityIndicatorView setAlpha:0.5];
     self.viewActivityIndicatorView.layer.cornerRadius = 10;
     [self.viewController.view addSubview:self.viewActivityIndicatorView];
-    self.largeActivity = [[UIActivityIndicatorView alloc]initWithFrame:CustomActivity_ActivityIndicatorFrame];
+    
+    //Activity
+    CGFloat largeActivity = (CustomActivity_IndicatorViewFrame.size.width - CustomActivity_ActivityIndicatorFrame.size.width)/2;
+    self.largeActivity = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(largeActivity,  CustomActivity_ActivityIndicatorFrame.origin.y,
+                                                                                  CustomActivity_ActivityIndicatorFrame.size.width, CustomActivity_ActivityIndicatorFrame.size.height)];
     self.largeActivity.activityIndicatorViewStyle= UIActivityIndicatorViewStyleWhiteLarge;
     [self.viewActivityIndicatorView addSubview:self.largeActivity];
     self.viewActivityIndicatorView.hidden = YES;
+    
+    //label
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 46, CustomActivity_IndicatorViewFrame.size.width, 30)];
+    [label setBackgroundColor:[UIColor clearColor]];
+    label.text = @"正在检查更新...";
+    label.font = [UIFont systemFontOfSize:10];
+    label.textColor = [UIColor whiteColor];
+    [self.viewActivityIndicatorView addSubview:label];
+    label.hidden = NO;
+    label.textAlignment = UITextAlignmentCenter;
     
 }
 -(void)checkVersion:(CDVInvokedUrlCommand*)command
