@@ -11,6 +11,8 @@
 
 /* appid */
 #define APP_ID @"__APP_ID__"
+#define WeixinSuccess @"weixinSuccess"
+
 
 /* 域名 */
 #ifdef DEBUG

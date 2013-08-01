@@ -49,7 +49,7 @@
 
 #define NewVersionForCurrentRun @"isnewversionforcurrentrun"
 
-@interface AppDelegate () <CLLocationManagerDelegate>
+@interface AppDelegate () <CLLocationManagerDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) ASIFormDataRequest *request;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -359,6 +359,10 @@
     {
         return  [UMSocialSnsService handleOpenURL:url wxApiDelegate:nil];
     }
+    if ([urlStr hasPrefix:@"wx"] )
+    {
+        return  [WXApi handleOpenURL:url delegate:self];
+    }
     else
     {
         return NO;
@@ -522,5 +526,15 @@
     self.getLocationNums++;
 }
 
+
+//WXApiDelegate
+
+-(void) onResp:(BaseResp*)resp
+{
+    if (resp.errCode == 0) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:WeixinSuccess object:nil];
+    }
+       
+}
 
 @end

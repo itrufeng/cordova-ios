@@ -254,7 +254,7 @@ UIAlertViewDelegate>
             if ([arrayApp count]== 0)
             {
                 [self _showAlertViewWithTitle:@"版本更新"
-                                  withMessage:@"连接商店信息错误"
+                                  withMessage:@"没有新版本"
                          withCancelButtonInfo:@"忽略"];
                 
                 NSWarn(@"itune 没有返回任何信息，可能id错误");

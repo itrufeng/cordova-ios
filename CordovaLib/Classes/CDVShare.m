@@ -17,13 +17,14 @@
 #import "UMSocialSnsPlatformManager.h"
 #import "WXApi.h"
 #import <ApplicationUnity/ASIHTTPRequest.h>
+#import "Setting.h"
 
 #define kCDVshare_PicDir  @"/tmp/pic/"
 #define UMShareToWechatSession @"wxsession"
 #define UMShareToWechatTimeline @"wxtimeline"
 #define UMShareToWeixin @"weixinzidingyi"
 
-@interface CDVShare () <UIActionSheetDelegate>
+@interface CDVShare () <UIActionSheetDelegate,UMSocialUIDelegate>
 
 @property (strong, nonatomic) UMSocialControllerService *socialControllerService;
 @property (strong, nonatomic) NSArray *arrayPlatForm;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) NSMutableArray *arrayPlayName;
 @property (strong, nonatomic) UIActionSheet * editActionSheet;
 @property (strong, nonatomic) NSMutableData *responseData;
+@property (strong, nonatomic) CDVInvokedUrlCommand *commmand;
 
 
 @end
@@ -40,6 +42,11 @@
 
 -(void)pluginInitialize
 {
+    
+      _socialControllerService = [UMSocialControllerService defaultControllerService];
+    _socialControllerService.socialUIDelegate = self;
+    
+    
     self.arrayPlatForm = [NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,UMShareToQzone,UMShareToEmail,UMShareToSms, nil];
     self.arrayPlayName = [NSMutableArray arrayWithObjects:@"微信好友",@"微信朋友圈", nil];
     
@@ -80,6 +87,8 @@
             return;
         }
     }
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(weixinSuccess:) name:WeixinSuccess object:nil];
 }
 
 
@@ -155,6 +164,8 @@
 
 - (void) share:(CDVInvokedUrlCommand*)command
 {
+    
+    _commmand = command;
     NSInfo(@"准备分享开始");
     
     CDVPluginResult *pluginResult = nil;
@@ -201,14 +212,12 @@
     
     [_editActionSheet showInView:self.viewController.view];
     
-    
-    
-    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
-                                     messageAsString:@"可以开始分享"];
-    
-    [self.commandDelegate sendPluginResult:pluginResult
-                                callbackId:command.callbackId];
-    
+//    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+//                                     messageAsString:@"可以开始分享"];
+//    
+//    [self.commandDelegate sendPluginResult:pluginResult
+//                                callbackId:command.callbackId];
+//    
     NSInfo(@"准备分享结束");
 }
 
@@ -376,6 +385,37 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
     UIGraphicsEndImageContext();
     // Return the new image.
     return newImage;
+}
+
+/**************************************************************************************/
+
+#pragma mark -
+#pragma mark 友盟实现回调方法
+#pragma mark -
+
+/**************************************************************************************/
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        [self shareSucess];
+    }
+}
+
+
+-(void)weixinSuccess:(NSNotification*)noti
+{
+    [self shareSucess];
+
+}
+
+-(void)shareSucess
+{
+    CDVPluginResult *pluginResult  = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
+                                                       messageAsString:@"分享成功"];
+    [self.commandDelegate sendPluginResult:pluginResult
+                                callbackId:_commmand.callbackId];
 }
 
 
