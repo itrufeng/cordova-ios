@@ -215,6 +215,20 @@
             
             
             }
+            
+            function scandit()
+            {
+                cordova.exec(function(success)
+                             {
+                             alert("赵静")
+                             },
+                         function(cancel),
+                         "ScanditSDK",
+                         "scan",
+                         ["PHejSAMAEeONPKoX/hGk/yMeCpL1sCDuqIfUlVuLabo",{}]);
+            
+            }
+            
              
             document.addEventListener('deviceready', function() {
                                       app.initialize();
@@ -238,5 +252,6 @@
         <input type="button"value="分享"style="width:100px;height:22px;"onclick="share();" />
         <input type="button"value="短消息"style="width:100px;height:22px;"onclick="showMessage();" />
         <input type="button"value="获取应用信息"style="width:100px;height:22px;"onclick="showGetApplicationInfo();" />
+        <input type="button"value="扫描二维码"style="width:100px;height:22px;"onclick="scandit();" />
     </body>
 </html>

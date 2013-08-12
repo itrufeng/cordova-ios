@@ -1,0 +1,106 @@
+<h1>What's New in Scandit SDK 3.0.* for iOS</h1>
+
+<p>The new Scandit SDK 3.0.* features a number of improvements to the overall scanning 
+performance:</p>
+
+<ul>
+<li><p>full screen scanning: In Scandit SDK 2.*, the user had to place the barcode in the
+ center of the camera image. In this new release, barcodes are detected and decoded in
+ the entire camera image.</p></li>
+<li><p>improved autofocus management: We improved the camera control which means that the
+ camera properties (such as focus) are maintained over successive barcode scans. This new
+ feature makes a big difference if you are planning on scanning multiple barcodes in 
+ sequence.</p></li>
+<li><p>better scan performance and robustness: We further improved our blurry barcode decoding 
+ algorithms so that even the very blurry images of an iPhone 5 (before the autofocus is 
+ activated) are now decoded. </p></li>
+<li><p>new cleaner scan screen interface with the option to add a button to switch cameras 
+ (from the front to the back camera) </p></li>
+<li><p>new symbologies: beta support for PDF417 and MSI Plessey. </p></li>
+</ul>
+
+<h2>Compatibility Concerns</h2>
+
+<ul>
+<li><p>IMPORTANT: Scandit SDK 3.0.* requires a new iOS framework: libc++. To add the library, select your 
+target in Xcode, choose build phases and add the library under the "Link Binary With Libraries" entry.</p></li>
+<li><p>In 3.0, we only support iOS devices with iOS 5.0 and higher. If you need need iOS 4.3 support, 
+using Scandit SDK 2.* for iOS. </p></li>
+<li><p>In 3.0, we no longer support the iPhone 3G. If you need iPhone 3G support, we recommend 
+using Scandit SDK 2.* for iOS. </p></li>
+<li><p>Access to the methods that are available for scan screen customization has been 
+restricted for users of our free Community edition. They remain available for our 
+enterprise customers. Moving forward we want apps using our free community 
+edition to have a common scan screen user interface that promotes our Scandit brand. </p></li>
+<li><p>The Scandit SDK starts by default in full screen scanning mode. If you want to only scan barcodes 
+in a restricted area of the camera image, you should call the "restrictActiveScanningArea" method of 
+the ScanditSDKBarcodePicker.</p></li>
+</ul>
+
+<h2>Bug fixes in 3.0.4 (August 2nd, 2013) </h2>
+
+<ul>
+<li><p>Fixed issue where rapid allocation and deallocation of ScanditSDKBarcodePicker could lead to app crash for 
+some view controller configurations. </p></li>
+<li><p>Fixed issue in new full image barcode detection algorithm that could lead to rare app crashes when camera image 
+featured particular repetitive texture. </p></li>
+<li><p>Enabled camera switch for tablets in Scandit SDK demo app.</p></li>
+</ul>
+
+<h2>Bug fixes in 3.0.3 (July 17th, 2013 - available as enterprise trial only)</h2>
+
+<ul>
+<li><p>Fixed issue where camera image was slightly distorted on iPad devices. </p></li>
+<li><p>Fixed issue where previously set1DEnabled would not enable MSIPlessey Decoder and set2DEnabled would 
+not enable PDF417 decoder. </p></li>
+<li><p>Software update to decode blurry barcodes that upside down in the camera image.</p></li>
+<li><p>Fixed issue where barcode highlighting in camera image was slightly off on some iOS devices. </p></li>
+<li><p>Fixed issue where orientation changes would freeze camera when the scanning area was restricted via the 
+"restrictActiveScanningArea" method.</p></li>
+<li><p>Software update to switch off the "StandBy" state introduced in 3.0.0. The Scandit SDK enters this 
+StandBy state by default after a successful scan because it makes subsequent scanner starts 
+significantly faster. This "StandBy" State requires additional resources (power, memory) though and 
+can be disabled by calling disableStandbyState on the picker. </p></li>
+</ul>
+
+<h2>Bug fixes in 3.0.2: </h2>
+
+<ul>
+<li><p>Fixed a bug in the memory management of the ScanditSDKBarcodePicker where the release of the 
+picker object could interfere with the instantiation of a new picker object. This could have been 
+the cause of problems with ARC in 3.0.0 and 3.0.1.  </p></li>
+<li><p>Fixed a bug where the reset of the viewfinder and the viewfinder animation was not 
+working correctly. </p></li>
+<li><p>Fixed a bug in implementation of ScanditSDKNextFrameDelegate protocol that was not working 
+since the 3.0.0 update. </p></li>
+</ul>
+
+<h2>Bug fixes in 3.0.1:</h2>
+
+<ul>
+<li><p>Updated ScanditSDKRotatingBarcodePicker to also access iphone settings if ipad ones arent available when 
+retrieving supportedInterfaceOrientations.</p></li>
+<li><p>Removed duplicate header entry that caused warning message in Xcode.</p></li>
+<li><p>Fixed bug where white viewfinder rectangle in the scan UI was jumping between different barcode locations 
+when barcode is in vertical orientation. </p></li>
+<li><p>Fixed bug where white viewfinder rectangle changed size when presented as navigation controller and the user 
+changed orientation from portrait to landscape and back to portrait. </p></li>
+<li><p>Fixed a bug which did not allow the picker to be locked into a non-portrait orientation.</p></li>
+<li><p>Added a method to maintain the torch state in between successful scans. The current default implementation
+of stopScanning switches the torch off. The new method is called stopScanningAndKeepTorchState. </p></li>
+<li><p>Fixed a small bug in the torch implementation. Previously, the user had to tap the icon twice after a previous "stop torch" command. </p></li>
+<li><p>Fixed a viewfinder resizing issue when an iPhone is turned from portrait to landscape back to portrait. </p></li>
+<li><p>Fixed a bug where the cancel button would not respond on iPads in landscape mode when the ScanditSDKBarcodePicker was presented modally.</p></li>
+</ul>
+
+<h2>Known Issues (will be fixed in one of the next releases):</h2>
+
+<ul>
+<li><p>Barcodes that are placed at an angle of 45 degrees in the image are currently not detected reliably. </p></li>
+<li><p>Highlighted code in the scan UI is slightly off the true position in landscape mode.</p></li>
+<li><p>Scanning of vertical barcodes is not working as reliable as horizontal barcodes. </p></li>
+<li><p>Barcode scanning performance with the iPad4 front facing camera is significantly worse 
+than on the iPad3 front facing camera. </p></li>
+<li><p>The PDF417 Scanner is still beta - the current version works well with PDF417 that have 
+large modules - it struggles as the pdf417 features get smaller. </p></li>
+</ul>

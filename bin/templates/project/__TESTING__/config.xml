@@ -67,6 +67,8 @@
         <plugin name="GetApplicationInfo" value ="CDVGetApplicationInfo"/>
         
     </plugins>
-
+    <feature name="ScanditSDK" >
+        <param name="ios-package" value="ScanditSDK" />
+    </feature>
     <access origin="*" />
 </widget>

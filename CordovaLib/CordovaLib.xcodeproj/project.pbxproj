@@ -81,6 +81,20 @@
 		9D76CF3D1625A4C50008A0F6 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D76CF3B1625A4C50008A0F6 /* CDVGlobalization.m */; };
 		C937A4561337599E002C4C79 /* CDVFileTransfer.h in Headers */ = {isa = PBXBuildFile; fileRef = C937A4541337599E002C4C79 /* CDVFileTransfer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C937A4571337599E002C4C79 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = C937A4551337599E002C4C79 /* CDVFileTransfer.m */; };
+		D004B22E17B8A38B0003DAA8 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D004B21917B8A38B0003DAA8 /* empty.cpp */; };
+		D004B22F17B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */; };
+		D004B23017B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */; };
+		D004B23117B8A38B0003DAA8 /* ScanditSDKOverlayController.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */; };
+		D004B23217B8A38B0003DAA8 /* ScanditSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */; };
+		D004B23317B8A38B0003DAA8 /* ScanditSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */; };
+		D004B23417B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */; };
+		D004B23517B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */; };
+		D004B23717B8A40B0003DAA8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23617B8A40B0003DAA8 /* CoreVideo.framework */; };
+		D004B23917B8A4360003DAA8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23817B8A4360003DAA8 /* QuartzCore.framework */; };
+		D004B23A17B8A4410003DAA8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686357D414100AF200DF4CF2 /* SystemConfiguration.framework */; };
+		D004B23C17B8A4520003DAA8 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23B17B8A4520003DAA8 /* libiconv.dylib */; };
+		D004B23E17B8A45C0003DAA8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23D17B8A45C0003DAA8 /* libz.dylib */; };
+		D004B24017B8A4660003DAA8 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23F17B8A4660003DAA8 /* libc++.dylib */; };
 		D024E7C517547E2B0072F7B8 /* libApplicationInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D024E7B41754652D0072F7B8 /* libApplicationInfo.a */; };
 		D0396E201721247A007A5C00 /* CDVGetUUID.h in Headers */ = {isa = PBXBuildFile; fileRef = D099215B171FBA93009A41D4 /* CDVGetUUID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0396E211721247E007A5C00 /* CDVGetUUID.m in Sources */ = {isa = PBXBuildFile; fileRef = D099215C171FBA93009A41D4 /* CDVGetUUID.m */; };
@@ -266,6 +280,39 @@
 		AA747D9E0F9514B9006C5449 /* CordovaLib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CordovaLib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		C937A4541337599E002C4C79 /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = Classes/CDVFileTransfer.h; sourceTree = "<group>"; };
 		C937A4551337599E002C4C79 /* CDVFileTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFileTransfer.m; path = Classes/CDVFileTransfer.m; sourceTree = "<group>"; };
+		D004B21117B8A38B0003DAA8 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		D004B21217B8A38B0003DAA8 /* camera-swap-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed.png"; sourceTree = "<group>"; };
+		D004B21317B8A38B0003DAA8 /* camera-swap-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed@2x.png"; sourceTree = "<group>"; };
+		D004B21417B8A38B0003DAA8 /* camera-swap-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon.png"; sourceTree = "<group>"; };
+		D004B21517B8A38B0003DAA8 /* camera-swap-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon@2x.png"; sourceTree = "<group>"; };
+		D004B21617B8A38B0003DAA8 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
+		D004B21817B8A38B0003DAA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/scanditsdk.strings; sourceTree = "<group>"; };
+		D004B21917B8A38B0003DAA8 /* empty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
+		D004B21A17B8A38B0003DAA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/scanditsdk.strings; sourceTree = "<group>"; };
+		D004B21B17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed.png"; sourceTree = "<group>"; };
+		D004B21C17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed@2x.png"; sourceTree = "<group>"; };
+		D004B21D17B8A38B0003DAA8 /* flashlight-turn-off-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon.png"; sourceTree = "<group>"; };
+		D004B21E17B8A38B0003DAA8 /* flashlight-turn-off-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon@2x.png"; sourceTree = "<group>"; };
+		D004B21F17B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed.png"; sourceTree = "<group>"; };
+		D004B22017B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed@2x.png"; sourceTree = "<group>"; };
+		D004B22117B8A38B0003DAA8 /* flashlight-turn-on-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon.png"; sourceTree = "<group>"; };
+		D004B22217B8A38B0003DAA8 /* flashlight-turn-on-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon@2x.png"; sourceTree = "<group>"; };
+		D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libscanditsdk-iphone-3.0.4.a"; sourceTree = "<group>"; };
+		D004B22417B8A38B0003DAA8 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
+		D004B22517B8A38B0003DAA8 /* poweredby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredby.png; sourceTree = "<group>"; };
+		D004B22617B8A38B0003DAA8 /* poweredby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredby@2x.png"; sourceTree = "<group>"; };
+		D004B22717B8A38B0003DAA8 /* RELEASE_NOTES.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RELEASE_NOTES.html; sourceTree = "<group>"; };
+		D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKBarcodePicker.h; sourceTree = "<group>"; };
+		D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKOverlayController.h; sourceTree = "<group>"; };
+		D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDK.h; sourceTree = "<group>"; };
+		D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScanditSDK.mm; sourceTree = "<group>"; };
+		D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKRotatingBarcodePicker.h; sourceTree = "<group>"; };
+		D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanditSDKRotatingBarcodePicker.m; sourceTree = "<group>"; };
+		D004B23617B8A40B0003DAA8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D004B23817B8A4360003DAA8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D004B23B17B8A4520003DAA8 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		D004B23D17B8A45C0003DAA8 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D004B23F17B8A4660003DAA8 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		D024E7AF1754652C0072F7B8 /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ../../bin/templates/project/__TESTING__/Libs/ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
 		D0396E221721299A007A5C00 /* CDVFullScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFullScreen.h; path = Classes/CDVFullScreen.h; sourceTree = "<group>"; };
 		D0396E231721299A007A5C00 /* CDVFullScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFullScreen.m; path = Classes/CDVFullScreen.m; sourceTree = "<group>"; };
@@ -309,8 +356,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D004B24017B8A4660003DAA8 /* libc++.dylib in Frameworks */,
+				D004B23E17B8A45C0003DAA8 /* libz.dylib in Frameworks */,
+				D004B23C17B8A4520003DAA8 /* libiconv.dylib in Frameworks */,
+				D004B23A17B8A4410003DAA8 /* SystemConfiguration.framework in Frameworks */,
+				D004B23917B8A4360003DAA8 /* QuartzCore.framework in Frameworks */,
+				D004B23717B8A40B0003DAA8 /* CoreVideo.framework in Frameworks */,
 				D024E7C517547E2B0072F7B8 /* libApplicationInfo.a in Frameworks */,
 				D0992171171FC67C009A41D4 /* libOpenUDID.a in Frameworks */,
+				D004B22F17B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +396,11 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D004B23F17B8A4660003DAA8 /* libc++.dylib */,
+				D004B23D17B8A45C0003DAA8 /* libz.dylib */,
+				D004B23B17B8A4520003DAA8 /* libiconv.dylib */,
+				D004B23817B8A4360003DAA8 /* QuartzCore.framework */,
+				D004B23617B8A40B0003DAA8 /* CoreVideo.framework */,
 				68A32D7414103017006B237C /* AddressBook.framework */,
 				8220B5C316D5427E00EC3921 /* AssetsLibrary.framework */,
 				686357DC14100B1600DF4CF2 /* CoreMedia.framework */,
@@ -501,6 +560,56 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		D004B20E17B8A38B0003DAA8 /* scandit */ = {
+			isa = PBXGroup;
+			children = (
+				D004B20F17B8A38B0003DAA8 /* scanditsdk-community-ios_3.0.4 */,
+				D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */,
+				D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */,
+				D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */,
+				D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */,
+			);
+			path = scandit;
+			sourceTree = "<group>";
+		};
+		D004B20F17B8A38B0003DAA8 /* scanditsdk-community-ios_3.0.4 */ = {
+			isa = PBXGroup;
+			children = (
+				D004B21017B8A38B0003DAA8 /* ScanditSDK */,
+			);
+			path = "scanditsdk-community-ios_3.0.4";
+			sourceTree = "<group>";
+		};
+		D004B21017B8A38B0003DAA8 /* ScanditSDK */ = {
+			isa = PBXGroup;
+			children = (
+				D004B21117B8A38B0003DAA8 /* beep.wav */,
+				D004B21217B8A38B0003DAA8 /* camera-swap-icon-pressed.png */,
+				D004B21317B8A38B0003DAA8 /* camera-swap-icon-pressed@2x.png */,
+				D004B21417B8A38B0003DAA8 /* camera-swap-icon.png */,
+				D004B21517B8A38B0003DAA8 /* camera-swap-icon@2x.png */,
+				D004B21617B8A38B0003DAA8 /* CHANGELOG.txt */,
+				D004B21717B8A38B0003DAA8 /* scanditsdk.strings */,
+				D004B21917B8A38B0003DAA8 /* empty.cpp */,
+				D004B21B17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed.png */,
+				D004B21C17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed@2x.png */,
+				D004B21D17B8A38B0003DAA8 /* flashlight-turn-off-icon.png */,
+				D004B21E17B8A38B0003DAA8 /* flashlight-turn-off-icon@2x.png */,
+				D004B21F17B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed.png */,
+				D004B22017B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed@2x.png */,
+				D004B22117B8A38B0003DAA8 /* flashlight-turn-on-icon.png */,
+				D004B22217B8A38B0003DAA8 /* flashlight-turn-on-icon@2x.png */,
+				D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */,
+				D004B22417B8A38B0003DAA8 /* LICENSE-2.0.txt */,
+				D004B22517B8A38B0003DAA8 /* poweredby.png */,
+				D004B22617B8A38B0003DAA8 /* poweredby@2x.png */,
+				D004B22717B8A38B0003DAA8 /* RELEASE_NOTES.html */,
+				D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */,
+				D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */,
+			);
+			path = ScanditSDK;
+			sourceTree = "<group>";
+		};
 		D024E7B01754652C0072F7B8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,6 +656,7 @@
 		D0E1DEF6173260B800DB1049 /* libs2 */ = {
 			isa = PBXGroup;
 			children = (
+				D004B20E17B8A38B0003DAA8 /* scandit */,
 				D0E1DEF7173260B800DB1049 /* KGStatusBar */,
 			);
 			path = libs2;
@@ -624,6 +734,10 @@
 				D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */,
 				0F9FC4D01746278E00EB52E7 /* CDVRedirect.h in Headers */,
 				D0D5D54C1754866800F099C5 /* CDVGetApplicationInfo.h in Headers */,
+				D004B23017B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h in Headers */,
+				D004B23117B8A38B0003DAA8 /* ScanditSDKOverlayController.h in Headers */,
+				D004B23217B8A38B0003DAA8 /* ScanditSDK.h in Headers */,
+				D004B23417B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +783,7 @@
 				French,
 				German,
 				en,
+				de,
 			);
 			mainGroup = 0867D691FE84028FC02AAC07 /* CordovaLib */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
@@ -784,6 +899,9 @@
 				D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */,
 				0F9FC4D11746278E00EB52E7 /* CDVRedirect.m in Sources */,
 				D0D5D54D1754866800F099C5 /* CDVGetApplicationInfo.m in Sources */,
+				D004B22E17B8A38B0003DAA8 /* empty.cpp in Sources */,
+				D004B23317B8A38B0003DAA8 /* ScanditSDK.mm in Sources */,
+				D004B23517B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +930,18 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		D004B21717B8A38B0003DAA8 /* scanditsdk.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D004B21817B8A38B0003DAA8 /* de */,
+				D004B21A17B8A38B0003DAA8 /* en */,
+			);
+			name = scanditsdk.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -839,6 +969,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\"",
 					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\"",
+					"\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\"",
 				);
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
@@ -870,6 +1001,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\"",
 					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\"",
+					"\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\"",
 				);
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
