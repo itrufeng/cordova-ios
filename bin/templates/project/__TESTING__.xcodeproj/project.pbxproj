@@ -51,6 +51,9 @@
 		D024E7B7175465D20072F7B8 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D024E7B6175465D20072F7B8 /* CoreTelephony.framework */; };
 		D03AB65B17055D6700481530 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D03AB65A17055D6600481530 /* EventKit.framework */; };
 		D03AB65C170561E000481530 /* libNSLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FF88B8D17055714002B6A43 /* libNSLog.a */; };
+		D04E125617B8B751008F3AC3 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D04E125517B8B751008F3AC3 /* CoreVideo.framework */; };
+		D04E125B17B8B76D008F3AC3 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04E125A17B8B76D008F3AC3 /* libiconv.dylib */; };
+		D04E125D17B8B785008F3AC3 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D04E125C17B8B785008F3AC3 /* libc++.dylib */; };
 		D08B438E17128CCC00DD791B /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D08B438D17128CCC00DD791B /* StoreKit.framework */; };
 		D0A4F1D5177A8ED500D1A742 /* libApplicationUnity.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A4F1C6177A8E6300D1A742 /* libApplicationUnity.a */; };
 		D0B7CF5B1762D1E400D0DF3A /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF571762D1E400D0DF3A /* icon-72.png */; };
@@ -184,6 +187,9 @@
 		D03AB65A17055D6600481530 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
 		D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
+		D04E125517B8B751008F3AC3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		D04E125A17B8B76D008F3AC3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		D04E125C17B8B785008F3AC3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		D08B438D17128CCC00DD791B /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationUnity.xcodeproj; path = ApplicationUnity/ApplicationUnity.xcodeproj; sourceTree = "<group>"; };
 		D0B7CF571762D1E400D0DF3A /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
@@ -224,8 +230,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A4F1D5177A8ED500D1A742 /* libApplicationUnity.a in Frameworks */,
+				D04E125D17B8B785008F3AC3 /* libc++.dylib in Frameworks */,
 				0FF88B87170556A1002B6A43 /* libz.dylib in Frameworks */,
+				D04E125B17B8B76D008F3AC3 /* libiconv.dylib in Frameworks */,
+				D04E125617B8B751008F3AC3 /* CoreVideo.framework in Frameworks */,
+				D0A4F1D5177A8ED500D1A742 /* libApplicationUnity.a in Frameworks */,
 				301BF5BF109A6A2B0062928A /* CoreLocation.framework in Frameworks */,
 				D024E7B7175465D20072F7B8 /* CoreTelephony.framework in Frameworks */,
 				D08B438E17128CCC00DD791B /* StoreKit.framework in Frameworks */,
@@ -448,6 +457,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D04E125C17B8B785008F3AC3 /* libc++.dylib */,
+				D04E125A17B8B76D008F3AC3 /* libiconv.dylib */,
+				D04E125517B8B751008F3AC3 /* CoreVideo.framework */,
 				D024E7B6175465D20072F7B8 /* CoreTelephony.framework */,
 				0FF88B86170556A1002B6A43 /* libz.dylib */,
 				D08B438D17128CCC00DD791B /* StoreKit.framework */,

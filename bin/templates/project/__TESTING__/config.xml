@@ -65,8 +65,7 @@
         <plugin name="Messages" value="CDVMessages"/>
         <plugin name="Redirect" value="CDVRedirect"/>
         <plugin name="GetApplicationInfo" value ="CDVGetApplicationInfo"/>
-        
-    </plugins>
-
+        <plugin name="ScanditSDK" value ="ScanditSDK"/>
+        </plugins>
     <access origin="*" />
 </widget>

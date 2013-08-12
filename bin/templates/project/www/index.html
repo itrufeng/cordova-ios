@@ -215,6 +215,24 @@
             
             
             }
+            
+            function scandit()
+            {
+                           cordova.exec(function(success)
+                             {
+                             alert("success")
+                             },
+                             function(cancel){
+                             },
+                             "ScanditSDK",
+                             "scan",
+                             ["PHejSAMAEeONPKoX/hGk/yMeCpL1sCDuqIfUlVuLabo",
+                              {"beep": true,
+                              "1DScanning" : true,
+                              "2DScanning" : true}]);
+                
+            }
+            
              
             document.addEventListener('deviceready', function() {
                                       app.initialize();
@@ -225,6 +243,7 @@
         
         <input type="button"value="GetUUID"style="width:320px;height:44px;"onclick="GetUUID();" />
         <input type="button"value="全屏"style="width:100px;height:22px;"onclick="fullScreen();" />
+         <input type="button"value="扫描二维码"style="width:100px;height:22px;"onclick="scandit();" />
         <input type="button"value="非全屏"style="width:100px;height:22px;"onclick="NofullScreen();" />
         <input type="button"value="是否全屏"style="width:100px;height:22px;"onclick="whetherIsFullScreen();" />
         <input type="button"value="加入提醒"style="width:100px;height:22px;"onclick="addAlarmClock();" />
@@ -238,5 +257,6 @@
         <input type="button"value="分享"style="width:100px;height:22px;"onclick="share();" />
         <input type="button"value="短消息"style="width:100px;height:22px;"onclick="showMessage();" />
         <input type="button"value="获取应用信息"style="width:100px;height:22px;"onclick="showGetApplicationInfo();" />
+      
     </body>
 </html>
