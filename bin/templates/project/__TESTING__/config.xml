@@ -65,10 +65,7 @@
         <plugin name="Messages" value="CDVMessages"/>
         <plugin name="Redirect" value="CDVRedirect"/>
         <plugin name="GetApplicationInfo" value ="CDVGetApplicationInfo"/>
-        
-    </plugins>
-    <feature name="ScanditSDK" >
-        <param name="ios-package" value="ScanditSDK" />
-    </feature>
+        <plugin name="ScanditSDK" value ="ScanditSDK"/>
+        </plugins>
     <access origin="*" />
 </widget>
