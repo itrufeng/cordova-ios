@@ -383,7 +383,7 @@
     [self.viewController dismissModalViewControllerAnimated:YES];
 	self.scanditSDKBarcodePicker = nil;
 	
-    NSArray *result = [[NSArray alloc] initWithObjects:barcode, symbology, nil];
+    NSArray *result = [[NSArray alloc] initWithObjects:barcode, nil];
     
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 													   messageAsArray:result];
