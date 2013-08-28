@@ -140,6 +140,7 @@ typedef void (^ReminderBolck)(EKReminder *reminder);
 		 }];
 	}
 	NSInfo(@"增加提醒成功");
+
 }
 
 /*
@@ -644,6 +645,8 @@ NSCalendarUnit->int
 	reminder.calendar           = [eventStore defaultCalendarForNewReminders];
 	
 	reminder.dueDateComponents = [self _withInputeDate:reminderDate];
+    
+    [reminder addAlarm:[EKAlarm alarmWithAbsoluteDate:reminderDate]];
 	
 	reminder.timeZone          = reminderTimeZone;
 	
