@@ -76,9 +76,9 @@ typedef void (^ReminderBolck)(EKReminder *reminder);
 		{
 			NSWarn(@"增加提醒已经有这个id了uuid = %@",uuid);
             
-            [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                             WithResultString:@"已经有这个id了"
-                                   callbackId:command.callbackId];
+//            [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
+//                             WithResultString:@"已经有这个id了"
+//                                   callbackId:command.callbackId];
             return;
  		}
         
@@ -121,9 +121,9 @@ typedef void (^ReminderBolck)(EKReminder *reminder);
                   {
                       NSWarn(@"增加提醒已经有这个id了uuid = %@",uuid);
                       
-                      [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                                       WithResultString:@"已经有这个id了"
-                                             callbackId:command.callbackId];
+//                      [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
+//                                       WithResultString:@"已经有这个id了"
+//                                             callbackId:command.callbackId];
                       return ;
                   }
                   
