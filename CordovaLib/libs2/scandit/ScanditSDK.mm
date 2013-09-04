@@ -377,13 +377,13 @@
         [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     }
 	
-	NSString *symbology = [barcodeResult objectForKey:@"symbology"];
+//	NSString *symbology = [barcodeResult objectForKey:@"symbology"];
 	NSString *barcode = [barcodeResult objectForKey:@"barcode"];
     
     [self.viewController dismissModalViewControllerAnimated:YES];
 	self.scanditSDKBarcodePicker = nil;
 	
-    NSArray *result = [[NSArray alloc] initWithObjects:barcode, symbology, nil];
+    NSArray *result = [[NSArray alloc] initWithObjects:barcode, nil];
     
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
 													   messageAsArray:result];
