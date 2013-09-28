@@ -974,7 +974,7 @@
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
 			};
 			name = Debug;
 		};
@@ -1006,7 +1006,7 @@
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/frameworks/Wechat/ ../bin/templates/project/__TESTING__/Classes/Model\"";
 			};
 			name = Release;
 		};
@@ -1039,7 +1039,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/";
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/frameworks/Wechat/";
 				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Debug;
@@ -1070,7 +1070,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/";
+				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_3.0/frameworks/Wechat/";
 				VALID_ARCHS = "i386 armv7 armv7s";
 			};
 			name = Release;

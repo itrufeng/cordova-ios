@@ -146,6 +146,8 @@
     self.viewController = [[[MainViewController alloc] init] autorelease];
 #endif
     
+    //打开新浪微博的SSO开关
+    [UMSocialConfig setSupportSinaSSO:YES];
     
     // Set your app's start page by setting the <content src='foo.html' /> tag in config.xml.
     // If necessary, uncomment the line below to override it.
