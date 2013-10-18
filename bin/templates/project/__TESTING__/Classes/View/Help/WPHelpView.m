@@ -98,11 +98,21 @@
         return [obj1 compare:obj2];
     }];
     
-    if (!helpImageNamesSortedByName ||
-        [helpImageNamesSortedByName count] == 0)
+    NSMutableArray *images = [NSMutableArray arrayWithCapacity:10];
+    
+    for (NSString *image in helpImageNamesSortedByName)
+    {
+        if ([image rangeOfString:@"-568h"].location == NSNotFound)
+        {
+            [images addObject:image];
+        }
+    }
+    
+    if (!images ||
+        [images count] == 0)
         return nil;
     
-    return helpImageNamesSortedByName;
+    return images;
 }
 
 - (void) _skip
