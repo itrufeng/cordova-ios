@@ -47,6 +47,11 @@
 // log
 #import <NSLog/NSLog.h>
 
+#import "BPush.h"
+
+
+#define WPNetkeyUserId                  @"udid"
+
 #define NewVersionForCurrentRun @"isnewversionforcurrentrun"
 
 @interface AppDelegate () <CLLocationManagerDelegate,WXApiDelegate>
@@ -99,6 +104,10 @@
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     NSInfo(@"目前使用的服务器是%@", API_DOMAIN);
+    
+    [BPush setupChannel:launchOptions];
+    
+    [BPush setDelegate:self];
     
 #if ! TARGET_IPHONE_SIMULATOR
 	
@@ -219,7 +228,11 @@
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-	
+    //bpush
+	[BPush registerDeviceToken:deviceToken];
+    
+    [BPush bindChannel];
+    
 	NSString *stringToken   =   [[[[NSString stringWithFormat:@"%@", deviceToken] stringByReplacingOccurrencesOfString:@"<"
 																											withString:@""] stringByReplacingOccurrencesOfString:@">" withString:@""] stringByReplacingOccurrencesOfString:@" " withString:@""];
     
@@ -536,5 +549,39 @@
     }
        
 }
+
+
+/**************************************************************************************/
+
+#pragma mark -
+#pragma mark BPushDelegate ios6以上版本
+#pragma mark -
+
+/**************************************************************************************/
+
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data
+{
+    NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+    
+    if ([BPushRequestMethod_Bind isEqualToString:method])
+    {
+        NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+        
+        NSString *userid = [res valueForKey:BPushRequestUserIdKey];
+        
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        
+        [userDefault setObject:userid forKey:WPNetkeyUserId];
+        
+        NSLog(@"res = %@",res);
+    }
+    else if ([BPushRequestMethod_Unbind isEqualToString:method])
+    {
+        int returnCode = [[res valueForKey:BPushRequestErrorCodeKey]intValue];
+        
+        NSLog(@"returnCode = %d",returnCode);
+    }
+}
+
 
 @end

@@ -72,6 +72,9 @@
 		D0B7CF8E1763223500D0DF3A /* UMSShareListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF831763223400D0DF3A /* UMSShareListController.xib */; };
 		D0B7CF8F1763223500D0DF3A /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D0B7CF841763223400D0DF3A /* UMSocialSDKResources.bundle */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
+		D6063C51181EBB140044723E /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = D6063C4F181EBB140044723E /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D6063C52181EBB140044723E /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6063C50181EBB140044723E /* libBPush.a */; };
+		D6583417181EBC3B00A0DDCC /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6583416181EBC3B00A0DDCC /* BPushConfig.plist */; };
 		D6F8B873176385BA008BBA4F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 /* End PBXBuildFile section */
@@ -220,6 +223,11 @@
 		D0B7CF831763223400D0DF3A /* UMSShareListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UMSShareListController.xib; sourceTree = "<group>"; };
 		D0B7CF841763223400D0DF3A /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		D6063C4D181EBB140044723E /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		D6063C4E181EBB140044723E /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		D6063C4F181EBB140044723E /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		D6063C50181EBB140044723E /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		D6583416181EBC3B00A0DDCC /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
 		D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		D6F8B872176385BA008BBA4F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = __TESTING__/config.xml; sourceTree = "<group>"; };
@@ -252,6 +260,7 @@
 				301BF5BB109A6A2B0062928A /* AVFoundation.framework in Frameworks */,
 				301BF5BD109A6A2B0062928A /* CFNetwork.framework in Frameworks */,
 				301BF5C1109A6A2B0062928A /* MediaPlayer.framework in Frameworks */,
+				D6063C52181EBB140044723E /* libBPush.a in Frameworks */,
 				301BF5C3109A6A2B0062928A /* QuartzCore.framework in Frameworks */,
 				301BF5C5109A6A2B0062928A /* SystemConfiguration.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
@@ -299,6 +308,7 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				D6063C4C181EBB140044723E /* baiduPush */,
 				D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */,
 				D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */,
 				D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */,
@@ -440,6 +450,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D6583416181EBC3B00A0DDCC /* BPushConfig.plist */,
 				D0B7CF561762D1E400D0DF3A /* icons */,
 				0FF88BAA170569C5002B6A43 /* help */,
 				30A0434214DC770100060A13 /* de.lproj */,
@@ -627,6 +638,17 @@
 			path = SocialSDKXib;
 			sourceTree = "<group>";
 		};
+		D6063C4C181EBB140044723E /* baiduPush */ = {
+			isa = PBXGroup;
+			children = (
+				D6063C4D181EBB140044723E /* BPush.h */,
+				D6063C4E181EBB140044723E /* JSONKit.h */,
+				D6063C4F181EBB140044723E /* JSONKit.m */,
+				D6063C50181EBB140044723E /* libBPush.a */,
+			);
+			path = baiduPush;
+			sourceTree = "<group>";
+		};
 		D6F8B870176385BA008BBA4F /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +806,7 @@
 				D0B7CF8D1763223500D0DF3A /* UMSnsAccountViewController.xib in Resources */,
 				D0B7CF8E1763223500D0DF3A /* UMSShareListController.xib in Resources */,
 				D0B7CF8F1763223500D0DF3A /* UMSocialSDKResources.bundle in Resources */,
+				D6583417181EBC3B00A0DDCC /* BPushConfig.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -813,6 +836,7 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				D6063C51181EBB140044723E /* JSONKit.m in Sources */,
 				0FF88B6C1705565C002B6A43 /* FireUIPagedScrollView.m in Sources */,
 				0FF88B6D1705565C002B6A43 /* NSBundle+Image.m in Sources */,
 				0FF88B9F17056776002B6A43 /* WPHelpView.m in Sources */,
@@ -888,9 +912,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\"",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
+					"/Users/jzhao/Documents/cordova-ios/bin/templates/project/__TESTING__/Libs/baiduPush",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -912,9 +937,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\"",
-					"\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
+					"/Users/jzhao/Documents/cordova-ios/bin/templates/project/__TESTING__/Libs/baiduPush",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
