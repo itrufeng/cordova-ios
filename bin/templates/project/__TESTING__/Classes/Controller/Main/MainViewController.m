@@ -6,9 +6,9 @@
  to you under the Apache License, Version 2.0 (the
  "License"); you may not use this file except in compliance
  with the License.  You may obtain a copy of the License at
-
+ 
  http://www.apache.org/licenses/LICENSE-2.0
-
+ 
  Unless required by applicable law or agreed to in writing,
  software distributed under the License is distributed on an
  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -78,7 +78,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-
+    
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -88,7 +88,7 @@
 {
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
-
+    
     [super viewWillAppear:animated];
     
     [self _restoreHelpviewFrame2];
@@ -99,6 +99,23 @@
 {
     [super viewDidLoad];
     
+    //跳过icloud 备份
+    NSString *settings = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"settings.plist"];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:settings])
+    {
+        [self addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:settings]];
+    }
+    
+    
+    NSString *umSocialData =[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@".UMSocialData.plist"];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:umSocialData])
+    {
+        
+        [self addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:settings]];
+    }
+    
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     _checkVersion = [[CheckVersion alloc]init];
@@ -108,7 +125,7 @@
     [self _showHelpView];
     
     [self debugStart];
-
+    
     [self _setup];
     
     [UIApplication sharedApplication].statusBarHidden = NO;
@@ -134,11 +151,11 @@
 /* Comment out the block below to over-ride */
 
 /*
-- (UIWebView*) newCordovaViewWithFrame:(CGRect)bounds
-{
-    return[super newCordovaViewWithFrame:bounds];
-}
-*/
+ - (UIWebView*) newCordovaViewWithFrame:(CGRect)bounds
+ {
+ return[super newCordovaViewWithFrame:bounds];
+ }
+ */
 
 #pragma mark UIWebDelegate implementation
 
@@ -221,7 +238,7 @@ didFailLoadWithError:error];
 {
     if (nil == _helpView)
         return;
-
+    
     // - acimation
     CATransition            *transitionC        =   [CATransition animation];
     
@@ -303,12 +320,23 @@ didFailLoadWithError:error];
     [self _restoreWebviewFrame2];
 }
 
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    const char* filePath = [[URL path] fileSystemRepresentation];
+    const char* attrName = "com.apple.MobileBackup";
+    u_int8_t attrValue = 1;
+    
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    return result == 0;
+}
+
+
 @end
 
 @implementation MainCommandDelegate
 
 /* To override the methods, uncomment the line in the init function(s)
-   in MainViewController.m
+ in MainViewController.m
  */
 
 #pragma mark CDVCommandDelegate implementation
@@ -319,10 +347,10 @@ didFailLoadWithError:error];
 }
 
 /*
-   NOTE: this will only inspect execute calls coming explicitly from native plugins,
-   not the commandQueue (from JavaScript). To see execute calls from JavaScript, see
-   MainCommandQueue below
-*/
+ NOTE: this will only inspect execute calls coming explicitly from native plugins,
+ not the commandQueue (from JavaScript). To see execute calls from JavaScript, see
+ MainCommandQueue below
+ */
 - (BOOL)execute:(CDVInvokedUrlCommand*)command
 {
     return [super execute:command];
@@ -338,7 +366,7 @@ didFailLoadWithError:error];
 @implementation MainCommandQueue
 
 /* To override, uncomment the line in the init function(s)
-   in MainViewController.m
+ in MainViewController.m
  */
 - (BOOL)execute:(CDVInvokedUrlCommand*)command
 {
