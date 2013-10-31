@@ -915,7 +915,7 @@
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
-					"/Users/jzhao/Documents/cordova-ios/bin/templates/project/__TESTING__/Libs/baiduPush",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/baiduPush\\\"",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -940,7 +940,7 @@
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
 					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
-					"/Users/jzhao/Documents/cordova-ios/bin/templates/project/__TESTING__/Libs/baiduPush",
+					"\\\"$(SRCROOT)/__TESTING__/Libs/baiduPush\\\"",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
