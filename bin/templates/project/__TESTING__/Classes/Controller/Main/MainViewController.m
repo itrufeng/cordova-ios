@@ -99,6 +99,22 @@
 {
     [super viewDidLoad];
     
+    //跳过icloud 备份
+    NSString *settings = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"settings.plist"];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:settings])
+    {
+        [self addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:settings]];
+    }
+    
+    
+    NSString *umSocialData =[[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@".UMSocialData.plist"];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:umSocialData])
+    {
+        
+        [self addSkipBackupAttributeToItemAtURL:[NSURL URLWithString:settings]];
+    }
+    
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
     _checkVersion = [[CheckVersion alloc]init];
@@ -301,6 +317,16 @@ didFailLoadWithError:error];
     [self _restoreHelpviewFrame2];
     
     [self _restoreWebviewFrame2];
+}
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    const char* filePath = [[URL path] fileSystemRepresentation];
+    const char* attrName = "com.apple.MobileBackup";
+    u_int8_t attrValue = 1;
+    
+    int result = setxattr(filePath, attrName, &attrValue, sizeof(attrValue), 0, 0);
+    return result == 0;
 }
 
 @end
