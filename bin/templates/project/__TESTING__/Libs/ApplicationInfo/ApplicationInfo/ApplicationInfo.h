@@ -19,6 +19,7 @@
 #define KLatitude       @"latitude"
 #define KOperator       @"operator"
 #define KDev            @"dev"
+#define KBdUserid       @"bd_udid"
 
 @protocol DelegateApplicationInfo <NSObject>
 

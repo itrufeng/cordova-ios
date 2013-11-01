@@ -569,11 +569,50 @@
         
         NSString *userid = [res valueForKey:BPushRequestUserIdKey];
         
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        
-        [userDefault setObject:userid forKey:WPNetkeyUserId];
+//        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//        
+//        [userDefault setObject:userid forKey:WPNetkeyUserId];
         
         NSLog(@"res = %@",res);
+        NSMutableDictionary *dicSend = [NSMutableDictionary dictionaryWithCapacity:10];
+        
+        [dicSend setObject:APP_ID forKey:KCaid];
+        
+        [dicSend setObject:[OpenUDIDD value] forKey:KUdid];
+        
+        [dicSend setObject:@"iphone" forKey:KPlatform];
+        
+        [dicSend setObject:userid forKey:KBdUserid];
+              
+        NSError *error = nil;
+        
+        NSData *jsonData =  [NSJSONSerialization dataWithJSONObject:dicSend
+                                                            options:NSJSONWritingPrettyPrinted
+                                                              error:&error];
+        
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        
+        NSString *url = [NSString stringWithFormat:@"%@/cloud/1/push_ios_add",API_DOMAIN];
+        
+        __block ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:[NSURL URLWithString:url]];
+        
+        _request = request;
+        
+        [request setRequestMethod:@"POST"];
+        
+        [request setPostValue:jsonString forKey:@"request"];
+        
+        [request setCompletionBlock:^{
+            
+            NSLog(@"请求到的数据 %@", [_request responseString]);
+        }];
+        
+        [request setFailedBlock:^{
+            NSWarn(@"网络请求失败错误状态码%d", [_request responseStatusCode]);
+        }];
+        
+        [request startAsynchronous];
+
     }
     else if ([BPushRequestMethod_Unbind isEqualToString:method])
     {
