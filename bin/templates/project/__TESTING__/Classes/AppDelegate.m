@@ -31,7 +31,7 @@
 
 #import <Cordova/CDVPlugin.h>
 
-#import <OpenUDID/OpenUDID.h>
+#import <OpenUDID/OpenUDIDD.h>
 
 #import <ApplicationInfo/ApplicationInfo.h>
 #import <CoreLocation/CoreLocation.h>
@@ -244,7 +244,7 @@
     
     [dicSend setObject:APP_ID forKey:KCaid];
     
-    [dicSend setObject:[OpenUDID value] forKey:KUdid];
+    [dicSend setObject:[OpenUDIDD value] forKey:KUdid];
     
     [dicSend setObject:stringToken forKey:KToken];
     
@@ -492,7 +492,7 @@
         
         [dicSend setObject:APP_ID forKey:KCaid];
         
-        [dicSend setObject:[OpenUDID value] forKey:KUdid];
+        [dicSend setObject:[OpenUDIDD value] forKey:KUdid];
         
         [dicSend setObject:@"iphone" forKey:KPlatform];
         

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D099214F171FB6FE009A41D4 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A7BA3C171F903C006E0DA5 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D099214F171FB6FE009A41D4 /* OpenUDIDD.h in Headers */ = {isa = PBXBuildFile; fileRef = D0A7BA3C171F903C006E0DA5 /* OpenUDIDD.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0A7BA38171F903C006E0DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0A7BA37171F903C006E0DA5 /* Foundation.framework */; };
-		D0A7BA3D171F903C006E0DA5 /* OpenUDID.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A7BA3C171F903C006E0DA5 /* OpenUDID.h */; };
-		D0A7BA3F171F903C006E0DA5 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A7BA3E171F903C006E0DA5 /* OpenUDID.m */; };
+		D0A7BA3D171F903C006E0DA5 /* OpenUDIDD.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = D0A7BA3C171F903C006E0DA5 /* OpenUDIDD.h */; };
+		D0A7BA3F171F903C006E0DA5 /* OpenUDIDD.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A7BA3E171F903C006E0DA5 /* OpenUDIDD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -20,7 +20,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				D0A7BA3D171F903C006E0DA5 /* OpenUDID.h in CopyFiles */,
+				D0A7BA3D171F903C006E0DA5 /* OpenUDIDD.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,8 +30,8 @@
 		D0A7BA34171F903C006E0DA5 /* libOpenUDID.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOpenUDID.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0A7BA37171F903C006E0DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D0A7BA3B171F903C006E0DA5 /* OpenUDID-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenUDID-Prefix.pch"; sourceTree = "<group>"; };
-		D0A7BA3C171F903C006E0DA5 /* OpenUDID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
-		D0A7BA3E171F903C006E0DA5 /* OpenUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		D0A7BA3C171F903C006E0DA5 /* OpenUDIDD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenUDIDD.h; sourceTree = "<group>"; };
+		D0A7BA3E171F903C006E0DA5 /* OpenUDIDD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenUDIDD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +74,8 @@
 		D0A7BA39171F903C006E0DA5 /* OpenUDID */ = {
 			isa = PBXGroup;
 			children = (
-				D0A7BA3C171F903C006E0DA5 /* OpenUDID.h */,
-				D0A7BA3E171F903C006E0DA5 /* OpenUDID.m */,
+				D0A7BA3C171F903C006E0DA5 /* OpenUDIDD.h */,
+				D0A7BA3E171F903C006E0DA5 /* OpenUDIDD.m */,
 				D0A7BA3A171F903C006E0DA5 /* Supporting Files */,
 			);
 			path = OpenUDID;
@@ -96,7 +96,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D099214F171FB6FE009A41D4 /* OpenUDID.h in Headers */,
+				D099214F171FB6FE009A41D4 /* OpenUDIDD.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,7 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0A7BA3F171F903C006E0DA5 /* OpenUDID.m in Sources */,
+				D0A7BA3F171F903C006E0DA5 /* OpenUDIDD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

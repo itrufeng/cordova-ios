@@ -101,19 +101,19 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = CordovaLib;
 		};
+		A676A7821822739400866A0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A676A77E1822739300866A0E /* OpenUDID.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D0A7BA34171F903C006E0DA5;
+			remoteInfo = OpenUDID;
+		};
 		D03EC65D175609A700870E2A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D0A0FEBC1753614A00416A7E;
 			remoteInfo = ApplicationInfo;
-		};
-		D03EC66417560AB000870E2A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D0A7BA34171F903C006E0DA5;
-			remoteInfo = OpenUDID;
 		};
 		D0A4F1C5177A8E6300D1A742 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -186,10 +186,10 @@
 		32CA4F630368D1EE00C91783 /* __TESTING__-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "__TESTING__-Prefix.pch"; sourceTree = "<group>"; };
 		5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		8D1107310486CEB800E47090 /* __TESTING__-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "__TESTING__-Info.plist"; path = "../__TESTING__-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A676A77E1822739300866A0E /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D024E7B6175465D20072F7B8 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		D03AB65A17055D6600481530 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ApplicationInfo.xcodeproj; path = ApplicationInfo/ApplicationInfo.xcodeproj; sourceTree = "<group>"; };
-		D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OpenUDID.xcodeproj; path = OpenUDID/OpenUDID.xcodeproj; sourceTree = "<group>"; };
 		D04E125517B8B751008F3AC3 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		D04E125A17B8B76D008F3AC3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		D04E125C17B8B785008F3AC3 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -308,9 +308,9 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				A676A77E1822739300866A0E /* OpenUDID.xcodeproj */,
 				D6063C4C181EBB140044723E /* baiduPush */,
 				D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */,
-				D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */,
 				D03EC659175609A600870E2A /* ApplicationInfo.xcodeproj */,
 				D6F8B870176385BA008BBA4F /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				D0B7CF691763223400D0DF3A /* UMSocial_Sdk_2.1.3 */,
@@ -541,18 +541,18 @@
 			path = se.lproj;
 			sourceTree = "<group>";
 		};
-		D03EC65A175609A600870E2A /* Products */ = {
+		A676A77F1822739300866A0E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D03EC65E175609A700870E2A /* libApplicationInfo.a */,
+				A676A7831822739400866A0E /* libOpenUDID.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D03EC66117560AB000870E2A /* Products */ = {
+		D03EC65A175609A600870E2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D03EC66517560AB000870E2A /* libOpenUDID.a */,
+				D03EC65E175609A700870E2A /* libApplicationInfo.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -723,8 +723,8 @@
 					ProjectRef = 0FF88B8817055713002B6A43 /* NSLog.xcodeproj */;
 				},
 				{
-					ProductGroup = D03EC66117560AB000870E2A /* Products */;
-					ProjectRef = D03EC66017560AB000870E2A /* OpenUDID.xcodeproj */;
+					ProductGroup = A676A77F1822739300866A0E /* Products */;
+					ProjectRef = A676A77E1822739300866A0E /* OpenUDID.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -749,18 +749,18 @@
 			remoteRef = 301BF534109A57CC0062928A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		A676A7831822739400866A0E /* libOpenUDID.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOpenUDID.a;
+			remoteRef = A676A7821822739400866A0E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D03EC65E175609A700870E2A /* libApplicationInfo.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libApplicationInfo.a;
 			remoteRef = D03EC65D175609A700870E2A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D03EC66517560AB000870E2A /* libOpenUDID.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libOpenUDID.a;
-			remoteRef = D03EC66417560AB000870E2A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		D0A4F1C6177A8E6300D1A742 /* libApplicationUnity.a */ = {
@@ -912,10 +912,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/baiduPush\\\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/baiduPush\"",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -937,10 +937,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\\\"",
-					"\\\"$(SRCROOT)/__TESTING__/Libs/baiduPush\\\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMSocial_Sdk_2.1.3\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+					"\"$(SRCROOT)/__TESTING__/Libs/baiduPush\"",
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
