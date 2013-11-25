@@ -623,6 +623,10 @@
     [self processOpenUrl];
 
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:CDVPageDidLoadNotification object:self.webView]];
+    
+    [self _delteStorageWeb];
+    
+    
 }
 
 - (void)webView:(UIWebView*)theWebView didFailLoadWithError:(NSError*)error
@@ -930,4 +934,40 @@
     [[self.pluginObjects allValues] makeObjectsPerformSelector:@selector(dispose)];
 }
 
+// ///////////////////////
+
+-(void)_delteStorageWeb
+{
+    NSString *storageLibrary = [[[NSHomeDirectory() stringByAppendingPathComponent:@"Library"]stringByAppendingPathComponent:@"WebKit"]
+                                stringByAppendingPathComponent:@"LocalStorage"];
+    
+    if ([[NSFileManager defaultManager]fileExistsAtPath:storageLibrary])
+    {
+        NSArray *files = [[NSFileManager defaultManager]subpathsAtPath:storageLibrary];
+        
+        for (int i=0; i<[files count]; i++ )
+        {
+            NSString * stringStorageRelatively = [files objectAtIndex:i];
+            
+            NSString *stringStorageAbsolotely = [storageLibrary stringByAppendingPathComponent:stringStorageRelatively];
+            
+            
+            NSLog(@"stringStorageAbsolotely = %@",stringStorageAbsolotely);
+            [self addSkipBackupAttributeToItemAtURL:[NSURL fileURLWithPath:stringStorageAbsolotely]];
+        }
+    }
+}
+
+- (BOOL)addSkipBackupAttributeToItemAtURL:(NSURL *)URL
+{
+    assert([[NSFileManager defaultManager] fileExistsAtPath: [URL path]]);
+    
+    NSError *error = nil;
+    BOOL success = [URL setResourceValue: [NSNumber numberWithBool: YES]
+                                  forKey: NSURLIsExcludedFromBackupKey error: &error];
+    if(!success){
+        NSLog(@"Error excluding %@ from backup %@", [URL lastPathComponent], error);
+    }
+    return success;
+}
 @end
