@@ -10,7 +10,7 @@
 
 #import <NSLog/NSLog.h>
 
-#import <OpenUDID/OpenUDID.h>
+#import <OpenUDID/OpenUDIDD.h>
 
 #import <ApplicationUnity/ASIFormDataRequest.h>
 
@@ -49,7 +49,7 @@
         NSWarn(@"没有用户ID");
     }
     
-    strUUID = [OpenUDID value];
+    strUUID = [OpenUDIDD value];
     
     _appInfo = [[ApplicationInfo alloc] init];
     

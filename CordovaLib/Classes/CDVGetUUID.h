@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "CDVPlugin.h"
-#import <OpenUDID/OpenUDID.h>
+#import <OpenUDID/OpenUDIDD.h>
 #import <NSLog/NSLog.h>
 
 @interface CDVGetUUID : CDVPlugin

@@ -21,7 +21,7 @@
 -(void)getUUID:(CDVInvokedUrlCommand*)command
 {
     NSInfo(@"获取UUID开始");
-    NSString *strUUID = [OpenUDID value];
+    NSString *strUUID = [OpenUDIDD value];
     
     //向外传送
     CDVPluginResult *pluginResult  = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
