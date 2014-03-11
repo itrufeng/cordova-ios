@@ -86,6 +86,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
+    // you can do so here.
+    //Lower screen 20px on ios 7
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        CGRect viewBounds = [self.webView bounds];
+        viewBounds.origin.y = 20;
+        viewBounds.size.height = viewBounds.size.height - 20;
+        self.webView.frame = viewBounds;
+        NSLog(@"in version = %f",[[[UIDevice currentDevice] systemVersion] floatValue]);
+    }
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
     
@@ -270,39 +280,39 @@ didFailLoadWithError:error];
 /* 修正helpviewFrame */
 - (void) _restoreHelpviewFrame
 {
-    CGRect frame = _helpView.frame;
-    frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
-    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    _helpView.frame = frame;
+    // CGRect frame = _helpView.frame;
+    // frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
+    // frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    // _helpView.frame = frame;
 }
 
 /* 修正helpviewFrame */
 - (void) _restoreHelpviewFrame2
 {
-    CGRect frame = _helpView.frame;
-    frame.origin.y = 0;
-    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    _helpView.frame = frame;
+    // CGRect frame = _helpView.frame;
+    // frame.origin.y = 0;
+    // frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    // _helpView.frame = frame;
 }
 
 /* 修正helpviewFrame */
 - (void) _restoreWebviewFrame
 {
-    CGRect frame = self.webView.frame;
-    frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
-    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
-    self.webView.frame = frame;
+    // CGRect frame = self.webView.frame;
+    // frame.origin.y = [UIApplication sharedApplication].statusBarFrame.size.height;
+    // frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    // NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
+    // self.webView.frame = frame;
 }
 
 /* 修正helpviewFrame */
 - (void) _restoreWebviewFrame2
 {
-    CGRect frame = self.webView.frame;
-    frame.origin.y = 0;
-    frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
-    NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
-    self.webView.frame = frame;
+    // CGRect frame = self.webView.frame;
+    // frame.origin.y = 0;
+    // frame.size.height =[UIScreen mainScreen].bounds.size.height - [UIApplication sharedApplication].statusBarFrame.size.height;
+    // NSLog(@"webView frame is:%@", NSStringFromCGRect(frame));
+    // self.webView.frame = frame;
 }
 
 - (void) _setup
