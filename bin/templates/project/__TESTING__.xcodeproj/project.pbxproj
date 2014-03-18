@@ -902,12 +902,23 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "__TESTING__/__TESTING__-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(BUILT_PRODUCTS_DIR)\"",
+					$BUILT_PRODUCTS_DIR/include,
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios/AlipaySDK.framework/Versions/A/Headers,
+				);
 				INFOPLIST_FILE = "__TESTING__/__TESTING__-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -919,6 +930,7 @@
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = armv7;
 				WEIXIN_KEY = wx79474d05acb6a73b;
 				YOUMENG_KEY = 508a19a35270155ced00005f;
 			};
@@ -929,10 +941,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "__TESTING__/__TESTING__-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(BUILT_PRODUCTS_DIR)\"",
+					$BUILT_PRODUCTS_DIR/include,
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios/AlipaySDK.framework/Versions/A/Headers,
+				);
 				INFOPLIST_FILE = "__TESTING__/__TESTING__-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
@@ -944,6 +967,7 @@
 				);
 				PRODUCT_NAME = __TESTING__;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = armv7;
 				WEIXIN_KEY = wx79474d05acb6a73b;
 				YOUMENG_KEY = 508a19a35270155ced00005f;
 			};

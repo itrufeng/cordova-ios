@@ -176,6 +176,8 @@
     
     [super webViewDidFinishLoad:theWebView];
     
+    NSInfo(@"加载Web成功:\n");
+    
     return;
 }
 

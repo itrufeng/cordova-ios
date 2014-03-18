@@ -57,6 +57,7 @@
         <plugin name="Battery" value="CDVBattery" />
         <plugin name="Globalization" value="CDVGlobalization" />
         <plugin name="InAppBrowser" value="CDVInAppBrowser" />
+        <!-- 自定义的plugins -->
 		<plugin name="AlarmClock" value="CDVAlarmClock"/>
         <plugin name="Share" value="CDVShare"/>
         <plugin name="CheckVersion" value="CDVCheckVersion"/>
@@ -66,6 +67,8 @@
         <plugin name="Redirect" value="CDVRedirect"/>
         <plugin name="GetApplicationInfo" value ="CDVGetApplicationInfo"/>
         <plugin name="ScanditSDK" value ="ScanditSDK"/>
+        
+        <plugin name="Alipay" value ="CDVAlipay"/>
         </plugins>
     <access origin="*" />
 </widget>

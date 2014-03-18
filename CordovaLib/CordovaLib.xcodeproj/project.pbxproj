@@ -81,14 +81,6 @@
 		9D76CF3D1625A4C50008A0F6 /* CDVGlobalization.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D76CF3B1625A4C50008A0F6 /* CDVGlobalization.m */; };
 		C937A4561337599E002C4C79 /* CDVFileTransfer.h in Headers */ = {isa = PBXBuildFile; fileRef = C937A4541337599E002C4C79 /* CDVFileTransfer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C937A4571337599E002C4C79 /* CDVFileTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = C937A4551337599E002C4C79 /* CDVFileTransfer.m */; };
-		D004B22E17B8A38B0003DAA8 /* empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D004B21917B8A38B0003DAA8 /* empty.cpp */; };
-		D004B22F17B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */; };
-		D004B23017B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */; };
-		D004B23117B8A38B0003DAA8 /* ScanditSDKOverlayController.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */; };
-		D004B23217B8A38B0003DAA8 /* ScanditSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */; };
-		D004B23317B8A38B0003DAA8 /* ScanditSDK.mm in Sources */ = {isa = PBXBuildFile; fileRef = D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */; };
-		D004B23417B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h in Headers */ = {isa = PBXBuildFile; fileRef = D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */; };
-		D004B23517B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */; };
 		D004B23717B8A40B0003DAA8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23617B8A40B0003DAA8 /* CoreVideo.framework */; };
 		D004B23917B8A4360003DAA8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004B23817B8A4360003DAA8 /* QuartzCore.framework */; };
 		D004B23A17B8A4410003DAA8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 686357D414100AF200DF4CF2 /* SystemConfiguration.framework */; };
@@ -115,6 +107,33 @@
 		D0D5D54D1754866800F099C5 /* CDVGetApplicationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */; };
 		D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */ = {isa = PBXBuildFile; fileRef = D0E1DEF8173260B800DB1049 /* KGStatusBar.h */; };
 		D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E1DEF9173260B800DB1049 /* KGStatusBar.m */; };
+		E2490D0018D8A138006D07F0 /* AlipayRsaLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2490CE418D8A138006D07F0 /* AlipayRsaLib.a */; };
+		E2490D0118D8A139006D07F0 /* AlixLibService.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CE518D8A138006D07F0 /* AlixLibService.h */; };
+		E2490D0218D8A139006D07F0 /* AlixPaylib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2490CE718D8A138006D07F0 /* AlixPaylib.a */; };
+		E2490D0418D8A139006D07F0 /* AlixPayOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CE918D8A138006D07F0 /* AlixPayOrder.h */; };
+		E2490D0518D8A139006D07F0 /* AlixPayOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CEA18D8A138006D07F0 /* AlixPayOrder.m */; };
+		E2490D0618D8A139006D07F0 /* AlixPayResult.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CEB18D8A138006D07F0 /* AlixPayResult.h */; };
+		E2490D0718D8A139006D07F0 /* AlixPayResult.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CEC18D8A138006D07F0 /* AlixPayResult.m */; };
+		E2490D0818D8A139006D07F0 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CEE18D8A138006D07F0 /* JSON.h */; };
+		E2490D0918D8A139006D07F0 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CEF18D8A138006D07F0 /* NSObject+SBJSON.h */; };
+		E2490D0A18D8A139006D07F0 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CF018D8A138006D07F0 /* NSObject+SBJSON.m */; };
+		E2490D0B18D8A139006D07F0 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CF118D8A138006D07F0 /* NSString+SBJSON.h */; };
+		E2490D0C18D8A139006D07F0 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CF218D8A138006D07F0 /* NSString+SBJSON.m */; };
+		E2490D0D18D8A139006D07F0 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CF318D8A138006D07F0 /* SBJSON.h */; };
+		E2490D0E18D8A139006D07F0 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CF418D8A138006D07F0 /* SBJSON.m */; };
+		E2490D0F18D8A139006D07F0 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CF518D8A138006D07F0 /* SBJsonBase.h */; };
+		E2490D1018D8A139006D07F0 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CF618D8A138006D07F0 /* SBJsonBase.m */; };
+		E2490D1118D8A139006D07F0 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CF718D8A138006D07F0 /* SBJsonParser.h */; };
+		E2490D1218D8A139006D07F0 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CF818D8A138006D07F0 /* SBJsonParser.m */; };
+		E2490D1318D8A139006D07F0 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CF918D8A138006D07F0 /* SBJsonWriter.h */; };
+		E2490D1418D8A139006D07F0 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E2490CFA18D8A138006D07F0 /* SBJsonWriter.m */; };
+		E2490D1518D8A139006D07F0 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2490CFB18D8A138006D07F0 /* libcrypto.a */; };
+		E2490D1618D8A139006D07F0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2490CFC18D8A138006D07F0 /* libssl.a */; };
+		E2490D1718D8A139006D07F0 /* DataSigner.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CFE18D8A138006D07F0 /* DataSigner.h */; };
+		E2490D1818D8A139006D07F0 /* DataVerifier.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490CFF18D8A138006D07F0 /* DataVerifier.h */; };
+		E2490D2618D8A2DE006D07F0 /* PartnerConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = E2490D2518D8A2DE006D07F0 /* PartnerConfig.h */; };
+		E2C3208818D57C72002419C9 /* CDVAlipay.h in Headers */ = {isa = PBXBuildFile; fileRef = E2C3208618D57C72002419C9 /* CDVAlipay.h */; };
+		E2C3208918D57C72002419C9 /* CDVAlipay.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C3208718D57C72002419C9 /* CDVAlipay.m */; };
 		EB3B3547161CB44D003DBE7D /* CDVCommandQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB3B3548161CB44D003DBE7D /* CDVCommandQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3B3546161CB44D003DBE7D /* CDVCommandQueue.m */; };
 		EB3B357C161F2A45003DBE7D /* CDVCommandDelegateImpl.h in Headers */ = {isa = PBXBuildFile; fileRef = EB3B357A161F2A44003DBE7D /* CDVCommandDelegateImpl.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -280,34 +299,6 @@
 		AA747D9E0F9514B9006C5449 /* CordovaLib_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CordovaLib_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		C937A4541337599E002C4C79 /* CDVFileTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVFileTransfer.h; path = Classes/CDVFileTransfer.h; sourceTree = "<group>"; };
 		C937A4551337599E002C4C79 /* CDVFileTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVFileTransfer.m; path = Classes/CDVFileTransfer.m; sourceTree = "<group>"; };
-		D004B21117B8A38B0003DAA8 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
-		D004B21217B8A38B0003DAA8 /* camera-swap-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed.png"; sourceTree = "<group>"; };
-		D004B21317B8A38B0003DAA8 /* camera-swap-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		D004B21417B8A38B0003DAA8 /* camera-swap-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon.png"; sourceTree = "<group>"; };
-		D004B21517B8A38B0003DAA8 /* camera-swap-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-swap-icon@2x.png"; sourceTree = "<group>"; };
-		D004B21617B8A38B0003DAA8 /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
-		D004B21817B8A38B0003DAA8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/scanditsdk.strings; sourceTree = "<group>"; };
-		D004B21917B8A38B0003DAA8 /* empty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = empty.cpp; sourceTree = "<group>"; };
-		D004B21A17B8A38B0003DAA8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/scanditsdk.strings; sourceTree = "<group>"; };
-		D004B21B17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed.png"; sourceTree = "<group>"; };
-		D004B21C17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		D004B21D17B8A38B0003DAA8 /* flashlight-turn-off-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon.png"; sourceTree = "<group>"; };
-		D004B21E17B8A38B0003DAA8 /* flashlight-turn-off-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-off-icon@2x.png"; sourceTree = "<group>"; };
-		D004B21F17B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed.png"; sourceTree = "<group>"; };
-		D004B22017B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon-pressed@2x.png"; sourceTree = "<group>"; };
-		D004B22117B8A38B0003DAA8 /* flashlight-turn-on-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon.png"; sourceTree = "<group>"; };
-		D004B22217B8A38B0003DAA8 /* flashlight-turn-on-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashlight-turn-on-icon@2x.png"; sourceTree = "<group>"; };
-		D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libscanditsdk-iphone-3.0.4.a"; sourceTree = "<group>"; };
-		D004B22417B8A38B0003DAA8 /* LICENSE-2.0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE-2.0.txt"; sourceTree = "<group>"; };
-		D004B22517B8A38B0003DAA8 /* poweredby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = poweredby.png; sourceTree = "<group>"; };
-		D004B22617B8A38B0003DAA8 /* poweredby@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "poweredby@2x.png"; sourceTree = "<group>"; };
-		D004B22717B8A38B0003DAA8 /* RELEASE_NOTES.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = RELEASE_NOTES.html; sourceTree = "<group>"; };
-		D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKBarcodePicker.h; sourceTree = "<group>"; };
-		D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKOverlayController.h; sourceTree = "<group>"; };
-		D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDK.h; sourceTree = "<group>"; };
-		D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ScanditSDK.mm; sourceTree = "<group>"; };
-		D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanditSDKRotatingBarcodePicker.h; sourceTree = "<group>"; };
-		D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanditSDKRotatingBarcodePicker.m; sourceTree = "<group>"; };
 		D004B23617B8A40B0003DAA8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		D004B23817B8A4360003DAA8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D004B23B17B8A4520003DAA8 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
@@ -335,6 +326,35 @@
 		D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVGetApplicationInfo.m; path = Classes/CDVGetApplicationInfo.m; sourceTree = "<group>"; };
 		D0E1DEF8173260B800DB1049 /* KGStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KGStatusBar.h; sourceTree = "<group>"; };
 		D0E1DEF9173260B800DB1049 /* KGStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KGStatusBar.m; sourceTree = "<group>"; };
+		E2490CE418D8A138006D07F0 /* AlipayRsaLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlipayRsaLib.a; sourceTree = "<group>"; };
+		E2490CE518D8A138006D07F0 /* AlixLibService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixLibService.h; sourceTree = "<group>"; };
+		E2490CE618D8A138006D07F0 /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
+		E2490CE718D8A138006D07F0 /* AlixPaylib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib.a; sourceTree = "<group>"; };
+		E2490CE818D8A138006D07F0 /* AlixPaylib_arc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = AlixPaylib_arc.a; sourceTree = "<group>"; };
+		E2490CE918D8A138006D07F0 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
+		E2490CEA18D8A138006D07F0 /* AlixPayOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayOrder.m; sourceTree = "<group>"; };
+		E2490CEB18D8A138006D07F0 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
+		E2490CEC18D8A138006D07F0 /* AlixPayResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlixPayResult.m; sourceTree = "<group>"; };
+		E2490CEE18D8A138006D07F0 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		E2490CEF18D8A138006D07F0 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		E2490CF018D8A138006D07F0 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		E2490CF118D8A138006D07F0 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		E2490CF218D8A138006D07F0 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		E2490CF318D8A138006D07F0 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		E2490CF418D8A138006D07F0 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		E2490CF518D8A138006D07F0 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		E2490CF618D8A138006D07F0 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		E2490CF718D8A138006D07F0 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		E2490CF818D8A138006D07F0 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		E2490CF918D8A138006D07F0 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		E2490CFA18D8A138006D07F0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		E2490CFB18D8A138006D07F0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
+		E2490CFC18D8A138006D07F0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		E2490CFE18D8A138006D07F0 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
+		E2490CFF18D8A138006D07F0 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
+		E2490D2518D8A2DE006D07F0 /* PartnerConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PartnerConfig.h; path = Classes/PartnerConfig.h; sourceTree = "<group>"; };
+		E2C3208618D57C72002419C9 /* CDVAlipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVAlipay.h; path = Classes/CDVAlipay.h; sourceTree = "<group>"; };
+		E2C3208718D57C72002419C9 /* CDVAlipay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVAlipay.m; path = Classes/CDVAlipay.m; sourceTree = "<group>"; };
 		EB3B3545161CB44D003DBE7D /* CDVCommandQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandQueue.h; path = Classes/CDVCommandQueue.h; sourceTree = "<group>"; };
 		EB3B3546161CB44D003DBE7D /* CDVCommandQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVCommandQueue.m; path = Classes/CDVCommandQueue.m; sourceTree = "<group>"; };
 		EB3B357A161F2A44003DBE7D /* CDVCommandDelegateImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandDelegateImpl.h; path = Classes/CDVCommandDelegateImpl.h; sourceTree = "<group>"; };
@@ -356,7 +376,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2490D0018D8A138006D07F0 /* AlipayRsaLib.a in Frameworks */,
 				D004B24017B8A4660003DAA8 /* libc++.dylib in Frameworks */,
+				E2490D1618D8A139006D07F0 /* libssl.a in Frameworks */,
 				D004B23E17B8A45C0003DAA8 /* libz.dylib in Frameworks */,
 				D004B23C17B8A4520003DAA8 /* libiconv.dylib in Frameworks */,
 				D004B23A17B8A4410003DAA8 /* SystemConfiguration.framework in Frameworks */,
@@ -364,7 +386,8 @@
 				D004B23717B8A40B0003DAA8 /* CoreVideo.framework in Frameworks */,
 				D024E7C517547E2B0072F7B8 /* libApplicationInfo.a in Frameworks */,
 				D0992171171FC67C009A41D4 /* libOpenUDID.a in Frameworks */,
-				D004B22F17B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a in Frameworks */,
+				E2490D1518D8A139006D07F0 /* libcrypto.a in Frameworks */,
+				E2490D0218D8A139006D07F0 /* AlixPaylib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +464,7 @@
 		888700D710922F56009987E8 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				E2490D2518D8A2DE006D07F0 /* PartnerConfig.h */,
 				D099215B171FBA93009A41D4 /* CDVGetUUID.h */,
 				D099215C171FBA93009A41D4 /* CDVGetUUID.m */,
 				D0396E221721299A007A5C00 /* CDVFullScreen.h */,
@@ -526,6 +550,8 @@
 				0F9FC4CF1746278E00EB52E7 /* CDVRedirect.m */,
 				D0D5D54A1754866800F099C5 /* CDVGetApplicationInfo.h */,
 				D0D5D54B1754866800F099C5 /* CDVGetApplicationInfo.m */,
+				E2C3208618D57C72002419C9 /* CDVAlipay.h */,
+				E2C3208718D57C72002419C9 /* CDVAlipay.m */,
 			);
 			name = Commands;
 			sourceTree = "<group>";
@@ -558,56 +584,6 @@
 				888700D910923009009987E8 /* Util */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		D004B20E17B8A38B0003DAA8 /* scandit */ = {
-			isa = PBXGroup;
-			children = (
-				D004B20F17B8A38B0003DAA8 /* scanditsdk-community-ios_3.0.4 */,
-				D004B22A17B8A38B0003DAA8 /* ScanditSDK.h */,
-				D004B22B17B8A38B0003DAA8 /* ScanditSDK.mm */,
-				D004B22C17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h */,
-				D004B22D17B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m */,
-			);
-			path = scandit;
-			sourceTree = "<group>";
-		};
-		D004B20F17B8A38B0003DAA8 /* scanditsdk-community-ios_3.0.4 */ = {
-			isa = PBXGroup;
-			children = (
-				D004B21017B8A38B0003DAA8 /* ScanditSDK */,
-			);
-			path = "scanditsdk-community-ios_3.0.4";
-			sourceTree = "<group>";
-		};
-		D004B21017B8A38B0003DAA8 /* ScanditSDK */ = {
-			isa = PBXGroup;
-			children = (
-				D004B21117B8A38B0003DAA8 /* beep.wav */,
-				D004B21217B8A38B0003DAA8 /* camera-swap-icon-pressed.png */,
-				D004B21317B8A38B0003DAA8 /* camera-swap-icon-pressed@2x.png */,
-				D004B21417B8A38B0003DAA8 /* camera-swap-icon.png */,
-				D004B21517B8A38B0003DAA8 /* camera-swap-icon@2x.png */,
-				D004B21617B8A38B0003DAA8 /* CHANGELOG.txt */,
-				D004B21717B8A38B0003DAA8 /* scanditsdk.strings */,
-				D004B21917B8A38B0003DAA8 /* empty.cpp */,
-				D004B21B17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed.png */,
-				D004B21C17B8A38B0003DAA8 /* flashlight-turn-off-icon-pressed@2x.png */,
-				D004B21D17B8A38B0003DAA8 /* flashlight-turn-off-icon.png */,
-				D004B21E17B8A38B0003DAA8 /* flashlight-turn-off-icon@2x.png */,
-				D004B21F17B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed.png */,
-				D004B22017B8A38B0003DAA8 /* flashlight-turn-on-icon-pressed@2x.png */,
-				D004B22117B8A38B0003DAA8 /* flashlight-turn-on-icon.png */,
-				D004B22217B8A38B0003DAA8 /* flashlight-turn-on-icon@2x.png */,
-				D004B22317B8A38B0003DAA8 /* libscanditsdk-iphone-3.0.4.a */,
-				D004B22417B8A38B0003DAA8 /* LICENSE-2.0.txt */,
-				D004B22517B8A38B0003DAA8 /* poweredby.png */,
-				D004B22617B8A38B0003DAA8 /* poweredby@2x.png */,
-				D004B22717B8A38B0003DAA8 /* RELEASE_NOTES.html */,
-				D004B22817B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h */,
-				D004B22917B8A38B0003DAA8 /* ScanditSDKOverlayController.h */,
-			);
-			path = ScanditSDK;
 			sourceTree = "<group>";
 		};
 		D024E7B01754652C0072F7B8 /* Products */ = {
@@ -656,7 +632,7 @@
 		D0E1DEF6173260B800DB1049 /* libs2 */ = {
 			isa = PBXGroup;
 			children = (
-				D004B20E17B8A38B0003DAA8 /* scandit */,
+				E2490CE318D8A138006D07F0 /* alipay */,
 				D0E1DEF7173260B800DB1049 /* KGStatusBar */,
 			);
 			path = libs2;
@@ -669,6 +645,55 @@
 				D0E1DEF9173260B800DB1049 /* KGStatusBar.m */,
 			);
 			path = KGStatusBar;
+			sourceTree = "<group>";
+		};
+		E2490CE318D8A138006D07F0 /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				E2490CE418D8A138006D07F0 /* AlipayRsaLib.a */,
+				E2490CE518D8A138006D07F0 /* AlixLibService.h */,
+				E2490CE618D8A138006D07F0 /* Alixpay.bundle */,
+				E2490CE718D8A138006D07F0 /* AlixPaylib.a */,
+				E2490CE818D8A138006D07F0 /* AlixPaylib_arc.a */,
+				E2490CE918D8A138006D07F0 /* AlixPayOrder.h */,
+				E2490CEA18D8A138006D07F0 /* AlixPayOrder.m */,
+				E2490CEB18D8A138006D07F0 /* AlixPayResult.h */,
+				E2490CEC18D8A138006D07F0 /* AlixPayResult.m */,
+				E2490CED18D8A138006D07F0 /* json */,
+				E2490CFB18D8A138006D07F0 /* libcrypto.a */,
+				E2490CFC18D8A138006D07F0 /* libssl.a */,
+				E2490CFD18D8A138006D07F0 /* RSA */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
+		E2490CED18D8A138006D07F0 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				E2490CEE18D8A138006D07F0 /* JSON.h */,
+				E2490CEF18D8A138006D07F0 /* NSObject+SBJSON.h */,
+				E2490CF018D8A138006D07F0 /* NSObject+SBJSON.m */,
+				E2490CF118D8A138006D07F0 /* NSString+SBJSON.h */,
+				E2490CF218D8A138006D07F0 /* NSString+SBJSON.m */,
+				E2490CF318D8A138006D07F0 /* SBJSON.h */,
+				E2490CF418D8A138006D07F0 /* SBJSON.m */,
+				E2490CF518D8A138006D07F0 /* SBJsonBase.h */,
+				E2490CF618D8A138006D07F0 /* SBJsonBase.m */,
+				E2490CF718D8A138006D07F0 /* SBJsonParser.h */,
+				E2490CF818D8A138006D07F0 /* SBJsonParser.m */,
+				E2490CF918D8A138006D07F0 /* SBJsonWriter.h */,
+				E2490CFA18D8A138006D07F0 /* SBJsonWriter.m */,
+			);
+			path = json;
+			sourceTree = "<group>";
+		};
+		E2490CFD18D8A138006D07F0 /* RSA */ = {
+			isa = PBXGroup;
+			children = (
+				E2490CFE18D8A138006D07F0 /* DataSigner.h */,
+				E2490CFF18D8A138006D07F0 /* DataVerifier.h */,
+			);
+			path = RSA;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -686,10 +711,13 @@
 				8887FD701090FBE7009987E8 /* CDVFile.h in Headers */,
 				8887FD741090FBE7009987E8 /* CDVInvokedUrlCommand.h in Headers */,
 				8887FD851090FBE7009987E8 /* CDVLocation.h in Headers */,
+				E2490D0D18D8A139006D07F0 /* SBJSON.h in Headers */,
 				8887FD8D1090FBE7009987E8 /* CDVNotification.h in Headers */,
 				8887FD8F1090FBE7009987E8 /* NSData+Base64.h in Headers */,
 				8887FD9D1090FBE7009987E8 /* CDVReachability.h in Headers */,
 				8887FD9F1090FBE7009987E8 /* CDVSound.h in Headers */,
+				E2490D0818D8A139006D07F0 /* JSON.h in Headers */,
+				E2C3208818D57C72002419C9 /* CDVAlipay.h in Headers */,
 				88BA573D109BB46F00FB5E78 /* CDVAccelerometer.h in Headers */,
 				1F3C04CE12BC247D004F9E10 /* CDVContact.h in Headers */,
 				1F92F4A01314023E0046367C /* CDVPluginResult.h in Headers */,
@@ -699,14 +727,19 @@
 				30E33AF213A7E24B00594D64 /* CDVPlugin.h in Headers */,
 				302965BC13A94E9D007046C5 /* CDVDebug.h in Headers */,
 				30B39EBE13D0268B0009682A /* CDVSplashScreen.h in Headers */,
+				E2490D1318D8A139006D07F0 /* SBJsonWriter.h in Headers */,
 				30E563CF13E217EC00C949AA /* NSMutableArray+QueueAdditions.h in Headers */,
 				1F2BECC013F9785B00A93BF6 /* CDVBattery.h in Headers */,
+				E2490D1118D8A139006D07F0 /* SBJsonParser.h in Headers */,
+				E2490D0418D8A139006D07F0 /* AlixPayOrder.h in Headers */,
 				30C684801406CB38004C1A8E /* CDVWhitelist.h in Headers */,
+				E2490D1818D8A139006D07F0 /* DataVerifier.h in Headers */,
 				30C684941407044B004C1A8E /* CDVURLProtocol.h in Headers */,
 				8852C43A14B65FD800F0E735 /* CDVViewController.h in Headers */,
 				30F5EBAB14CA26E700987760 /* CDVCommandDelegate.h in Headers */,
 				301F2F2A14F3C9CA003FE9FC /* CDV.h in Headers */,
 				30392E4E14F4FCAB00B9E0B8 /* CDVAvailability.h in Headers */,
+				E2490D0918D8A139006D07F0 /* NSObject+SBJSON.h in Headers */,
 				3034979C1513D56A0090E688 /* CDVLocalStorage.h in Headers */,
 				3062D120151D0EDB000D9128 /* UIDevice+Extensions.h in Headers */,
 				3E76876F156A90EE00EB6FA3 /* CDVLogger.h in Headers */,
@@ -715,13 +748,17 @@
 				EB80C2AC15DEA63D004D9E7B /* CDVEcho.h in Headers */,
 				EB3B3547161CB44D003DBE7D /* CDVCommandQueue.h in Headers */,
 				EB3B357C161F2A45003DBE7D /* CDVCommandDelegateImpl.h in Headers */,
+				E2490D0F18D8A139006D07F0 /* SBJsonBase.h in Headers */,
 				9D76CF3C1625A4C50008A0F6 /* CDVGlobalization.h in Headers */,
 				3073E9E91656D37700957977 /* CDVInAppBrowser.h in Headers */,
 				3073E9ED1656D51200957977 /* CDVScreenOrientationDelegate.h in Headers */,
+				E2490D0118D8A139006D07F0 /* AlixLibService.h in Headers */,
 				F858FBC6166009A8007DA594 /* CDVConfigParser.h in Headers */,
 				D03AB5FF1705315C00481530 /* CDVCaptureSound.h in Headers */,
+				E2490D1718D8A139006D07F0 /* DataSigner.h in Headers */,
 				D03AB5FD1705315C00481530 /* CDVAlarmClock.h in Headers */,
 				30F3930B169F839700B22307 /* CDVJSON.h in Headers */,
+				E2490D0B18D8A139006D07F0 /* NSString+SBJSON.h in Headers */,
 				EBFF4DBD16D3FE2E008F452B /* CDVWebViewDelegate.h in Headers */,
 				D03AB6011705315C00481530 /* CDVShare.h in Headers */,
 				EB96673B16A8970A00D86CDF /* CDVUserAgentUtil.h in Headers */,
@@ -733,11 +770,9 @@
 				0FA8C6ED172D1A5A000F628F /* CDVMessages.h in Headers */,
 				D0E1DEFA173260B800DB1049 /* KGStatusBar.h in Headers */,
 				0F9FC4D01746278E00EB52E7 /* CDVRedirect.h in Headers */,
+				E2490D0618D8A139006D07F0 /* AlixPayResult.h in Headers */,
 				D0D5D54C1754866800F099C5 /* CDVGetApplicationInfo.h in Headers */,
-				D004B23017B8A38B0003DAA8 /* ScanditSDKBarcodePicker.h in Headers */,
-				D004B23117B8A38B0003DAA8 /* ScanditSDKOverlayController.h in Headers */,
-				D004B23217B8A38B0003DAA8 /* ScanditSDK.h in Headers */,
-				D004B23417B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.h in Headers */,
+				E2490D2618D8A2DE006D07F0 /* PartnerConfig.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,8 +891,10 @@
 				8887FD751090FBE7009987E8 /* CDVInvokedUrlCommand.m in Sources */,
 				8887FD861090FBE7009987E8 /* CDVLocation.m in Sources */,
 				8887FD8E1090FBE7009987E8 /* CDVNotification.m in Sources */,
+				E2490D0A18D8A139006D07F0 /* NSObject+SBJSON.m in Sources */,
 				8887FD901090FBE7009987E8 /* NSData+Base64.m in Sources */,
 				8887FD9E1090FBE7009987E8 /* CDVReachability.m in Sources */,
+				E2490D0718D8A139006D07F0 /* AlixPayResult.m in Sources */,
 				8887FDA01090FBE7009987E8 /* CDVSound.m in Sources */,
 				88BA573E109BB46F00FB5E78 /* CDVAccelerometer.m in Sources */,
 				1F3C04CF12BC247D004F9E10 /* CDVContact.m in Sources */,
@@ -872,7 +909,9 @@
 				30C684821406CB38004C1A8E /* CDVWhitelist.m in Sources */,
 				30C684961407044B004C1A8E /* CDVURLProtocol.m in Sources */,
 				8852C43C14B65FD800F0E735 /* CDVViewController.m in Sources */,
+				E2490D1218D8A139006D07F0 /* SBJsonParser.m in Sources */,
 				3034979E1513D56A0090E688 /* CDVLocalStorage.m in Sources */,
+				E2490D1418D8A139006D07F0 /* SBJsonWriter.m in Sources */,
 				3062D122151D0EDB000D9128 /* UIDevice+Extensions.m in Sources */,
 				3E76876D156A90EE00EB6FA3 /* CDVLogger.m in Sources */,
 				EBA3557515ABD38C00F4DE24 /* NSArray+Comparisons.m in Sources */,
@@ -884,24 +923,26 @@
 				3073E9EA1656D37700957977 /* CDVInAppBrowser.m in Sources */,
 				F858FBC7166009A8007DA594 /* CDVConfigParser.m in Sources */,
 				30F3930C169F839700B22307 /* CDVJSON.m in Sources */,
+				E2490D1018D8A139006D07F0 /* SBJsonBase.m in Sources */,
 				EB96673C16A8970A00D86CDF /* CDVUserAgentUtil.m in Sources */,
 				EBFF4DBC16D3FE2E008F452B /* CDVWebViewDelegate.m in Sources */,
 				68B7516F16FD18190076A8B4 /* CDVJpegHeaderWriter.m in Sources */,
 				7E14B5A91705050A0032169E /* CDVTimer.m in Sources */,
 				D03AB5FE1705315C00481530 /* CDVAlarmClock.m in Sources */,
+				E2490D0518D8A139006D07F0 /* AlixPayOrder.m in Sources */,
 				D03AB6001705315C00481530 /* CDVCaptureSound.m in Sources */,
 				D03AB6021705315C00481530 /* CDVShare.m in Sources */,
 				D03AB65817055AA700481530 /* CDVSingletonEventStore.m in Sources */,
 				D08B438C1712601500DD791B /* CDVCheckVersion.m in Sources */,
+				E2490D0E18D8A139006D07F0 /* SBJSON.m in Sources */,
 				D0396E211721247E007A5C00 /* CDVGetUUID.m in Sources */,
+				E2C3208918D57C72002419C9 /* CDVAlipay.m in Sources */,
 				D0396E251721299B007A5C00 /* CDVFullScreen.m in Sources */,
 				0FA8C6EE172D1A5A000F628F /* CDVMessages.m in Sources */,
 				D0E1DEFB173260B800DB1049 /* KGStatusBar.m in Sources */,
+				E2490D0C18D8A139006D07F0 /* NSString+SBJSON.m in Sources */,
 				0F9FC4D11746278E00EB52E7 /* CDVRedirect.m in Sources */,
 				D0D5D54D1754866800F099C5 /* CDVGetApplicationInfo.m in Sources */,
-				D004B22E17B8A38B0003DAA8 /* empty.cpp in Sources */,
-				D004B23317B8A38B0003DAA8 /* ScanditSDK.mm in Sources */,
-				D004B23517B8A38B0003DAA8 /* ScanditSDKRotatingBarcodePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,18 +971,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		D004B21717B8A38B0003DAA8 /* scanditsdk.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D004B21817B8A38B0003DAA8 /* de */,
-				D004B21A17B8A38B0003DAA8 /* en */,
-			);
-			name = scanditsdk.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -956,6 +985,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios,
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -963,13 +996,18 @@
 				GCC_PREFIX_HEADER = CordovaLib_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					$BUILT_PRODUCTS_DIR/include,
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios/AlipaySDK.framework/Versions/A/Headers,
+				);
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\"",
-					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\"",
-					"\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\"",
+					"\\\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\\\"",
+					"\\\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\\\"",
+					"\\\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\\\"",
+					"/Volumes/Macintosh/Users/rome/Projects/git-phonegap-ios/CordovaLib/libs2/alipay",
 				);
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
@@ -990,18 +1028,27 @@
 				"ARCHS[sdk=iphonesimulator*]" = i386;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = "/tmp/$(PROJECT_NAME).dst";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios,
+				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CordovaLib_Prefix.pch;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				HEADER_SEARCH_PATHS = (
+					$BUILT_PRODUCTS_DIR/include,
+					/Volumes/Macintosh/Users/rome/Downloads/Dev/alipayminimalistcashier/ios/AlipaySDK.framework/Versions/A/Headers,
+				);
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\"",
-					"\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\"",
-					"\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\"",
+					"\\\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0/frameworks/Wechat\\\"",
+					"\\\"$(SRCROOT)/../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_1.8.0\\\"",
+					"\\\"$(SRCROOT)/libs2/scandit/scanditsdk-community-ios_3.0.4/ScanditSDK\\\"",
+					"/Volumes/Macintosh/Users/rome/Projects/git-phonegap-ios/CordovaLib/libs2/alipay",
 				);
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
@@ -1040,7 +1087,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/";
-				VALID_ARCHS = "i386 armv7 armv7s";
+				VALID_ARCHS = "i386 armv7";
 			};
 			name = Debug;
 		};
@@ -1071,7 +1118,7 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/Header ../bin/templates/project/__TESTING__/Libs/UMSocial_Sdk_2.1.3/frameworks/Wechat/";
-				VALID_ARCHS = "i386 armv7 armv7s";
+				VALID_ARCHS = "i386 armv7";
 			};
 			name = Release;
 		};
