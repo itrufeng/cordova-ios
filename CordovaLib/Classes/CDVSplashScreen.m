@@ -167,7 +167,9 @@
     // There's a special case when the image is the size of the screen.
     if (CGSizeEqualToSize(screenSize, imgBounds.size)) {
         CGRect statusFrame = [self.viewController.view convertRect:[UIApplication sharedApplication].statusBarFrame fromView:nil];
-        imgBounds.origin.y -= statusFrame.size.height;
+         if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7) {
+             imgBounds.origin.y -= statusFrame.size.height;
+         }
     } else {
         CGRect viewBounds = self.viewController.view.bounds;
         CGFloat imgAspect = imgBounds.size.width / imgBounds.size.height;
