@@ -221,13 +221,17 @@ typedef void (^ReminderBolck)(EKReminder *reminder);
 					  {
 						  if (reminder == nil)
 						  {
-							  NSWarn(@"ios6用户日记本没有授权");
+							  NSInfo(@"ios6用户日记本没有要删除的内容");
                               
-                              [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
-                                               WithResultString:[NSString stringWithFormat:@"删除失败 没有此UUID=  %@",inputUUID] callbackId:command.callbackId];
-                              return ;
-						  }
-
+                              [self _sendResultWithPluginResult:CDVCommandStatus_OK
+                                               WithResultString:[NSString stringWithFormat:@"删除UUID成功 UUID = %@",inputUUID]
+                                                     callbackId:command.callbackId];
+//                              [self _sendResultWithPluginResult:CDVCommandStatus_ERROR
+//                                               WithResultString:[NSString stringWithFormat:@"删除失败 没有此UUID=  %@",inputUUID] callbackId:command.callbackId];
+ //                              return ;
+						  }else{
+                              
+                              
 							  NSError *error = nil;
 							  
 							  [eventStore removeReminder:reminder commit:YES error:&error];
@@ -239,7 +243,7 @@ typedef void (^ReminderBolck)(EKReminder *reminder);
                               [self _sendResultWithPluginResult:CDVCommandStatus_OK
                                                WithResultString:[NSString stringWithFormat:@"删除UUID成功 UUID = %@",inputUUID]
                                                      callbackId:command.callbackId];
-
+                          }
 					  }];
 				 }
 		 }];
