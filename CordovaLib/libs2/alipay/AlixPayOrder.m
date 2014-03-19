@@ -60,25 +60,15 @@
 	[discription appendFormat:@"&subject=\"%@\"", self.productName ? self.productName : @""];
 	[discription appendFormat:@"&body=\"%@\"", self.productDescription ? self.productDescription : @""];
 	[discription appendFormat:@"&total_fee=\"%@\"", self.amount ? self.amount : @""];
-    
-    if (self.notifyURL) {
-        [discription appendFormat:@"&notify_url=\"%@\"", self.notifyURL ? self.notifyURL : @""];
-    }
-	
+	[discription appendFormat:@"&notify_url=\"%@\"", self.notifyURL ? self.notifyURL : @""];
     
     [discription appendFormat:@"&service=\"%@\"", self.serviceName ? self.serviceName : @"mobile.securitypay.pay"];
-    [discription appendFormat:@"&payment_type=\"%@\"", self.paymentType ? self.paymentType : @"1"];
-    
 	[discription appendFormat:@"&_input_charset=\"%@\"", self.inputCharset ? self.inputCharset : @"utf-8"];
-   
+    [discription appendFormat:@"&payment_type=\"%@\"", self.paymentType ? self.paymentType : @"1"];
 
     //下面的这些参数，如果没有必要（value为空），则无需添加
-    [discription appendFormat:@"&it_b_pay=\"%@\"", self.itBPay ? self.itBPay : @"30m"];
-    
-    if (self.returnUrl)
 	[discription appendFormat:@"&return_url=\"%@\"", self.returnUrl ? self.returnUrl : @"www.xxx.com"];
-	
-    if (self.showUrl) 
+	[discription appendFormat:@"&it_b_pay=\"%@\"", self.itBPay ? self.itBPay : @"1d"];
 	[discription appendFormat:@"&show_url=\"%@\"", self.showUrl ? self.showUrl : @"www.xxx.com"];
 
     

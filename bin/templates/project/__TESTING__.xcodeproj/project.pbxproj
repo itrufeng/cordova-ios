@@ -76,6 +76,7 @@
 		D6063C52181EBB140044723E /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6063C50181EBB140044723E /* libBPush.a */; };
 		D6583417181EBC3B00A0DDCC /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6583416181EBC3B00A0DDCC /* BPushConfig.plist */; };
 		D6F8B873176385BA008BBA4F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */; };
+		E263CF9E18D93502009EFFC5 /* Alixpay.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E263CF9D18D93502009EFFC5 /* Alixpay.bundle */; };
 		F840E1F1165FE0F500CFE078 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 /* End PBXBuildFile section */
 
@@ -230,6 +231,7 @@
 		D6583416181EBC3B00A0DDCC /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
 		D6F8B871176385BA008BBA4F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		D6F8B872176385BA008BBA4F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		E263CF9D18D93502009EFFC5 /* Alixpay.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Alixpay.bundle; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = __TESTING__/config.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +310,7 @@
 		0FF88B301705565C002B6A43 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E263CF9C18D93502009EFFC5 /* alipay */,
 				A676A77E1822739300866A0E /* OpenUDID.xcodeproj */,
 				D6063C4C181EBB140044723E /* baiduPush */,
 				D0A4F1C1177A8E6300D1A742 /* ApplicationUnity.xcodeproj */,
@@ -658,6 +661,14 @@
 			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
 			sourceTree = "<group>";
 		};
+		E263CF9C18D93502009EFFC5 /* alipay */ = {
+			isa = PBXGroup;
+			children = (
+				E263CF9D18D93502009EFFC5 /* Alixpay.bundle */,
+			);
+			path = alipay;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -807,6 +818,7 @@
 				D0B7CF8E1763223500D0DF3A /* UMSShareListController.xib in Resources */,
 				D0B7CF8F1763223500D0DF3A /* UMSocialSDKResources.bundle in Resources */,
 				D6583417181EBC3B00A0DDCC /* BPushConfig.plist in Resources */,
+				E263CF9E18D93502009EFFC5 /* Alixpay.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -91,7 +91,7 @@
     
     // 开始调用
     // Check command.arguments here.
-    [self.commandDelegate runInBackground:^{
+//    [self.commandDelegate runInBackground:^{
         //        NSString* payload = nil;
         NSInfo(@"alipay 插件运行开始333");
         
@@ -120,7 +120,7 @@
         //        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payload];
         // The sendPluginResult method is thread-safe.
         //        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
+//    }];
     
     // 处理插件的返回结果
     

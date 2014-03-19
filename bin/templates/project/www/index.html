@@ -36,7 +36,7 @@
                              "Messages",
                              "showMsg", ["这是短消息偶西欧西欧"]);
             }
-            </script>
+        </script>
     </head>
     <body>
         <div class="app">
@@ -60,190 +60,201 @@
                              "GetUUID",
                              "getUUID", ["不需要参数"]);
             }
+        
+        function fullScreen()
+        {
+            cordova.exec(function(message) {
+                         alert(message);
+                         },
+                         function(error) {
+                         alert(error);
+                         },
+                         "FullScreen",
+                         "screenFull", ["不需要参数"]);
+        }
+        
+        function NofullScreen()
+        {
+            cordova.exec(function(message) {
+                         alert(message);
+                         },
+                         function(error) {
+                         alert(error);
+                         },
+                         "FullScreen",
+                         "screenNotFull",
+                         ["不需要参数"]);
+        }
+        
+        function whetherIsFullScreen()
+        {
+            cordova.exec(function(message) {
+                         alert(message);
+                         },
+                         function(error) {
+                         alert(error);
+                         },
+                         "FullScreen",
+                         "whetherIsFullScreen",
+                         ["不需要参数"]);
+        }
+        
+        
+        function checkVersion()
+        {
+            cordova.exec(function(message) {
+                         alert(message);
+                         },
+                         function(error) {
+                         alert(error);
+                         },
+                         "CheckVersion",
+                         "checkVersion",
+                         ["350962117"]);
+        }
+        
+        function addAlarmClock()
+        {
+            //获取当前时间延时3秒的时间
+            var mydate = new Date()
+            mydate.setMinutes = (mydate.getSeconds() +5)
+            var timeStamp = Date.parse(mydate)/1000
+            alert(timeStamp)
             
-            function fullScreen()
-            {
-                cordova.exec(function(message) {
-                             alert(message);
-                             },
-                             function(error) {
-                             alert(error);
-                             },
-                             "FullScreen",
-                             "screenFull", ["不需要参数"]);
-            }
+            cordova.exec(function(winParam) {
+                         alert(winParam)
+                         },
+                         function(error) {
+                         },
+                         "AlarmClock",
+                         "addAlarmClock",
+                         ["78787878786","zhaojing",timeStamp.toString(),"5"]);
+        }
+        
+        function searchAlarmClock()
+        {
+            cordova.exec(function(message) {
+                         alert(message);
+                         },
+                         function(error) {
+                         alert(error);
+                         },
+                         "AlarmClock",
+                         "searchAlarmClock",
+                         ["不需要参数"]);
+                         
+        }
+        
+        function share(){
+            cordova.exec(function(winParam) {
+                         alert(message);
+                         },
+                         function(error) {
+                         },
+                         "Share",
+                         "share",
+                         ["有道软件分享","http://www.baidu.com/img/shouye_b5486898c692066bd2cbaeda86d74448.gif","http://www.xayoudao.com/qujianglvyou/"]);
+        }
+        function regumeng(){
+            cordova.exec(function(winParam) {
+                         },
+                         function(error) {
+                         },
+                         "Share",
+                         "registerUmeng",
+                         ["508a19a35270155ced00005f"]);
+        }
+        function regweixin(){
+            cordova.exec(function(winParam) {
+                         },
+                         function(error) {
+                         },
+                         "Share",
+                         "registerWeixin",
+                         ["wx79474d05acb6a73b"]);
+        }
+        
+        
+        function deleteManyAlarmClock(){
+            cordova.exec(function(winParam) {
+                         
+                         alert(winParam)
+                         },
+                         function(error) {
+                         },
+                         "AlarmClock",
+                         "deleteManyAlarmClock",
+                         [["78787878786"]]);
+                         
+        }
+        function modifyAlarmClock(){
             
-            function NofullScreen()
-            {
-                cordova.exec(function(message) {
-                             alert(message);
-                             },
-                             function(error) {
-                             alert(error);
-                             },
-                             "FullScreen",
-                             "screenNotFull",
-                             ["不需要参数"]);
-            }
+            cordova.exec(function(winParam) {
+                         
+                         alert(winParam)
+                         },
+                         function(error) {
+                         },
+                         "AlarmClock",
+                         "modifyAlarmClock",
+                         ["78787878786",{"repeatInterval":"2"}]);
+                         
+        }
+        
+        function showGetApplicationInfo()
+        {
+            cordova.exec(function(winParam) {
+                         
+                         alert(winParam)
+                         },
+                         function(error) {
+                         },
+                         "GetApplicationInfo",
+                         "getApplicationInfo",
+                         ["zhao"]);
+                         
+                         
+        }
+        
+        function scandit()
+        {
+            cordova.exec(function(success)
+                         {
+                         alert("success")
+                         },
+                         function(cancel){
+                         },
+                         "ScanditSDK",
+                         "scan",
+                         ["PHejSAMAEeONPKoX/hGk/yMeCpL1sCDuqIfUlVuLabo",
+                          {"beep": true,
+                          "1DScanning" : true,
+                          "2DScanning" : true}]);
+                          
+        }
+        
+        function alipay(title, body, price, orderno) {
             
-            function whetherIsFullScreen()
-            {
-                cordova.exec(function(message) {
-                             alert(message);
-                             },
-                             function(error) {
-                             alert(error);
-                             },
-                             "FullScreen",
-                             "whetherIsFullScreen",
-                             ["不需要参数"]);
-            }
-            
-            
-            function checkVersion()
-            {
-                cordova.exec(function(message) {
-                             alert(message);
-                             },
-                             function(error) {
-                             alert(error);
-                             },
-                             "CheckVersion",
-                             "checkVersion",
-                             ["350962117"]);
-            }
-            
-            function addAlarmClock()
-            {
-                //获取当前时间延时3秒的时间
-                var mydate = new Date()
-                mydate.setMinutes = (mydate.getSeconds() +5)
-                var timeStamp = Date.parse(mydate)/1000
-                alert(timeStamp)
-                
-                cordova.exec(function(winParam) {
-                             alert(winParam)
-                             },
-                             function(error) {
-                             },
-                             "AlarmClock",
-                             "addAlarmClock",
-                             ["78787878786","zhaojing",timeStamp.toString(),"5"]);
-            }
-            
-            function searchAlarmClock()
-            {
-                cordova.exec(function(message) {
-                             alert(message);
-                             },
-                             function(error) {
-                             alert(error);
-                             },
-                             "AlarmClock",
-                             "searchAlarmClock",
-                             ["不需要参数"]);
-                
-            }
-            
-            function share(){
-                cordova.exec(function(winParam) {
-                             alert(message);
-                             },
-                             function(error) {
-                             },
-                             "Share",
-                             "share",
-                             ["有道软件分享","http://www.baidu.com/img/shouye_b5486898c692066bd2cbaeda86d74448.gif","http://www.xayoudao.com/qujianglvyou/"]);
-            }
-            function regumeng(){
-                cordova.exec(function(winParam) {
-                             },
-                             function(error) {
-                             },
-                             "Share",
-                             "registerUmeng",
-                             ["508a19a35270155ced00005f"]);
-            }
-            function regweixin(){
-                cordova.exec(function(winParam) {
-                             },
-                             function(error) {
-                             },
-                             "Share",
-                             "registerWeixin",
-                             ["wx79474d05acb6a73b"]);
-            }
-            
-            
-            function deleteManyAlarmClock(){
-                cordova.exec(function(winParam) {
-                             
-                             alert(winParam)
-                             },
-                             function(error) {
-                             },
-                             "AlarmClock",
-                             "deleteManyAlarmClock",
-                             [["78787878786"]]);
-                
-            }
-            function modifyAlarmClock(){
-                
-                cordova.exec(function(winParam) {
-                             
-                             alert(winParam)
-                             },
-                             function(error) {
-                             },
-                             "AlarmClock",
-                             "modifyAlarmClock",
-                             ["78787878786",{"repeatInterval":"2"}]);
-                
-            }
-            
-            function showGetApplicationInfo()
-            {
-                cordova.exec(function(winParam) {
-                             
-                             alert(winParam)
-                             },
-                             function(error) {
-                             },
-                             "GetApplicationInfo",
-                             "getApplicationInfo",
-                            ["zhao"]);
-            
-            
-            }
-            
-            function scandit()
-            {
-                           cordova.exec(function(success)
-                             {
-                             alert("success")
-                             },
-                             function(cancel){
-                             },
-                             "ScanditSDK",
-                             "scan",
-                             ["PHejSAMAEeONPKoX/hGk/yMeCpL1sCDuqIfUlVuLabo",
-                              {"beep": true,
-                              "1DScanning" : true,
-                              "2DScanning" : true}]);
-                
-            }
-            
-             
-            document.addEventListener('deviceready', function() {
-                                      app.initialize();
-                                      navigator.splashscreen.hide();
-                                      },false);
-            
+            cordova.exec(function(winParam) {
+                         alert(winParam);
+                         //var i = winParam ;
+                         //alert(i+"谢谢你") ;
+                         }, function(error) {
+                         alert(error);
+                         }, "Alipay", "alipay", [title, body, price, orderno]);
+        }
+        
+        
+        document.addEventListener('deviceready', function() {
+                                  app.initialize();
+                                  navigator.splashscreen.hide();
+                                  },false);
+                                  
             </script>
         
         <input type="button"value="GetUUID" onclick="GetUUID();" />
         <input type="button"value="全屏" onclick="fullScreen();" />
-         <input type="button"value="扫描二维码" onclick="scandit();" />
+        <input type="button"value="扫描二维码" onclick="scandit();" />
         <input type="button"value="非全屏" onclick="NofullScreen();" />
         <input type="button"value="是否全屏" onclick="whetherIsFullScreen();" />
         <input type="button"value="加入提醒" onclick="addAlarmClock();" />
@@ -257,6 +268,8 @@
         <input type="button"value="分享" onclick="share();" />
         <input type="button"value="短消息" onclick="showMessage();" />
         <input type="button"value="获取应用信息" onclick="showGetApplicationInfo();" />
-      
+        
+        <input type="button" name="button" value="Alipay"  onclick="alipay('title', 'body', '0.01', '234234234')" />
+        
     </body>
 </html>
