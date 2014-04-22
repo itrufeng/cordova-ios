@@ -79,7 +79,7 @@
     //    NSInfo(@"alipay arguments = %@ %@ %@ %@ %@", title , body , price , orderno , nulls);
     
     NSNumberFormatter *format = [[NSNumberFormatter alloc] init];
-    if (![format numberFromString:price]){
+    if (![format stringFromNumber:price]){
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR
                                          messageAsString:@"价格必须是数字"];
         [self.commandDelegate sendPluginResult:pluginResult
@@ -191,7 +191,7 @@
     order.productName = title; //商品标题
     order.productDescription = body; //商品描述
     order.amount =  price; //商品价格
-    //        order.notifyURL =  @"http%3A%2F%2Fwwww.xxx.com"; //回调URL
+    order.notifyURL =  @"http%3A%2F%2Fwwww.xxx.com"; //回调URL
     
     return [order description];
 }
