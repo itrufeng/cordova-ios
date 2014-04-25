@@ -86,6 +86,16 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    [self _restoreHelpviewFrame2];
+    [self _restoreWebviewFrame2];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
     //Lower screen 20px on ios 7
@@ -98,17 +108,6 @@
     }
     // View defaults to full size.  If you want to customize the view's size, or its subviews (e.g. webView),
     // you can do so here.
-
-
-    [super viewWillAppear:animated];
-    
-    [self _restoreHelpviewFrame2];
-    [self _restoreWebviewFrame2];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
     
     //跳过icloud 备份
     NSString *settings = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"settings.plist"];
