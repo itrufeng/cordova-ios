@@ -139,6 +139,14 @@
     if (self.viewController.modalViewController != self.inAppBrowserViewController) {
         [self.viewController presentModalViewController:self.inAppBrowserViewController animated:YES];
     }
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        CGRect viewBounds = [self.inAppBrowserViewController.webView bounds];
+        viewBounds.origin.y = 20;
+        viewBounds.size.height = viewBounds.size.height - 20;
+        self.inAppBrowserViewController.webView.frame = viewBounds;
+        NSLog(@"in version22222 = %f",[[[UIDevice currentDevice] systemVersion] floatValue]);
+    }
+
     [self.inAppBrowserViewController navigateTo:url];
 }
 

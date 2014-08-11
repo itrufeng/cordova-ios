@@ -313,7 +313,7 @@
     {
         NSString *pathResource =  [[NSBundle mainBundle]pathForResource:@"www/index.html" ofType:nil];
         
-        NSString* urlResultStr = [NSString stringWithFormat:@"%@%@%@",pathResource,@"?",url];
+        NSString* urlResultStr = [NSString stringWithFormat:@"%@%@%@",pathResource,@"#",url];
         
         NSURL *urlResultRequest = [NSURL fileURLWithPath:urlResultStr];
         
